@@ -12,7 +12,6 @@ You have a project and you would like to create a new on with the same
 model but only portion of it.
 
 Example
-
 --------
 
 Blueprints can be easily manipulated because underneath they are just

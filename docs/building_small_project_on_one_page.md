@@ -12,7 +12,6 @@ You would like to create the whole project from code for whatever
 reason.
 
 Before you start
-
 -------------
 
 You have a provisioning token for project creation

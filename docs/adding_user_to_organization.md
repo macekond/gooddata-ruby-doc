@@ -11,7 +11,6 @@ Goal
 You would like to add a user to organization programmatically
 
 Before you start
-
 -------------
 
 You have to have a user who is an admin of an organization. If you don’t

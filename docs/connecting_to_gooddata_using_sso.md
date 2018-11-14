@@ -12,7 +12,6 @@ You do have SSO enabled and want to use it for logging to GoodData
 without using username and password.
 
 Example
-
 --------
 
 Using the SSO capability you don’t need to maintain just another

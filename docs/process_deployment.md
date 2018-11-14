@@ -12,7 +12,6 @@ You would like to deploy a CloudConnect or Ruby SDK process to GoodData
 platform.
 
 Example
-
 --------
 
 SDK allows you to deploy a process. Just point it to a directory or a

@@ -12,7 +12,6 @@ You have a report somebody set up a color mapping on. You would like to
 remove it.
 
 Example
-
 --------
 
 

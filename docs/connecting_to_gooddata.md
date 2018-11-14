@@ -13,7 +13,6 @@ time to combine these two to write a program that connects and does
 something with a gooddata project.
 
 Example
-
 --------
 
 

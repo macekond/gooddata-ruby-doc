@@ -12,7 +12,6 @@ You would like to add a users to organization programmatically. What you
 have is a CSV file holding the information about the users.
 
 Before you start
-
 -------------
 
 You have to have a user who is an admin of an organization. If you don’t
@@ -30,7 +29,7 @@ The headers we used are defaults. If you have different ones you will
 have to do some mangling. Minimal information that you have to provide
 for the user creation to be successful is login.
 
-Example
+How-to
 --------
 
 First let’s have a look how to implement an addition with having the

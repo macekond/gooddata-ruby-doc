@@ -17,7 +17,6 @@ those cases. Sometimes it could be useful to do this in one go. This is
 especially true if you have only one project and one organization.
 
 Before you start
-
 -------------
 
 You have to have a user who is an admin of an organization. If you don’t

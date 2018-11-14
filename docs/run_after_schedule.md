@@ -13,7 +13,6 @@ another process (schedule). This is also known as run-after triggered
 schedule.
 
 Example
-
 --------
 
 If you use an existing schedule object instead of a cron expression in

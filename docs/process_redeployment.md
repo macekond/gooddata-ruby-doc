@@ -12,7 +12,6 @@ You would like to redeploy a CloudConnect or Ruby process to GoodData
 platform.
 
 Example
-
 --------
 
 SDK provides means for redeploying a process (with a new updated

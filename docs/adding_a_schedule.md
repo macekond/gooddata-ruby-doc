@@ -11,9 +11,6 @@ Goal
 You have a process deployed and you would like to add a schedule to it
 so the process is executed regularly
 
-
---------
-
 You can easily add a time based schedule to any process. Scheduled
 process execution has couple advantages over the ad-hoc process
 executions. Scheduled executions are logged and logs are kept around for

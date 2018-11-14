@@ -13,7 +13,6 @@ on reports and last thing you are missing is to change all references in
 the model from one date dimension to another.
 
 Example
-
 --------
 
 With SDK you can use swap\_date\_dimension! method on blueprint. I will

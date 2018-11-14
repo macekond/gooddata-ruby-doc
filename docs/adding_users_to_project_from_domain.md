@@ -13,7 +13,6 @@ have all the user profiles created in your organization (domain). You
 potentially have many projects that you would like to populate.
 
 Before you start
-
 -------------
 
 You have to have a user who is an admin of an organization. If you don’t

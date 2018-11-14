@@ -12,7 +12,6 @@ You want to be sure that reports return expected results. This is a
 basis for delving later into test driven BI projects.
 
 Example
-
 --------
 
 

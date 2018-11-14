@@ -12,7 +12,6 @@ You have report and you want to update report definition in easy way.
 Perhaps you need to modify multiple reports in one or more projects.
 
 Example
-
 --------
 
 Use the Report\#update\_definition with block argument in following way.

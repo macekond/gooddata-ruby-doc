@@ -12,13 +12,11 @@ You would like to work with dashboard tab a little. List how many
 reports are on the tab, if they are filtered etc.
 
 Before you start
-
 -------------
 
 You have to have existing project with dashboard(s).
 
 Example
-
 --------
 
 

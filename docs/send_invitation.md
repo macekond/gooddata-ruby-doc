@@ -11,7 +11,6 @@ Goal
 You need to invite a user into project.
 
 Before you start
-
 -------------
 
 You have to have a user who is an admin of an organization. If you don’t
@@ -20,7 +19,6 @@ GoodData contact person or GoodData support (e-mail
 <support@gooddata.com>).
 
 Example
-
 --------
 
 

@@ -11,7 +11,6 @@ Goal
 Computing report is great but without filter it is not that great.
 
 How-to
-
 --------
 
 While SDK does not provide full support for all types of filters. There

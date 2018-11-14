@@ -12,7 +12,6 @@ You have users added in organization (domain). You would like to add
 them into the project.
 
 Before you start
-
 -------------
 
 You have to have a user who is an admin of an organization. If you don’t

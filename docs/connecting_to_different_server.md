@@ -14,7 +14,6 @@ are trying something on a test machine (if you are working for gooddata)
 or you are working with a project that is on a white labeled instance.
 
 Example
-
 --------
 
 You can either pass the server name as a parameter to connect or

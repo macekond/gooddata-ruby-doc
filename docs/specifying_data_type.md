@@ -12,7 +12,6 @@ You would like to specify a different data type for attribute or fact in
 a blueprint
 
 Example
-
 --------
 
 Each column in blueprint is eventually translated into a physical column

@@ -11,7 +11,6 @@ Goal
 You need to rename the project.
 
 Example
-
 --------
 
 
