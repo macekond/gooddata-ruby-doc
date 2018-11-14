@@ -11,7 +11,6 @@ Goal
 You would like to interact with GoodData API directly
 
 How-to
-
 --------
 
 SDK provides you slew of well known methods that make this possible

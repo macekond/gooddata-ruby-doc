@@ -12,13 +12,11 @@ You have several attributes in a project. You would like to create some
 basic metric out of them.
 
 Before you start
-
 -------------
 
 You have to have existing project with model and data loaded.
 
 Example
-
 --------
 
 

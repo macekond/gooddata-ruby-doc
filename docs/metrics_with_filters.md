@@ -12,7 +12,6 @@ You want to create a more complicated metric that has filter on values
 included
 
 Example
-
 --------
 
 In this case we will actually create the raw MAQL metric along with the

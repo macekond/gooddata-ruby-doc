@@ -14,7 +14,6 @@ This is error prone and you must be careful that you do not share your
 passwords.
 
 How-to
-
 --------
 
 There is fairly easy solution that you can use. If you recall correctly

@@ -23,7 +23,7 @@ const users = [
 const siteConfig = {
   title: 'Ruby SDK' /* title for your website */,
   tagline: 'A convenient Ruby wrapper around the GoodData RESTful API',
-  url: 'https://gooddata.github.io' /* your website url */,
+  url: 'https://github.com/gooddata/gooddata-ruby' /* your website url */,
   baseUrl: '/gooddata-ui/' /* base url for your project */,
   projectName: 'GoodData Ruby SDK',
   headerLinks: [
@@ -56,7 +56,7 @@ const siteConfig = {
   */
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Copyright © ${new Date().getFullYear()} Your Name or Your Company Name`,
+  copyright: `Copyright © ${new Date().getFullYear()} GoodData`,
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.

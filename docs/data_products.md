@@ -12,7 +12,6 @@ You would like to encapsule multiple segments into a data product for
 better granularity.
 
 How-to
-
 --------
 
 This solution is based on the terminology and examples presented in

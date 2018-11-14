@@ -12,7 +12,6 @@ You would like to export the report from GoodData into one of the
 typical formats for further processing or presentation.
 
 Example
-
 --------
 
 There are a simple way how to export a report from gooddata

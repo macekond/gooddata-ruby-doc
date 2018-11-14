@@ -12,7 +12,6 @@ When executing a process, obtaining up-to-date information about the
 status is difficult.
 
 How-to
-
 --------
 
 Register a notification rule on a process. You can configure

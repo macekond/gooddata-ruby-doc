@@ -12,7 +12,6 @@ You created the script. It works but it is slow. Let’s have at one trick
 how to possibly make it faster.
 
 How-to
-
 --------
 
 Often if you look at the API the structure is orthogonal to your use

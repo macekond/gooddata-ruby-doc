@@ -11,13 +11,11 @@ Goal
 You would like to list dashboards and their tabs programmatically.
 
 Before you start
-
 -------------
 
 You have to have existing project with dashboard(s).
 
 Example
-
 --------
 
 

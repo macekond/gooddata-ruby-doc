@@ -13,7 +13,6 @@ The problem is that it is hard to visualize the order of execution from
 the Data Administration console.
 
 How-to
-
 --------
 
 There are plethora of very useful libraries that you can use in

@@ -13,7 +13,6 @@ author. Can’t find any project’s documentation. The following code
 snippet may be helpful in such situation
 
 How-to
-
 --------
 
 You want to start with a quick introspection. How many datasets, how

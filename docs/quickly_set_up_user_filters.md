@@ -12,7 +12,6 @@ You would like to set a data permission (user filter or MUF filter) for
 one or two users.
 
 How-to
-
 --------
 
 SDK offers couple of convenience features for doing this. Let’s first

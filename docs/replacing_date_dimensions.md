@@ -15,7 +15,6 @@ dimension in your project) or replacing your standard date dimension
 with a fiscal date dimension.
 
 How-to
-
 --------
 
 The code snippet below substitutes all occurences of a date dimension

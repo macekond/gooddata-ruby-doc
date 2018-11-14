@@ -11,7 +11,6 @@ Goal
 You want to know which Ruby to use with the SDK.
 
 How-to
-
 --------
 
 Here is a list of supported ruby versions.

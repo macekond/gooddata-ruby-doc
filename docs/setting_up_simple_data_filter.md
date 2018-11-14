@@ -13,7 +13,6 @@ CSV with two columns that associate user with a single data permission’s
 value. We’ll use the same city example from the examples above.
 
 How-to
-
 --------
 
 SDK offers couple of convenience features for doing this. Let’s first

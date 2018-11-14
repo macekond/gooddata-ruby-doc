@@ -87,14 +87,14 @@
 			"creating_metrics",
 			"metrics_with_filters"
 		],
-		"Automation recipes": [ 
+		"Automation how-tos": [ 
 			"all_projects", 
 			"speeding_things_up" 
 		],
 		"Testing": [ 
 			"test_a_report" 
 		],
-		"Deployment recipes": [
+		"Deployment how-tos": [
 			"process_deployment",
 			"process_redeployment",
 			"adding_a_schedule",

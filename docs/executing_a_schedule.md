@@ -12,7 +12,6 @@ You have a process with a schedule. You would like to execute it out of
 schedule.
 
 Example
-
 --------
 
 Since schedule already have information about executable and parameters

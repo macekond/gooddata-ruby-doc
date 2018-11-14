@@ -2,8 +2,8 @@
 author: GoodData
 title: What is blueprint
 ---
-what a blueprint is and what is a difference between blueprint and model
-when we talk about them at Gooddata.
+
+Before we delve into examples involving blueprints let’s talk a moment what a blueprint is and what is a difference between blueprint and model when we talk about them at Gooddata.
 
 They mean the same thing but they are representing it in a different way
 and they live at different places. Both of them define a model of

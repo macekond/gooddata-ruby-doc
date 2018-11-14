@@ -13,13 +13,11 @@ document](http://developer.gooddata.com/article/setting-up-data-for-geo-charts)
 for more details.
 
 Before you start
-
 -------------
 
 You have a provisioning token for project creation.
 
 How-to
-
 --------
 
 We’ll create a simple project’s blueprint that contains a label with the

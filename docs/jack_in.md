@@ -12,7 +12,6 @@ You want to use SDK on a project but writing a script seems like too
 much of a hassle.
 
 How-to
-
 --------
 
 You first need to install gooddata gem using

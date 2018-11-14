@@ -11,7 +11,6 @@ Goal
 You need to upload dates but you have a nonstandard formatting
 
 Example
-
 --------
 
 You can specify a date loading format in your blueprint. If you do not

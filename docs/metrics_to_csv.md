@@ -12,13 +12,11 @@ You would like to store information about all project metrics and
 attributes in CSV.
 
 Before you start
-
 -------------
 
 You have to have existing project with metric(s) and attribute(s).
 
 How-to
-
 --------
 
 ### Metrics

@@ -12,13 +12,11 @@ You have CSV containing users, their roles and passwords and you want to
 create them in bulk.
 
 Before you start
-
 -------------
 
 You have to have existing project and be admin of it.
 
 Example
-
 --------
 
 

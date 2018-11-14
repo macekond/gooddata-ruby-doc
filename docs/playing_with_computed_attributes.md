@@ -11,7 +11,6 @@ Goal
 You would like to create a computed attribute.
 
 How-to
-
 --------
 
 Create an update blueprint that contains the computed attribute, merge

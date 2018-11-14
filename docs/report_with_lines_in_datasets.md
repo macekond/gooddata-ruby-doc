@@ -11,7 +11,6 @@ Goal
 Occasionally you need to know how many rows there are in each dataset.
 
 Example
-
 --------
 
 This is surprisingly difficult to do in GoodData UI but it is simple
