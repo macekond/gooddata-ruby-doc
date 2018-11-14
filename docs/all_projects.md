@@ -5,7 +5,7 @@ sidebar_label: Performing Operations on Multiple Projects
 title: Performing Operations on Multiple Projects
 ---
 
-Problem
+Goal
 -------
 
 You already know how to do many things but now you would like to do the

@@ -5,7 +5,7 @@ sidebar_label: Adding Users from Organization to Multiple Projects
 title: Adding Users from Organization to Multiple Projects
 ---
 
-Problem
+Goal
 -------
 
 You would like to add a users to project programmatically. You already

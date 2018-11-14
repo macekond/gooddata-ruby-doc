@@ -5,7 +5,7 @@ sidebar_label: Adding Multiple Users to Organization from CSV
 title: Adding Multiple Users to Organization from CSV
 ---
 
-Problem
+Goal
 -------
 
 You would like to add a users to organization programmatically. What you

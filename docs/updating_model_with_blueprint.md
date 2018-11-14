@@ -5,7 +5,7 @@ sidebar_label: Adding New LDM Fields to Project
 title: Adding New LDM Fields to Project
 ---
 
-Problem
+Goal
 -------
 
 You would like to update a project with additional fields

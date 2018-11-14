@@ -5,7 +5,7 @@ sidebar_label: Exporting report results
 title: Exporting report results
 ---
 
-Problem
+Goal
 -------
 
 You would like to export the report from GoodData into one of the

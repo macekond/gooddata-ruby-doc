@@ -5,7 +5,7 @@ sidebar_label: Using Attribute Types when Creating Project
 title: Using Attribute Types when Creating Project
 ---
 
-Problem
+Goal
 -------
 
 You want to specify certain label’s data type see [this

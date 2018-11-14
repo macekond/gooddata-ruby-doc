@@ -5,7 +5,7 @@ sidebar_label: Parallel Processing
 title: Parallel Processing
 ---
 
-Problem
+Goal
 -------
 
 You created the script. It works but it is slow. Let’s have at one trick

@@ -5,7 +5,7 @@ sidebar_label: Inviting Users to Project
 title: Inviting Users to Project
 ---
 
-Problem
+Goal
 -------
 
 You need to invite a user into project.

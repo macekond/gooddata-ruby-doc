@@ -5,7 +5,7 @@ sidebar_label: Working with segments
 title: Working with segments
 ---
 
-Problem
+Goal
 -------
 
 You would like to setup and execute a life-cycle management

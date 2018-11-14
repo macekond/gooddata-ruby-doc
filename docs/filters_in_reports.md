@@ -5,7 +5,7 @@ sidebar_label: Computing/creating reports with filters
 title: Computing/creating reports with filters
 ---
 
-Problem
+Goal
 -------
 
 Computing report is great but without filter it is not that great.

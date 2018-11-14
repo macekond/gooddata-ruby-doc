@@ -5,7 +5,7 @@ sidebar_label: Disabling Schedules in All Projects
 title: Disabling Schedules in All Projects
 ---
 
-Problem
+Goal
 -------
 
 You would like to disable all schedules on all processes on all the

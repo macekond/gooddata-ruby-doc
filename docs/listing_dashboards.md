@@ -5,7 +5,7 @@ sidebar_label: Listing Dashboards
 title: Listing Dashboards
 ---
 
-Problem
+Goal
 -------
 
 You would like to list dashboards programmatically.

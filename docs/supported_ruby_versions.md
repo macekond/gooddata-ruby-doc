@@ -5,7 +5,7 @@ sidebar_label: Supported Ruby Versions
 title: Supported Ruby Versions
 ---
 
-Problem
+Goal
 -------
 
 You want to know which Ruby to use with the SDK.

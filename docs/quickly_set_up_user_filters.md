@@ -5,7 +5,7 @@ sidebar_label: Setting Up Simple Data Permission
 title: Setting Up Simple Data Permission
 ---
 
-Problem
+Goal
 -------
 
 You would like to set a data permission (user filter or MUF filter) for

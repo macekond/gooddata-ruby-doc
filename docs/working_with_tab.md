@@ -5,7 +5,7 @@ sidebar_label: Listing Dashboard Tabs
 title: Listing Dashboard Tabs
 ---
 
-Problem
+Goal
 -------
 
 You would like to work with dashboard tab a little. List how many

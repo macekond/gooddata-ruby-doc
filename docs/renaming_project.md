@@ -5,7 +5,7 @@ sidebar_label: Renaming Project
 title: Renaming Project
 ---
 
-Problem
+Goal
 -------
 
 You need to rename the project.

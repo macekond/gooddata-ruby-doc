@@ -5,7 +5,7 @@ sidebar_label: Resetting Report Color Map
 title: Resetting Report Color Map
 ---
 
-Problem
+Goal
 -------
 
 You have a report somebody set up a color mapping on. You would like to

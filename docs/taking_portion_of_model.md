@@ -5,7 +5,7 @@ sidebar_label: Taking portion of a project model
 title: Taking portion of a project model
 ---
 
-Problem
+Goal
 -------
 
 You have a project and you would like to create a new on with the same

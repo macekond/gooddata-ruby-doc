@@ -5,7 +5,7 @@ sidebar_label: Enumerating Date Dimensions
 title: Enumerating Date Dimensions
 ---
 
-Problem
+Goal
 -------
 
 You would like to know how many date dimensions you have in a project.

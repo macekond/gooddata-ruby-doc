@@ -5,7 +5,7 @@ sidebar_label: Delete a project
 title: Delete a project
 ---
 
-Problem
+Goal
 -------
 
 You must delete a project programmatically.

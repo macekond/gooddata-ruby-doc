@@ -5,7 +5,7 @@ sidebar_label: Specifying Fields Data Type
 title: Specifying Fields Data Type
 ---
 
-Problem
+Goal
 -------
 
 You would like to specify a different data type for attribute or fact in

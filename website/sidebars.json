@@ -15,7 +15,47 @@
 			"using_asynchronous_tasks",
 			"logging"
 		],
-		"Working with users": [
+		"Projects": [
+			"create_a_project",
+			"renaming_project",
+			"cloning_project",
+			"cloning_project_between_orgs",
+			"create_a_project_using_specific_environment",
+			"creating_project_from_template",
+			"migrating_metadata_objects",
+			"delete_all_data",
+			"delete_project",
+			"listing_roles",
+			"setting_and_updating_project_metadata",
+			"create_custom_color_palette",
+			"looking_up_metadata_objects"
+		],
+		"Permissions": [
+			"quickly_set_up_user_filters",
+			"checking_filters",
+			"create_data_filters_from_columnar_csv",
+			"setting_up_simple_data_filter",
+			"listing_variables"
+		],
+		"Project Templates": [
+			"what_is_blueprint",
+			"creating_project_from_blueprint",
+			"getting_project_blueprint",
+			"loading_data",
+			"loading_dates_format",
+			"updating_model_with_blueprint",
+			"specifying_data_type",
+			"work_with_folders",
+			"building_small_project_on_one_page",
+			"using_gd_types",
+			"moving_fields_around",
+			"playing_with_toy_model",
+			"refactoring_datasets",
+			"reconnect_date_dimensions",
+			"taking_portion_of_model",
+			"playing_with_computed_attributes"
+		],
+		"Users": [
 			"list_project_users",
 			"checking_user_in_project",
 			"enabling_disabling_users",
@@ -31,11 +71,7 @@
 			"working_with_groups",
 			"deleting_users_from_all_projects"
 		],
-		"Automation recipes": [ 
-			"all_projects", 
-			"speeding_things_up" 
-		],
-		"Model": [
+		"Model Setup": [
 			"changing_id_of_and_object",
 			"counting_number_of_lines",
 			"finding_out_date_dimensions",
@@ -43,23 +79,20 @@
 			"getting_info_about_unknown_project",
 			"replacing_date_dimensions"
 		],
+		"Working With Your Data": [
+			"metrics_from_attribute",
+			"metrics_from_facts",
+			"metrics_to_csv",
+			"changing_number_formatting_on_metric",
+			"creating_metrics",
+			"metrics_with_filters"
+		],
+		"Automation recipes": [ 
+			"all_projects", 
+			"speeding_things_up" 
+		],
 		"Testing": [ 
 			"test_a_report" 
-		],
-		"Working with projects": [
-			"create_a_project",
-			"renaming_project",
-			"cloning_project",
-			"cloning_project_between_orgs",
-			"create_a_project_using_specific_environment",
-			"creating_project_from_template",
-			"migrating_metadata_objects",
-			"delete_all_data",
-			"delete_project",
-			"listing_roles",
-			"setting_and_updating_project_metadata",
-			"create_custom_color_palette",
-			"looking_up_metadata_objects"
 		],
 		"Deployment recipes": [
 			"process_deployment",
@@ -87,44 +120,10 @@
 			"remove_old_versions_from_report",
 			"filters_in_reports"
 		],
-		"Working with facts metrics and attributes": [
-			"metrics_from_attribute",
-			"metrics_from_facts",
-			"metrics_to_csv",
-			"changing_number_formatting_on_metric",
-			"creating_metrics",
-			"metrics_with_filters"
-		],
-
 		"Working with dashboards": [
 			"listing_dashboards",
 			"listing_dashboard_tabs",
 			"working_with_tab"
-		],
-		"Working with data permissions": [
-			"quickly_set_up_user_filters",
-			"checking_filters",
-			"create_data_filters_from_columnar_csv",
-			"setting_up_simple_data_filter",
-			"listing_variables"
-		],
-		"Working with blueprints": [
-			"what_is_blueprint",
-			"creating_project_from_blueprint",
-			"getting_project_blueprint",
-			"loading_data",
-			"loading_dates_format",
-			"updating_model_with_blueprint",
-			"specifying_data_type",
-			"work_with_folders",
-			"building_small_project_on_one_page",
-			"using_gd_types",
-			"moving_fields_around",
-			"playing_with_toy_model",
-			"refactoring_datasets",
-			"reconnect_date_dimensions",
-			"taking_portion_of_model",
-			"playing_with_computed_attributes"
 		],
 		"Working with lifecycle": [
 			"wip_segments",

@@ -5,7 +5,7 @@ sidebar_label: Handling Credentials Securely
 title: Handling Credentials Securely
 ---
 
-Problem
+Goal
 -------
 
 You would like to write scripts that are shareable. Currently you must

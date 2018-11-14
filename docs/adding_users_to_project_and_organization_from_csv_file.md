@@ -5,7 +5,7 @@ sidebar_label: Adding User to Both Organization and Project from CSV
 title: Adding User to Both Organization and Project from CSV
 ---
 
-Problem
+Goal
 -------
 
 You would like to add users from CSV file to a project and domain in one

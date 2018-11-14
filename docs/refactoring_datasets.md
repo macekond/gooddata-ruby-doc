@@ -5,7 +5,7 @@ sidebar_label: Refactoring datasets
 title: Refactoring datasets
 ---
 
-Problem
+Goal
 -------
 
 You created a quick prototype but you found out that it needs some

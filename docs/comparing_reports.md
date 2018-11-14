@@ -5,7 +5,7 @@ sidebar_label: Comparing Reports across Projects
 title: Comparing Reports across Projects
 ---
 
-Problem
+Goal
 -------
 
 You created a new version of a project. You made some changes to the

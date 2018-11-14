@@ -5,7 +5,7 @@ sidebar_label: Moving fields in blueprint
 title: Moving fields in blueprint
 ---
 
-Problem
+Goal
 -------
 
 I created a model and now found out that I would like to move a field to

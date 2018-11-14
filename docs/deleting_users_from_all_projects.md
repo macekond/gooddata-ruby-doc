@@ -5,7 +5,7 @@ sidebar_label: Deleting users from all projects
 title: Deleting users from all projects
 ---
 
-Problem
+Goal
 -------
 
 You would like to remove one user from all projects.

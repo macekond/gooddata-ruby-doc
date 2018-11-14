@@ -5,7 +5,7 @@ sidebar_label: Creating Metrics from Attributes
 title: Creating Metrics from Attributes
 ---
 
-Problem
+Goal
 -------
 
 You have several attributes in a project. You would like to create some

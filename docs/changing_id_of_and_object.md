@@ -5,7 +5,7 @@ sidebar_label: Changing Object’s Identifier
 title: Changing Object’s Identifier
 ---
 
-Problem
+Goal
 -------
 
 You moved an attribute in your model and you would like to change the

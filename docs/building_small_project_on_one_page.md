@@ -5,7 +5,7 @@ sidebar_label: Creating Project in One Page of Code
 title: Creating Project in One Page of Code
 ---
 
-Problem
+Goal
 -------
 
 You would like to create the whole project from code for whatever

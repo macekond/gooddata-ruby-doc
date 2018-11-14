@@ -5,7 +5,7 @@ sidebar_label: Registering a notification email
 title: Registering a notification email
 ---
 
-Problem
+Goal
 -------
 
 When executing a process, obtaining up-to-date information about the

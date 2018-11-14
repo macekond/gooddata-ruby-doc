@@ -5,7 +5,7 @@ sidebar_label: Creating Metrics from Facts
 title: Creating Metrics from Facts
 ---
 
-Problem
+Goal
 -------
 
 You have several facts in a project. You would like to create some basic

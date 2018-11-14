@@ -5,7 +5,7 @@ sidebar_label: Cloning Project across Organizations
 title: Cloning Project across Organizations
 ---
 
-Problem
+Goal
 -------
 
 You would like to clone project to a different organization

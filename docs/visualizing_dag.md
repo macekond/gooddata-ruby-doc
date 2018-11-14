@@ -5,7 +5,7 @@ sidebar_label: Visualizing executions
 title: Visualizing executions
 ---
 
-Problem
+Goal
 -------
 
 You successfully modularized your ETL into several orchestrated modules.

@@ -5,7 +5,7 @@ sidebar_label: Working with data products
 title: Working with data products
 ---
 
-Problem
+Goal
 -------
 
 You would like to encapsule multiple segments into a data product for

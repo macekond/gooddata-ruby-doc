@@ -5,7 +5,7 @@ sidebar_label: Migrating objects between projects
 title: Migrating objects between projects
 ---
 
-Problem
+Goal
 -------
 
 You have metadata objects (reports/metrics/dashboards) you would like to

@@ -5,7 +5,7 @@ sidebar_label: Listing Dashboard Tabs
 title: Listing Dashboard Tabs
 ---
 
-Problem
+Goal
 -------
 
 You would like to list dashboards and their tabs programmatically.

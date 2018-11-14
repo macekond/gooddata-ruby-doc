@@ -5,7 +5,7 @@ sidebar_label: Scripting
 title: Scripting
 ---
 
-Problem
+Goal
 -------
 
 You created a program by building it up in an interactive manner but now

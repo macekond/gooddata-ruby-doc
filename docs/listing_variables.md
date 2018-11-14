@@ -5,7 +5,7 @@ sidebar_label: List Variable Values
 title: List Variable Values
 ---
 
-Problem
+Goal
 -------
 
 You have variable in your project and you would like to see the values

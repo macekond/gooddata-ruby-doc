@@ -5,7 +5,7 @@ sidebar_label: Updating report definition
 title: Updating report definition
 ---
 
-Problem
+Goal
 -------
 
 You have report and you want to update report definition in easy way.

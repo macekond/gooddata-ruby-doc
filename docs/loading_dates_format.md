@@ -5,7 +5,7 @@ sidebar_label: Loading Data with Specific Date Format
 title: Loading Data with Specific Date Format
 ---
 
-Problem
+Goal
 -------
 
 You need to upload dates but you have a nonstandard formatting

@@ -5,7 +5,7 @@ sidebar_label: Connecting to GoodData using Single Sign On (SSO)
 title: Connecting to GoodData using Single Sign On (SSO)
 ---
 
-Problem
+Goal
 -------
 
 You do have SSO enabled and want to use it for logging to GoodData

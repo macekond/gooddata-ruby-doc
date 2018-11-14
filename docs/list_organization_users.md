@@ -5,7 +5,7 @@ sidebar_label: Listing Organization’s Users
 title: Listing Organization’s Users
 ---
 
-Problem
+Goal
 -------
 
 You would like to list users in organization

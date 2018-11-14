@@ -5,7 +5,7 @@ sidebar_label: Automated Data Distribution (ADD)
 title: Automated Data Distribution (ADD)
 ---
 
-Problem
+Goal
 -------
 
 You would like to upload data from the Data Warehouse to a workspace.

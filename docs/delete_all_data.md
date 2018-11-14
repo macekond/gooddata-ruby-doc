@@ -5,7 +5,7 @@ sidebar_label: Delete data in project
 title: Delete data in project
 ---
 
-Problem
+Goal
 -------
 
 You need to delete all the data in all datasets in a particular project.

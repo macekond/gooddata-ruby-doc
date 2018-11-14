@@ -5,7 +5,7 @@ sidebar_label: Connecting to GoodData Platform with Super Secure Token (SST)
 title: Connecting to GoodData Platform with Super Secure Token (SST)
 ---
 
-Problem
+Goal
 -------
 
 You do not have credentials. You only have SST and would like to still

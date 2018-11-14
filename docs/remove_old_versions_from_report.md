@@ -5,7 +5,7 @@ sidebar_label: Removing old versions from report
 title: Removing old versions from report
 ---
 
-Problem
+Goal
 -------
 
 Occasionally you would like to clean up your project. The simplest way

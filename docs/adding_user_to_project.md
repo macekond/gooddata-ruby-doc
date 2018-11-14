@@ -5,7 +5,7 @@ sidebar_label: Adding User from Organization to Project
 title: Adding User from Organization to Project
 ---
 
-Problem
+Goal
 -------
 
 You have users added in organization (domain). You would like to add

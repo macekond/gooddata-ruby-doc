@@ -5,7 +5,7 @@ sidebar_label: Testing Report Result
 title: Testing Report Result
 ---
 
-Problem
+Goal
 -------
 
 You want to be sure that reports return expected results. This is a

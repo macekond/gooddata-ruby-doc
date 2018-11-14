@@ -5,7 +5,7 @@ sidebar_label: Changing an existing schedule
 title: Changing an existing schedule
 ---
 
-Problem
+Goal
 -------
 
 You have a schedule but would like to change it

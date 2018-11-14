@@ -5,7 +5,7 @@ sidebar_label: Playing with computed attributes
 title: Playing with computed attributes
 ---
 
-Problem
+Goal
 -------
 
 You would like to create a computed attribute.

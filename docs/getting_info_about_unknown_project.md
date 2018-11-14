@@ -5,7 +5,7 @@ sidebar_label: Exploring Unknown Project
 title: Exploring Unknown Project
 ---
 
-Problem
+Goal
 -------
 
 You just got invited to this project and just can’t reach the project’s

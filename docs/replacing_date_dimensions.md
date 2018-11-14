@@ -5,7 +5,7 @@ sidebar_label: Substitute Date Dimension for Another One
 title: Substitute Date Dimension for Another One
 ---
 
-Problem
+Goal
 -------
 
 You want to substitute an existing date dimension in your project for

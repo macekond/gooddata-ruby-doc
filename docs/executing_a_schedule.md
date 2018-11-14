@@ -5,7 +5,7 @@ sidebar_label: Executing Schedule
 title: Executing Schedule
 ---
 
-Problem
+Goal
 -------
 
 You have a process with a schedule. You would like to execute it out of

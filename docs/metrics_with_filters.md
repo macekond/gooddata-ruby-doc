@@ -5,7 +5,7 @@ sidebar_label: Creating Metric with filter
 title: Creating Metric with filter
 ---
 
-Problem
+Goal
 -------
 
 You want to create a more complicated metric that has filter on values

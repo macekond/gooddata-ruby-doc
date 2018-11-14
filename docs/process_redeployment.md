@@ -5,7 +5,7 @@ sidebar_label: Redeploying Existing Process
 title: Redeploying Existing Process
 ---
 
-Problem
+Goal
 -------
 
 You would like to redeploy a CloudConnect or Ruby process to GoodData

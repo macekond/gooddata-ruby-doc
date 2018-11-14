@@ -5,7 +5,7 @@ sidebar_label: Working with HR Demo project
 title: Working with HR Demo project
 ---
 
-Problem
+Goal
 -------
 
 I would like to play with blueprints but I cannot come up with some data

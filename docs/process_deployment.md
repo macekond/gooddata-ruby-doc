@@ -5,7 +5,7 @@ sidebar_label: Deploying Process
 title: Deploying Process
 ---
 
-Problem
+Goal
 -------
 
 You would like to deploy a CloudConnect or Ruby SDK process to GoodData

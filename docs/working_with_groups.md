@@ -5,7 +5,7 @@ sidebar_label: Creating a group
 title: Creating a group
 ---
 
-Problem
+Goal
 -------
 
 You would like to organize users in groups

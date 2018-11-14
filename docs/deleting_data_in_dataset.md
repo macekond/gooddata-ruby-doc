@@ -5,7 +5,7 @@ sidebar_label: Removing Data
 title: Removing Data
 ---
 
-Problem
+Goal
 -------
 
 Sometimes you need to delete all data from a dataset.

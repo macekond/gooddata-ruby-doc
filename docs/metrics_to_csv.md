@@ -5,7 +5,7 @@ sidebar_label: Write Information about project’s metrics and attributes to CSV
 title: Write Information about project’s metrics and attributes to CSV
 ---
 
-Problem
+Goal
 -------
 
 You would like to store information about all project metrics and

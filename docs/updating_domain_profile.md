@@ -5,7 +5,7 @@ sidebar_label: Updating a User in Organization
 title: Updating a User in Organization
 ---
 
-Problem
+Goal
 -------
 
 You have users in your organization but some of those have incorrect or

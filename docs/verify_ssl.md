@@ -5,7 +5,7 @@ sidebar_label: Disabling SSL Verification
 title: Disabling SSL Verification
 ---
 
-Problem
+Goal
 -------
 
 You would like to disable SSL verification when using SDK against a

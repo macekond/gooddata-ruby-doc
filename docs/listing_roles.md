@@ -5,7 +5,7 @@ sidebar_label: Listing Roles
 title: Listing Roles
 ---
 
-Problem
+Goal
 -------
 
 You would like to list the roles you have available in your project.

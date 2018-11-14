@@ -5,7 +5,7 @@ sidebar_label: Working with Project Interactively
 title: Working with Project Interactively
 ---
 
-Problem
+Goal
 -------
 
 You want to use SDK on a project but writing a script seems like too

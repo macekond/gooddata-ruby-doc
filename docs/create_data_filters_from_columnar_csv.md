@@ -5,7 +5,7 @@ sidebar_label: Setting Data Permissions from CSV (column format)
 title: Setting Data Permissions from CSV (column format)
 ---
 
-Problem
+Goal
 -------
 
 You would like to set data permissions for multiple users. You have a

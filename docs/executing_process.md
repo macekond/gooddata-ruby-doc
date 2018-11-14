@@ -5,7 +5,7 @@ sidebar_label: Executing Process
 title: Executing Process
 ---
 
-Problem
+Goal
 -------
 
 You would like to execute a process without a schedule.

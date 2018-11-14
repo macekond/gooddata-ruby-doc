@@ -5,7 +5,7 @@ sidebar_label: Logging
 title: Logging
 ---
 
-Problem
+Goal
 -------
 
 Your script doesn’t work or throws a weird error. You want to see

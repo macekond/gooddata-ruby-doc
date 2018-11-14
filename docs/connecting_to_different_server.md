@@ -5,7 +5,7 @@ sidebar_label: Connecting to Different Servers
 title: Connecting to Different Servers
 ---
 
-Problem
+Goal
 -------
 
 Sometimes the server you would like to connect is not the

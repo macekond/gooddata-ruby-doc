@@ -5,7 +5,7 @@ sidebar_label: Creating Metrics
 title: Creating Metrics
 ---
 
-Problem
+Goal
 -------
 
 You want to create advanced MAQL metric.

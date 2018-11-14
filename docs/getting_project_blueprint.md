@@ -5,7 +5,7 @@ sidebar_label: Getting Blueprint from Existing Project
 title: Getting Blueprint from Existing Project
 ---
 
-Problem
+Goal
 -------
 
 You have an existing project and would like to reverse engineer it’s

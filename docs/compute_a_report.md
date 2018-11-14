@@ -5,7 +5,7 @@ sidebar_label: Computing Ad Hoc Report
 title: Computing Ad Hoc Report
 ---
 
-Problem
+Goal
 -------
 
 You would like to make some ad hoc computation

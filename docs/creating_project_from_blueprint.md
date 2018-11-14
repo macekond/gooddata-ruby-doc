@@ -5,7 +5,7 @@ sidebar_label: Creating Project from Blueprint
 title: Creating Project from Blueprint
 ---
 
-Problem
+Goal
 -------
 
 You would like to create a new project with a data model

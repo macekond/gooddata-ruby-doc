@@ -5,7 +5,7 @@ sidebar_label: Creating Multiple Users from CSV
 title: Creating Multiple Users from CSV
 ---
 
-Problem
+Goal
 -------
 
 You have CSV containing users, their roles and passwords and you want to

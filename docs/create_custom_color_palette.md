@@ -5,7 +5,7 @@ sidebar_label: Create custom color palette
 title: Create custom color palette
 ---
 
-Problem
+Goal
 -------
 
 You would like to create a set of color palette to decorate your

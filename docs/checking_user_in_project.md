@@ -5,7 +5,7 @@ sidebar_label: Checking User Membership in Project
 title: Checking User Membership in Project
 ---
 
-Problem
+Goal
 -------
 
 You would like to see if a user is part of a project.

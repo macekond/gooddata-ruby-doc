@@ -5,7 +5,7 @@ sidebar_label: Listing Project’s Users
 title: Listing Project’s Users
 ---
 
-Problem
+Goal
 -------
 
 You would like to list users in project

@@ -5,7 +5,7 @@ sidebar_label: Adding User to Organization
 title: Adding User to Organization
 ---
 
-Problem
+Goal
 -------
 
 You would like to add a user to organization programmatically

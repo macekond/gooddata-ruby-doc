@@ -5,7 +5,7 @@ sidebar_label: Scheduling Process
 title: Scheduling Process
 ---
 
-Problem
+Goal
 -------
 
 You have a process deployed and you would like to add a schedule to it

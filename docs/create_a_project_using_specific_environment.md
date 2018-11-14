@@ -5,7 +5,7 @@ sidebar_label: Creating Empty Project using specific environment.
 title: Creating Empty Project using specific environment.
 ---
 
-Problem
+Goal
 -------
 
 You want to create a project programmatically using specific

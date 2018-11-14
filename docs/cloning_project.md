@@ -5,7 +5,7 @@ sidebar_label: Cloning Project
 title: Cloning Project
 ---
 
-Problem
+Goal
 -------
 
 You would like to create an exact copy of a project

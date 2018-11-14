@@ -5,7 +5,7 @@ sidebar_label: Setting and updating project metadata storage
 title: Setting and updating project metadata storage
 ---
 
-Problem
+Goal
 -------
 
 You would like to use project metadata storage to store some additional

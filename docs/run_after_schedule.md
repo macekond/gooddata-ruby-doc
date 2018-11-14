@@ -5,7 +5,7 @@ sidebar_label: Run-After Scheduling
 title: Run-After Scheduling
 ---
 
-Problem
+Goal
 -------
 
 You want to schedule a process to run upon successful completion of

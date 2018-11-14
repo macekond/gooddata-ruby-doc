@@ -5,7 +5,7 @@ sidebar_label: List Data Permissions
 title: List Data Permissions
 ---
 
-Problem
+Goal
 -------
 
 You have a project that has the data permissions set up. You would like

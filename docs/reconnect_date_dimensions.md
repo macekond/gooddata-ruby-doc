@@ -5,7 +5,7 @@ sidebar_label: Reconnect date dimension
 title: Reconnect date dimension
 ---
 
-Problem
+Goal
 -------
 
 Occasionally you need to reconnect date dimensions. You did all the work

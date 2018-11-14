@@ -5,7 +5,7 @@ sidebar_label: Enabling and Disabling Users
 title: Enabling and Disabling Users
 ---
 
-Problem
+Goal
 -------
 
 You need to enable or disable users in a project.

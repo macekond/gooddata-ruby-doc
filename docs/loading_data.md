@@ -5,7 +5,7 @@ sidebar_label: Loading Data to Project
 title: Loading Data to Project
 ---
 
-Problem
+Goal
 -------
 
 You would like to load data into project.
@@ -99,9 +99,7 @@ end
 Loading Multiple Data Sets to Project
 =====================================
 
-by Tomas Korcak
-
-Problem
+Goal
 -------
 
 You would like to load multiple data sets into project at once.

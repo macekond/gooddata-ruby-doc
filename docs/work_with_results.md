@@ -5,7 +5,7 @@ sidebar_label: Working with report results
 title: Working with report results
 ---
 
-Problem
+Goal
 -------
 
 You have computed a report now you would like to get dirty with the data

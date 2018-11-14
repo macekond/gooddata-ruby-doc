@@ -5,7 +5,7 @@ sidebar_label: Creating Report that Counts Records in All Datasets
 title: Creating Report that Counts Records in All Datasets
 ---
 
-Problem
+Goal
 -------
 
 Occasionally you need to know how many rows there are in each dataset.

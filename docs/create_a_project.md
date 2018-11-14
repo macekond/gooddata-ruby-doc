@@ -5,7 +5,7 @@ sidebar_label: Creating Empty Project
 title: Creating Empty Project
 ---
 
-Problem
+Goal
 -------
 
 You need to create a project programmatically.

@@ -5,7 +5,7 @@ sidebar_label: Using Asynchronous Tasks with Timeouts
 title: Using Asynchronous Tasks with Timeouts
 ---
 
-Problem
+Goal
 -------
 
 You would like to build on top of the SDK but you would like to have

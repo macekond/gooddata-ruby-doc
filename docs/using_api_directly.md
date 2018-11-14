@@ -5,7 +5,7 @@ sidebar_label: Using APIs
 title: Using APIs
 ---
 
-Problem
+Goal
 -------
 
 You would like to interact with GoodData API directly

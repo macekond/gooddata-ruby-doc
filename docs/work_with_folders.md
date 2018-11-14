@@ -5,7 +5,7 @@ sidebar_label: Working with Folders
 title: Working with Folders
 ---
 
-Problem
+Goal
 -------
 
 You would like to use folders for organizing your project’s model

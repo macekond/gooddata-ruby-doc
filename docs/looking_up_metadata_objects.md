@@ -5,7 +5,7 @@ sidebar_label: Looking up metadata objects
 title: Looking up metadata objects
 ---
 
-Problem
+Goal
 -------
 
 You would like to retrieve metadata objects (e.g. metrics, facts,

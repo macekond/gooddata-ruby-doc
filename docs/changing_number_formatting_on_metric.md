@@ -5,7 +5,7 @@ sidebar_label: Changing Metric’s Number Formatting
 title: Changing Metric’s Number Formatting
 ---
 
-Problem
+Goal
 -------
 
 You have a project and you would like to update formatting of all

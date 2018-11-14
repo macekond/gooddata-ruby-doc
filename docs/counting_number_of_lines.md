@@ -5,7 +5,7 @@ sidebar_label: Computing Dataset’s Number of Records
 title: Computing Dataset’s Number of Records
 ---
 
-Problem
+Goal
 -------
 
 Very often there is a need to know how many records there are in a

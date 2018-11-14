@@ -5,7 +5,7 @@ sidebar_label: Connecting to Gooddata Platform
 title: Connecting to Gooddata Platform
 ---
 
-Problem
+Goal
 -------
 
 You know how to jack in and how to write a simple program. Now it is

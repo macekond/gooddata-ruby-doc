@@ -5,7 +5,7 @@ sidebar_label: Investigating Executions
 title: Investigating Executions
 ---
 
-Problem
+Goal
 -------
 
 You have large amount of projects and would like to investigate their
