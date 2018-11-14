@@ -1,0 +1,10 @@
+*NOTE:* All 'metric' related methods have their 'measure' counterpart alias. Here are few examples. 
+
+- Project#add_metric <==> Project#add_measure
+- Project#create_metric <==> Project#create_measure
+- Project#compute_metric <==> Project#compute_measure
+- Project#metrics <==> Project#measures
+- Project#metric_by_title <==> Project#measure_by_title
+- Project#metrics_by_title <==> Project#measures_by_title
+
+See the gooddata gem's Ruby reference documentation for the complete list of aliases. 

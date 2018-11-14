@@ -1,0 +1,134 @@
+{
+	"docs": {
+		"Getting started": [
+			"supported_ruby_versions",
+			"jack_in",
+			"create_a_program",
+			"connecting_to_gooddata",
+			"connecting_to_gooddata_using_sso",
+			"connecting_to_different_server",
+			"connecting_to_gd_with_sst",
+			"handling_credentials",
+			"using_a_project",
+			"using_api_directly",
+			"verify_ssl",
+			"using_asynchronous_tasks",
+			"logging"
+		],
+		"Working with users": [
+			"list_project_users",
+			"checking_user_in_project",
+			"enabling_disabling_users",
+			"invite_users_from_csv",
+			"send_invitation",
+			"list_organization_users",
+			"adding_user_to_organization",
+			"adding_users_to_organization_from_csv_file",
+			"adding_user_to_project",
+			"adding_users_to_project_from_domain",
+			"adding_users_to_project_and_organization_from_csv_file",
+			"updating_domain_profile",
+			"working_with_groups",
+			"deleting_users_from_all_projects"
+		],
+		"Automation recipes": [ 
+			"all_projects", 
+			"speeding_things_up" 
+		],
+		"Model": [
+			"changing_id_of_and_object",
+			"counting_number_of_lines",
+			"finding_out_date_dimensions",
+			"deleting_data_in_dataset",
+			"getting_info_about_unknown_project",
+			"replacing_date_dimensions"
+		],
+		"Testing": [ 
+			"test_a_report" 
+		],
+		"Working with projects": [
+			"create_a_project",
+			"renaming_project",
+			"cloning_project",
+			"cloning_project_between_orgs",
+			"create_a_project_using_specific_environment",
+			"creating_project_from_template",
+			"migrating_metadata_objects",
+			"delete_all_data",
+			"delete_project",
+			"listing_roles",
+			"setting_and_updating_project_metadata",
+			"create_custom_color_palette",
+			"looking_up_metadata_objects"
+		],
+		"Deployment recipes": [
+			"process_deployment",
+			"process_redeployment",
+			"adding_a_schedule",
+			"disabling_schedules",
+			"executing_a_schedule",
+			"executing_process",
+			"run_after_schedule",
+			"changing_an_existing_schedule",
+			"investigating_executions",
+			"visualizing_dag",
+			"register_notification_rule",
+			"automated_data_distribution"
+		],
+		"Working with reports": [
+			"computing_existing_report",
+			"comparing_reports",
+			"updating_report_definition",
+			"report_with_lines_in_datasets",
+			"resetting_color_mapping",
+			"compute_a_report",
+			"work_with_results",
+			"export_report",
+			"remove_old_versions_from_report",
+			"filters_in_reports"
+		],
+		"Working with facts metrics and attributes": [
+			"metrics_from_attribute",
+			"metrics_from_facts",
+			"metrics_to_csv",
+			"changing_number_formatting_on_metric",
+			"creating_metrics",
+			"metrics_with_filters"
+		],
+
+		"Working with dashboards": [
+			"listing_dashboards",
+			"listing_dashboard_tabs",
+			"working_with_tab"
+		],
+		"Working with data permissions": [
+			"quickly_set_up_user_filters",
+			"checking_filters",
+			"create_data_filters_from_columnar_csv",
+			"setting_up_simple_data_filter",
+			"listing_variables"
+		],
+		"Working with blueprints": [
+			"what_is_blueprint",
+			"creating_project_from_blueprint",
+			"getting_project_blueprint",
+			"loading_data",
+			"loading_dates_format",
+			"updating_model_with_blueprint",
+			"specifying_data_type",
+			"work_with_folders",
+			"building_small_project_on_one_page",
+			"using_gd_types",
+			"moving_fields_around",
+			"playing_with_toy_model",
+			"refactoring_datasets",
+			"reconnect_date_dimensions",
+			"taking_portion_of_model",
+			"playing_with_computed_attributes"
+		],
+		"Working with lifecycle": [
+			"wip_segments",
+			"data_products"
+		]
+	}
+}

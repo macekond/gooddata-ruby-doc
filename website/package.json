@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "examples": "docusaurus-examples",
+    "start": "yarn compile-scss; docusaurus-start",
+    "build": "docusaurus-build",
+    "publish-gh-pages": "docusaurus-publish",
+    "write-translations": "docusaurus-write-translations",
+    "version": "docusaurus-version",
+    "rename-version": "docusaurus-rename-version",
+    "compile-scss": "sass static/scss/custom.scss static/css/custom.css"
+  },
+  "devDependencies": {
+    "docusaurus": "1.0.9"
+  },
+  "dependencies": {
+    "sass": "^1.14.3"
+  }
+}

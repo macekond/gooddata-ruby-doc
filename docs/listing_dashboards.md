@@ -1,0 +1,33 @@
+---
+id: listing_dashboards
+author: GoodData
+sidebar_label: Listing Dashboards
+title: Listing Dashboards
+---
+
+Problem
+-------
+
+You would like to list dashboards programmatically.
+
+Prerequisites
+-------------
+
+You have to have existing project with dashboard(s).
+
+Solution
+--------
+
+
+```ruby
+# encoding: UTF-8
+
+require 'gooddata'
+
+GoodData.with_connection do |c|
+  GoodData.with_project('project_id') do |project|
+    # List all dashboards and their names
+    pp project.dashboards.map(&:title)
+  end
+end
+```
