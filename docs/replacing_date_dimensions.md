@@ -14,7 +14,8 @@ consolidating date dimensions (perhaps you want to have only one date
 dimension in your project) or replacing your standard date dimension
 with a fiscal date dimension.
 
-Solution
+How-to
+
 --------
 
 The code snippet below substitutes all occurences of a date dimension

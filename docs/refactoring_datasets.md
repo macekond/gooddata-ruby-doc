@@ -16,7 +16,8 @@ Notes
 
 This is work in progress.
 
-Solution
+How-to
+
 --------
 
 Use SDK refactoring features.

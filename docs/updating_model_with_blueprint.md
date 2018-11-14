@@ -10,7 +10,8 @@ Goal
 
 You would like to update a project with additional fields
 
-Solution
+Example
+
 --------
 
 Blueprints are easy to create programmatically and even to merge them

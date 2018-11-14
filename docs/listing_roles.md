@@ -10,7 +10,8 @@ Goal
 
 You would like to list the roles you have available in your project.
 
-Solution
+Example
+
 --------
 
 

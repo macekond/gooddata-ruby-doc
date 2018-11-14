@@ -10,7 +10,8 @@ Goal
 
 You would like to clone project to a different organization
 
-Solution
+How-to
+
 --------
 
 Usually you would be happy using `project.clone` but sometimes you need

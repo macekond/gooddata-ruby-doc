@@ -12,7 +12,8 @@ You know how to jack in and how to write a simple program. Now it is
 time to combine these two to write a program that connects and does
 something with a gooddata project.
 
-Solution
+Example
+
 --------
 
 

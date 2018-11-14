@@ -16,7 +16,8 @@ manipulate users without their consent which is usually what you want in
 those cases. Sometimes it could be useful to do this in one go. This is
 especially true if you have only one project and one organization.
 
-Prerequisites
+Before you start
+
 -------------
 
 You have to have a user who is an admin of an organization. If you don’t
@@ -36,7 +37,7 @@ have to do some mangling (see the recipe Adding user to organization
 from CSV file above). Minimal information that you have to provide for
 the user creation to be successful is login.
 
-Solution
+How-to
 --------
 
 SDK has a method import\_users that takes care of all the details and

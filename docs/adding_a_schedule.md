@@ -11,7 +11,7 @@ Goal
 You have a process deployed and you would like to add a schedule to it
 so the process is executed regularly
 
-Solution
+
 --------
 
 You can easily add a time based schedule to any process. Scheduled

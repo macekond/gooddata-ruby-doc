@@ -12,7 +12,8 @@ You just got invited to this project and just can’t reach the project’s
 author. Can’t find any project’s documentation. The following code
 snippet may be helpful in such situation
 
-Solution
+How-to
+
 --------
 
 You want to start with a quick introspection. How many datasets, how

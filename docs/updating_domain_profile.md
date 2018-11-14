@@ -11,7 +11,8 @@ Goal
 You have users in your organization but some of those have incorrect or
 outdated information and need update
 
-Prerequisites
+Before you start
+
 -------------
 
 You have to have a user who is an admin of an organization. If you don’t
@@ -21,7 +22,8 @@ GoodData contact person or GoodData support (e-mail
 If you don’t take a look at the recipe above (Adding user to
 organization)
 
-Solution
+Example
+
 --------
 
 Here we are updating an sso provider but you can update almost any

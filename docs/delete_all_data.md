@@ -10,7 +10,8 @@ Goal
 
 You need to delete all the data in all datasets in a particular project.
 
-Solution
+Example
+
 --------
 
 

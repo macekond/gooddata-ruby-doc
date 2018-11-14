@@ -10,13 +10,15 @@ Goal
 
 You need to enable or disable users in a project.
 
-Prerequisites
+Before you start
+
 -------------
 
 You have to have a user who is an admin in a project you would like to
 disable users in.
 
-Solution
+How-to
+
 --------
 
 Disable and enable particular user in GoodData project

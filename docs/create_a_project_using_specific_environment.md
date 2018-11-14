@@ -20,7 +20,8 @@ during a platform maintenance.
 
 Note that the environment names are case sensitive.
 
-Solution
+Example
+
 --------
 
     # encoding: utf-8

@@ -10,7 +10,8 @@ Goal
 
 You would like to remove one user from all projects.
 
-Solution
+Example
+
 --------
 
 This script should remove user from all projects. There are couple of

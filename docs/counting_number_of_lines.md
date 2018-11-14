@@ -11,7 +11,8 @@ Goal
 Very often there is a need to know how many records there are in a
 dataset.
 
-Solution
+Example
+
 --------
 
 This is not so easy to do on UI. You basically have to find the

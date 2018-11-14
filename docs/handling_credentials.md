@@ -13,7 +13,8 @@ either rely on the ~/.gooddata file or enter the credentials by hand.
 This is error prone and you must be careful that you do not share your
 passwords.
 
-Solution
+How-to
+
 --------
 
 There is fairly easy solution that you can use. If you recall correctly

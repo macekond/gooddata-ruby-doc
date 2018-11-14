@@ -11,7 +11,8 @@ Goal
 You would like to disable SSL verification when using SDK against a
 server that does not have proper certificates
 
-Solution
+Example
+
 --------
 
 You can switch of SSL validating like this. This is especially useful

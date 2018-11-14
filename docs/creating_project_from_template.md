@@ -11,7 +11,8 @@ Goal
 You have a template created for you and you would like to spin a project
 from this template.
 
-Solution
+Example
+
 --------
 
 

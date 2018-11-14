@@ -10,12 +10,14 @@ Goal
 
 You want to create advanced MAQL metric.
 
-Prerequisites
+Before you start
+
 -------------
 
 You have to have existing project with model and data loaded.
 
-Solution
+Example
+
 --------
 
 

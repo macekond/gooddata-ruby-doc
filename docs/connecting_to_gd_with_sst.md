@@ -11,7 +11,8 @@ Goal
 You do not have credentials. You only have SST and would like to still
 make some requests.
 
-Solution
+Example
+
 --------
 
 A Super Secure Token is a token that allows to access you our APIs in a

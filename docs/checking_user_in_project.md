@@ -10,7 +10,8 @@ Goal
 
 You would like to see if a user is part of a project.
 
-Prerequisites
+Before you start
+
 -------------
 
 You have to have a user who is an admin of an organization. If you don’t
@@ -18,7 +19,8 @@ have the organization admin account, please contact your primary
 GoodData contact person or GoodData support (e-mail
 <support@gooddata.com>).
 
-Solution
+Example
+
 --------
 
 

@@ -11,7 +11,8 @@ Goal
 You would like to disable all schedules on all processes on all the
 projects you have access to and have sufficient privileges to do so.
 
-Solution
+Example
+
 --------
 
 

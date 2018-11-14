@@ -10,7 +10,8 @@ Goal
 
 You would like to use folders for organizing your project’s model
 
-Solution
+How-to
+
 --------
 
 By default all the attributes and facts are automatically assigned a

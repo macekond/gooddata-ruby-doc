@@ -13,7 +13,8 @@ execution. The administration UI is not necessarily helpful as its
 overview UI can hide some failures, there is too much too go through by
 hand etc.
 
-Solution
+How-to
+
 --------
 
 Let’s have a look at couple of scenarios. First let’s investigate

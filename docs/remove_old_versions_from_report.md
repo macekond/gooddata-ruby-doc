@@ -11,7 +11,8 @@ Goal
 Occasionally you would like to clean up your project. The simplest way
 to do it is to get rid of the old version of reports.
 
-Solution
+Example
+
 --------
 
 There are a simple way how to export a report from gooddata

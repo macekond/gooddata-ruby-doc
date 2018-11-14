@@ -11,7 +11,7 @@ Goal
 You moved an attribute in your model and you would like to change the
 identifier for it to follow the naming convention.
 
-Solution
+How-to
 --------
 
 You can change the identifier on any object (e.g. dashboards, reports,

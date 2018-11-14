@@ -11,7 +11,8 @@ Goal
 You have a project that has the data permissions set up. You would like
 to review them.
 
-Solution
+Example
+
 --------
 
 There is no UI that would provide a good overview and API is a little

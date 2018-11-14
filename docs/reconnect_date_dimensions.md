@@ -12,7 +12,8 @@ Occasionally you need to reconnect date dimensions. You did all the work
 on reports and last thing you are missing is to change all references in
 the model from one date dimension to another.
 
-Solution
+Example
+
 --------
 
 With SDK you can use swap\_date\_dimension! method on blueprint. I will

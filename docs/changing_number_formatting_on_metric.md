@@ -12,7 +12,7 @@ You have a project and you would like to update formatting of all
 metrics programmatically. They are currently formatted for dollar values
 but you would like to change all formats to Euro.
 
-Solution
+Example
 --------
 
 

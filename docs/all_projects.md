@@ -11,7 +11,7 @@ Goal
 You already know how to do many things but now you would like to do the
 same thing on many projects at once.
 
-Solution
+How-to
 --------
 
 The basis of the solution is pretty simple. We need to iterate over

@@ -10,7 +10,8 @@ Goal
 
 You would like to make some ad hoc computation
 
-Solution
+Example
+
 --------
 
 We are using the recipe [???](#Working with HR Demo project) here so

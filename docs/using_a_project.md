@@ -10,7 +10,8 @@ Goal
 
 You want to use a specific project
 
-Solution
+How-to
+
 --------
 
 You can use couple of ways to do this. Our favorite is this

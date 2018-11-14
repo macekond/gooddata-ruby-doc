@@ -10,7 +10,8 @@ Goal
 
 You must delete a project programmatically.
 
-Solution
+Example
+
 --------
 
 

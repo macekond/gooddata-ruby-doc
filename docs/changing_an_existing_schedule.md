@@ -10,7 +10,7 @@ Goal
 
 You have a schedule but would like to change it
 
-Solution
+Example
 --------
 
 You can retrieve a schedule in the same way as any other object, use

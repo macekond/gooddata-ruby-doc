@@ -10,7 +10,8 @@ Goal
 
 You would like to know how many date dimensions you have in a project.
 
-Solution
+Example
+
 --------
 
 

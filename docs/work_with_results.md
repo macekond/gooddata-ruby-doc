@@ -10,7 +10,8 @@ Goal
 
 You have computed a report now you would like to get dirty with the data
 
-Solution
+Example
+
 --------
 
 

@@ -11,7 +11,8 @@ Goal
 You have variable in your project and you would like to see the values
 in a readable fashion.
 
-Solution
+How-to
+
 --------
 
 SDK tries to hide the differences from Data Permissions so this recipe

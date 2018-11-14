@@ -11,7 +11,8 @@ Goal
 I would like to play with blueprints but I cannot come up with some data
 and model of a toy project.
 
-Solution
+Example
+
 --------
 
 Yes. Use our HR example which models a small company and people inside

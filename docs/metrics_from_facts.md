@@ -11,12 +11,14 @@ Goal
 You have several facts in a project. You would like to create some basic
 metric out of them.
 
-Prerequisites
+Before you start
+
 -------------
 
 You have to have existing project with model and data loaded.
 
-Solution
+Example
+
 --------
 
 

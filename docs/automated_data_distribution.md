@@ -10,7 +10,7 @@ Goal
 
 You would like to upload data from the Data Warehouse to a workspace.
 
-Solution
+Example
 --------
 
 You must have the output stage associated with the workspace you need to

@@ -10,7 +10,8 @@ Goal
 
 You would like to execute a process without a schedule.
 
-Solution
+How-to
+
 --------
 
 SDK allows you to execute a process. This is not something that you

@@ -11,7 +11,8 @@ Goal
 You would like to retrieve metadata objects (e.g. metrics, facts,
 labels) by numeric ID, string identifier or URI.
 
-Solution
+Example
+
 --------
 
 Use `GoodData::MdObject#[]` to look up your metadata objects. This

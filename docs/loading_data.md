@@ -10,7 +10,8 @@ Goal
 
 You would like to load data into project.
 
-Solution
+Example
+
 --------
 
 To load data you have to have 3 things. Blueprint, project and data.
@@ -104,7 +105,8 @@ Goal
 
 You would like to load multiple data sets into project at once.
 
-Solution
+How-to
+
 --------
 
 The GoodData platform supports loading multiple datasets from a set of

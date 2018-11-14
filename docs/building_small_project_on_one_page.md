@@ -11,12 +11,13 @@ Goal
 You would like to create the whole project from code for whatever
 reason.
 
-Prerequisites
+Before you start
+
 -------------
 
 You have a provisioning token for project creation
 
-Solution
+Example
 --------
 
 What we will do is to create a simple project with 4 datasets. Load

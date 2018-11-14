@@ -12,7 +12,8 @@ You would like to setup and execute a life-cycle management
 configuration to distribute new versions of dashboards, reports, and
 metrics from a master template to multiple target projects.
 
-Solution
+How-to
+
 --------
 
 You can use life-cycle management API to create a life-cycle segment,

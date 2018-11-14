@@ -10,12 +10,14 @@ Goal
 
 You would like to list dashboards and their tabs programmatically.
 
-Prerequisites
+Before you start
+
 -------------
 
 You have to have existing project with dashboard(s).
 
-Solution
+Example
+
 --------
 
 

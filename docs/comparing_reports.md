@@ -12,7 +12,8 @@ You created a new version of a project. You made some changes to the
 reports and you would like to verify that the report is still computing
 the same numbers.
 
-Solution
+Example
+
 --------
 
 

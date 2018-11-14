@@ -11,7 +11,8 @@ Goal
 You would like to add a users to organization programmatically. What you
 have is a CSV file holding the information about the users.
 
-Prerequisites
+Before you start
+
 -------------
 
 You have to have a user who is an admin of an organization. If you don’t
@@ -29,13 +30,12 @@ The headers we used are defaults. If you have different ones you will
 have to do some mangling. Minimal information that you have to provide
 for the user creation to be successful is login.
 
-Solution
+Example
 --------
 
 First let’s have a look how to implement an addition with having the
 file as in the example above. This has the advantage that you do not
 have to mangle with the headers.
-
 
 ```ruby
 # encoding: utf-8

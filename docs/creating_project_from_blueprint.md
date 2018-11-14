@@ -11,7 +11,8 @@ Goal
 You would like to create a new project with a data model
 programmatically.
 
-Solution
+Example
+
 --------
 
 

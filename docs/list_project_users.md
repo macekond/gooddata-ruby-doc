@@ -10,12 +10,14 @@ Goal
 
 You would like to list users in project
 
-Prerequisites
+Before you start
+
 -------------
 
 You have to have a user who is a project admin.
 
-Solution
+Example
+
 --------
 
 

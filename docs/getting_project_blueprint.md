@@ -11,7 +11,8 @@ Goal
 You have an existing project and would like to reverse engineer it’s
 blueprint.
 
-Solution
+Example
+
 --------
 
 

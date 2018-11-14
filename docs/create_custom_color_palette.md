@@ -11,7 +11,8 @@ Goal
 You would like to create a set of color palette to decorate your
 reports.
 
-Solution
+Example
+
 --------
 
 Create custom color palette with your color definitions. You can reset

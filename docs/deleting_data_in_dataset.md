@@ -10,7 +10,8 @@ Goal
 
 Sometimes you need to delete all data from a dataset.
 
-Solution
+How-to
+
 --------
 
 SDK calls the MAQL SYNCHRONIZE command on the dataset

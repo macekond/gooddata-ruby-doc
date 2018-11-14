@@ -10,7 +10,8 @@ Goal
 
 You would like to create an exact copy of a project
 
-Solution
+Example
+
 --------
 
 You can use cloning capabilities.

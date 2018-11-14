@@ -11,7 +11,8 @@ Goal
 You would like to use project metadata storage to store some additional
 information.
 
-Solution
+Example
+
 --------
 
 Each project has a small API that allows to set some values in a simple

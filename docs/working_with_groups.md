@@ -10,7 +10,8 @@ Goal
 
 You would like to organize users in groups
 
-Solution
+How-to
+
 --------
 
 There is a concept of group in GoodData. Member of a group can be either

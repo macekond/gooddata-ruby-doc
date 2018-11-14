@@ -11,7 +11,8 @@ Goal
 I created a model and now found out that I would like to move a field to
 different dataset.
 
-Solution
+How-to
+
 --------
 
 We will use variation of our hr demo model. If you look at that model

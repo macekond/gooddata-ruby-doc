@@ -11,7 +11,8 @@ Goal
 You created a program by building it up in an interactive manner but now
 you would like to put it into a file to be able to run it
 
-Solution
+How-to
+
 --------
 
 Let’s assume that your fantastic code that you have is fairly simple.

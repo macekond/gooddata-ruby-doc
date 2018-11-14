@@ -12,7 +12,8 @@ You would like to add a users to project programmatically. You already
 have all the user profiles created in your organization (domain). You
 potentially have many projects that you would like to populate.
 
-Prerequisites
+Before you start
+
 -------------
 
 You have to have a user who is an admin of an organization. If you don’t
@@ -30,7 +31,7 @@ used are defaults. If you have different ones you will have to do some
 mangling. Example of how to do that can be found in recipe
 adding\_users\_to\_domain.
 
-Solution
+How-to
 --------
 
 Sometimes the case might be that you would like to add users to a slew

@@ -11,7 +11,8 @@ Goal
 You would like to build on top of the SDK but you would like to have
 more control over asynchronous tasks.
 
-Solution
+How-to
+
 --------
 
 There are numerous tasks on GoodData API which potentially take more

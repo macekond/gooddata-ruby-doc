@@ -12,7 +12,8 @@ You want to schedule a process to run upon successful completion of
 another process (schedule). This is also known as run-after triggered
 schedule.
 
-Solution
+Example
+
 --------
 
 If you use an existing schedule object instead of a cron expression in
