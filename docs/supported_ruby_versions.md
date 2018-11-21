@@ -10,10 +10,7 @@ Goal
 
 You want to know which Ruby to use with the SDK.
 
-How-to
---------
-
-Here is a list of supported ruby versions.
+Here is a list of supported ruby versions. 
 
 -   Ruby 1.9.3
 
