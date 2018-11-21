@@ -5,7 +5,12 @@ sidebar_label: Supported Ruby Versions
 title: Supported Ruby Versions
 ---
 
-GoodData Ruby SDK supports following versions of Ruby:
+Goal
+-------
+
+You want to know which Ruby to use with the SDK.
+
+Here is a list of supported ruby versions. 
 
 -   Ruby 1.9.3
 
