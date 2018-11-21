@@ -2,7 +2,6 @@
 	"docs": {
 		"Basics": [
 			"getting_started",
-			"supported_ruby_versions",
 			"jack_in",
 			"create_a_program",
 			"connecting_to_gooddata",

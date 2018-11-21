@@ -5,23 +5,11 @@ sidebar_label: Working with Project Interactively
 title: Working with Project Interactively
 ---
 
-Goal
+You can work with the GoodData Ruby SDK from your Ruby console, without 
+writing a script. There are two methods how to do that:
+
+IRB
 -------
-
-You want to use SDK on a project but writing a script seems like too
-much of a hassle.
-
-How-to
---------
-
-You first need to install gooddata gem using
-
-    gem install gooddata
-
-There are several methods by which you can work with the GoodData Ruby
-SDK. Let’s look at the major ones.
-
-### IRB
 
 IRB is an interactive console that is provided with your Ruby
 installation. You may use gooddata SDK inside your IRB. Below are some
@@ -81,12 +69,12 @@ OK. To exit irb, enter:
 
     exit
 
-### jack\_in
+jack_in
+-------
 
-Working with GoodData SDK using irb can be cumbersome. To make things a
-bit easier, Gooddata SDK includes a gooddata command line interface. One
-of the commands is jack\_in which brings you into a live project where
-you can poke and explore.
+To make things a bit easier than irb, Gooddata SDK includes a gooddata 
+command line interface that was installed along with the gem. One of the commands 
+is jack\_in which brings you into a live project where you can poke and explore.
 
     gooddata -U john@example.com -P password -p PROJECT_ID project jack_in
 

@@ -5,14 +5,8 @@ sidebar_label: Connecting to GoodData using Single Sign On (SSO)
 title: Connecting to GoodData using Single Sign On (SSO)
 ---
 
-Goal
+Using Single Sign On (SSO)
 -------
-
-You do have SSO enabled and want to use it for logging to GoodData
-without using username and password.
-
-Example
---------
 
 Using the SSO capability you don’t need to maintain just another
 password for accessing GoodData application. You can use your existing
@@ -33,9 +27,6 @@ client = GoodData.connect_sso('tomas.korcak@gooddata.com', 'gooddata.tomas.korca
 
 pp client.user.json
 ```
-
-Discussion
-----------
 
 Never share the your private key with other people. It is the same thing
 as you name and password. You can do almost everything with it.

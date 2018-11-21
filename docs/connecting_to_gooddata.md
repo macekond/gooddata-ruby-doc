@@ -1,19 +1,16 @@
 ---
 id: connecting_to_gooddata
 author: GoodData
-sidebar_label: Connecting to Gooddata Platform
-title: Connecting to Gooddata Platform
+sidebar_label: Connecting to Gooddata using login and password
+title: Connecting to Gooddata using login and password
 ---
 
-Goal
+Connecting to the GoodData Platform
 -------
 
 You know how to jack in and how to write a simple program. Now it is
 time to combine these two to write a program that connects and does
 something with a gooddata project.
-
-Example
---------
 
 
 ```ruby
@@ -28,9 +25,6 @@ GoodData.with_connection('user', 'password') do |client|
     end
 end 
 ```
-
-Discussion
-----------
 
 Maybe you are wondering if there are other ways how to log in. First of
 all it is not nice to have secret credentials in plain text like this.
@@ -51,4 +45,6 @@ wizard is going to help you.
 Also it is possible to pass parameters as hash. The form that we have
 shown is just a convenience form.
 
-      GoodData.with_connection(username: 'user', password: 'password')
+```ruby
+GoodData.with_connection(username: 'user', password: 'password')
+```

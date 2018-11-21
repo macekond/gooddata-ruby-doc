@@ -5,13 +5,7 @@ sidebar_label: Scripting
 title: Scripting
 ---
 
-Goal
--------
-
-You created a program by building it up in an interactive manner but now
-you would like to put it into a file to be able to run it
-
-How-to
+Running your own file
 --------
 
 Let’s assume that your fantastic code that you have is fairly simple.
@@ -27,7 +21,9 @@ First you need to save your code to a file. Go ahead take your favorite
 text editor and create a new file and put your code into it so it looks
 like this
 
-    puts client.projects
+```ruby
+puts client.projects
+```
 
 Go ahead and save it and call it 'my\_first\_sdk\_program.rb'. Do not
 execute because it would not work now. Let’s add couple more things.
@@ -47,11 +43,13 @@ but we have to handle them ourselves in a program.
 We can easily do the same things with these 3 lines of code
 respectively. So add them to the file so the end result looks like this.
 
-    require 'gooddata'
+```ruby
+require 'gooddata'
 
-    client = GoodData.connect('username', 'pass')
-    project = client.projects('project_id')
-    puts project.title
+client = GoodData.connect('username', 'pass')
+project = client.projects('project_id')
+puts project.title
+```
 
 Done. Save it.
 
