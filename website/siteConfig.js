@@ -27,13 +27,13 @@ const siteConfig = {
   baseUrl: '/gooddata-ui/' /* base url for your project */,
   projectName: 'GoodData Ruby SDK',
   headerLinks: [
-    {doc: "supported_ruby_versions", label: "Docs"}
+    {doc: "getting_started", label: "Docs"}
   ],
   onPageNav: 'separate',
   users,
   /* path to images for header/footer */
-  headerIcon: 'img/gooddata.svg',
-  footerIcon: 'img/gooddata.svg',
+  headerIcon: 'img/gooddata-ruby.svg',
+  footerIcon: 'img/gooddata-ruby.svg',
   favicon: 'img/favicon.ico',
   /* colors for website */
   colors: {

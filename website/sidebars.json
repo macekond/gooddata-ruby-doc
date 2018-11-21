@@ -1,6 +1,7 @@
 {
 	"docs": {
-		"Getting started": [
+		"Basics": [
+			"getting_started",
 			"supported_ruby_versions",
 			"jack_in",
 			"create_a_program",
