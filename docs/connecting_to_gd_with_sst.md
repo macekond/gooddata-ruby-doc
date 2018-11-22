@@ -1,18 +1,12 @@
 ---
 id: connecting_to_gd_with_sst
 author: GoodData
-sidebar_label: Connecting to GoodData Platform with Super Secure Token (SST)
-title: Connecting to GoodData Platform with Super Secure Token (SST)
+sidebar_label: Using Super Secure Token (SST)
+title: Using Super Secure Token (SST)
 ---
 
-Goal
+Connecting to GoodData Platform
 -------
-
-You do not have credentials. You only have SST and would like to still
-make some requests.
-
-Example
---------
 
 A Super Secure Token is a token that allows to access you our APIs in a
 unrestricted manner without necessarily knowing the username and
@@ -39,9 +33,6 @@ GoodData.with_connection(sst_token: 'sst_token') do |client|
   end
 end 
 ```
-
-Discussion
-----------
 
 Never share the token with other people. It is the same thing as your
 login and password. You can do almost everything with it.

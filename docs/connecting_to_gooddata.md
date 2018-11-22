@@ -1,11 +1,11 @@
 ---
 id: connecting_to_gooddata
 author: GoodData
-sidebar_label: Connecting to Gooddata using login and password
-title: Connecting to Gooddata using login and password
+sidebar_label: Using login and password
+title: Using login and password
 ---
 
-Connecting to the GoodData Platform
+Connecting to Gooddata Platform
 -------
 
 You know how to jack in and how to write a simple program. Now it is

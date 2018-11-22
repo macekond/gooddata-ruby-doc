@@ -5,10 +5,6 @@ sidebar_label: Using APIs
 title: Using APIs
 ---
 
-Goal
--------
-
-You would like to interact with GoodData API directly
 
 How-to
 --------
@@ -16,14 +12,9 @@ How-to
 SDK provides you slew of well known methods that make this possible
 while shielding you from intricacies of keeping connection alive etc.
 
-
-
-
-
-SDK provides you slew of well known methods that make this possible 
-while shielding you from intricacies of keeping connection alive etc.
-
 ```ruby
+# encoding: utf-8
+
 require 'gooddata'
 
 GoodData.with_connection('user', 'password') do |client|
@@ -31,3 +22,4 @@ GoodData.with_connection('user', 'password') do |client|
   project_id = 'YOUR_PROJECT_ID'
   client.delete("/gdc/projects/#{project_id}")
 end
+```

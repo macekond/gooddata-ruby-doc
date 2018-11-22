@@ -5,21 +5,17 @@ sidebar_label: Handling Credentials Securely
 title: Handling Credentials Securely
 ---
 
-Goal
--------
-
-You would like to write scripts that are shareable. Currently you must
-either rely on the ~/.gooddata file or enter the credentials by hand.
-This is error prone and you must be careful that you do not share your
-passwords.
-
 How-to
 --------
+When you decide to share your scripts, you should extract your credentials to
+a separate file that is not shared.
 
 There is fairly easy solution that you can use. If you recall correctly
 there is a way how you can log in into platform.
 
-    GoodData.connect(login: 'user', password: 'password')
+```ruby
+GoodData.connect(login: 'user', password: 'password')
+```
 
 This takes several types of parameters one of which is a hash of values.
 You can leverage that and read the hash from a file. There a many
@@ -29,30 +25,39 @@ variants we are going to show 2 most popular ones, YAML and JSON.
 
 Create a file that looks like this.
 
-    {
-      "login" : "john@gooddata.com",
-      "password" : "my_secret"
-    }
+```json
+{
+  "login" : "john@gooddata.com",
+  "password" : "my_secret"
+}
+```
 
-    params = JSON.parse(File.read('/path/to/file'))
-    client = GoodData.connect(params)
-    puts client.projects.count
+Then use it this way:
+
+```ruby
+params = JSON.parse(File.read('/path/to/file'))
+client = GoodData.connect(params)
+puts client.projects.count
+```
 
 ### YAML
 
 Create a file that looks like this.
 
-    login: john@gooddata.com
-    password: my_secret
+```yaml
+login: john@gooddata.com
+password: my_secret
+```
 
-    require 'yaml'
+Then use it this way:
 
-    params = YAML.load(File.read('/path/to/file'))
-    client = GoodData.connect(params)
-    puts client.projects.count
+```ruby
+require 'yaml'
 
-Discussion
-----------
+params = YAML.load(File.read('/path/to/file'))
+client = GoodData.connect(params)
+puts client.projects.count
+```
 
 You see that you can easily share these scripts with other people since
 you have externalized all sensitive information. If the user puts the

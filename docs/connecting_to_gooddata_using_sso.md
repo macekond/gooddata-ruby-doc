@@ -1,11 +1,11 @@
 ---
 id: connecting_to_gooddata_using_sso
 author: GoodData
-sidebar_label: Connecting to GoodData using Single Sign On (SSO)
-title: Connecting to GoodData using Single Sign On (SSO)
+sidebar_label: Using Single Sign On (SSO)
+title: Using Single Sign On (SSO)
 ---
 
-Using Single Sign On (SSO)
+Connecting to GoodData Platform
 -------
 
 Using the SSO capability you don’t need to maintain just another

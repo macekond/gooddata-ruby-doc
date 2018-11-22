@@ -1,20 +1,17 @@
 ---
 id: connecting_to_different_server
 author: GoodData
-sidebar_label: Connecting to Different Servers
-title: Connecting to Different Servers
+sidebar_label: Selecting Server
+title: Selecting Server
 ---
 
-Goal
+Connecting to a Specific Server
 -------
 
 Sometimes the server you would like to connect is not the
 secure.goodata.com machine. This might occur for 2 reasons. Either you
 are trying something on a test machine (if you are working for gooddata)
 or you are working with a project that is on a white labeled instance.
-
-Example
---------
 
 You can either pass the server name as a parameter to connect or
 alternatively with the with\_connection functions.
@@ -34,5 +31,3 @@ GoodData.with_connection(login: 'user',
 end
 ```
 
-Discussion
-----------

@@ -5,14 +5,8 @@ sidebar_label: Using Asynchronous Tasks with Timeouts
 title: Using Asynchronous Tasks with Timeouts
 ---
 
-Goal
+Asynchronous Tasks
 -------
-
-You would like to build on top of the SDK but you would like to have
-more control over asynchronous tasks.
-
-How-to
---------
 
 There are numerous tasks on GoodData API which potentially take more
 than just couple of seconds to execute. These include report executions,

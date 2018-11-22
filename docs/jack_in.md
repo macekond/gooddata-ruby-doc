@@ -1,8 +1,8 @@
 ---
 id: jack_in
 author: GoodData
-sidebar_label: Working with Project Interactively
-title: Working with Project Interactively
+sidebar_label: Interactive Ruby Console
+title: Interactive Ruby Console
 ---
 
 You can work with the GoodData Ruby SDK from your Ruby console, without 
