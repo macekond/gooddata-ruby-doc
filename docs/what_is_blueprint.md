@@ -1,10 +1,12 @@
 ---
 id: what_is_blueprint
 author: GoodData
-sidebar_label: What is blueprint
-title: What is blueprint
+sidebar_label: What is Blueprint
+title: What is Blueprint
 ---
-what a blueprint is and what is a difference between blueprint and model
+
+Before we delve into examples involving blueprints let’s talk a moment 
+what a blueprint is and what is a difference between blueprint and model 
 when we talk about them at Gooddata.
 
 They mean the same thing but they are representing it in a different way

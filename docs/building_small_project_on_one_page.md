@@ -5,26 +5,13 @@ sidebar_label: Creating Project in One Page of Code
 title: Creating Project in One Page of Code
 ---
 
-Goal
--------
+You can create the whole project via code. You need to have a provisioning token for project creation.
 
-You would like to create the whole project from code for whatever
-reason.
-
-Before you start
--------------
-
-You have a provisioning token for project creation
-
-Example
---------
 
 What we will do is to create a simple project with 4 datasets. Load
 couple of line of data create a simple report and invite 2 other people
 to it. All this will fit on one page of code. Let’s get to it.
 
-
-'src/12\_working\_with\_blueprints/building\_small\_project\_on\_one\_page.rb'
 ```ruby
 # encoding: utf-8
 

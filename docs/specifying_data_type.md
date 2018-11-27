@@ -5,14 +5,8 @@ sidebar_label: Specifying Fields Data Type
 title: Specifying Fields Data Type
 ---
 
-Goal
--------
-
-You would like to specify a different data type for attribute or fact in
-a blueprint
-
-Example
---------
+You can specify a different data type for attribute or fact in
+a blueprint.
 
 Each column in blueprint is eventually translated into a physical column
 in a database. While the defaults are typically what you want sometimes
@@ -52,17 +46,11 @@ GoodData.with_connection do |client|
 end
 ```
 
-Discussion
-----------
-
 These data types are currently supported on the platform
 
 -   DECIMAL(m, d)
-
 -   INTEGER
-
 -   LONG
-
 -   VARCHAR(n)
 
 The case where this is very useful are

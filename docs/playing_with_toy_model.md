@@ -1,20 +1,11 @@
 ---
 id: playing_with_toy_model
 author: GoodData
-sidebar_label: Working with HR Demo project
-title: Working with HR Demo project
+sidebar_label: Demo project
+title: Demo project
 ---
 
-Goal
--------
-
-I would like to play with blueprints but I cannot come up with some data
-and model of a toy project.
-
-Example
---------
-
-Yes. Use our HR example which models a small company and people inside
+You can play with blueprints on this toy project. Use our HR example which models a small company and people inside
 it. We tried to use majority of the features that the blueprint builder
 supports so you can take it as a starting point when you are creating
 yours.

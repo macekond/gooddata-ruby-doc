@@ -1,23 +1,15 @@
 ---
 id: playing_with_computed_attributes
 author: GoodData
-sidebar_label: Playing with computed attributes
-title: Playing with computed attributes
+sidebar_label: Playing with Computed Attributes
+title: Playing with Computed Attributes
 ---
 
-Goal
--------
-
-You would like to create a computed attribute.
-
-How-to
---------
+You can create a computed attribute.
 
 Create an update blueprint that contains the computed attribute, merge
 it with the current blueprint and then update the project.
 
-
-'src/12\_working\_with\_blueprints/create\_computed\_attributes.rb'
 ```ruby
 # encoding: utf-8
 
@@ -63,9 +55,6 @@ GoodData.with_connection do |client|
   ca.computed_attribute?
 end
 ```
-
-Discussion
-----------
 
 In the example above we have created a computed attribute. Precondition:
 have an existing metric.

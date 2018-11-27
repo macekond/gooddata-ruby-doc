@@ -14,12 +14,10 @@
 			"working_with_users",
 			"working_with_permissions"
 		],
-		"Project Templates": [
+		"Blueprints": [
 			"what_is_blueprint",
 			"creating_project_from_blueprint",
-			"getting_project_blueprint",
 			"loading_data",
-			"loading_dates_format",
 			"updating_model_with_blueprint",
 			"specifying_data_type",
 			"work_with_folders",

@@ -5,14 +5,8 @@ sidebar_label: Taking portion of a project model
 title: Taking portion of a project model
 ---
 
-Goal
--------
-
 You have a project and you would like to create a new on with the same
 model but only portion of it.
-
-Example
---------
 
 Blueprints can be easily manipulated because underneath they are just
 hashes of data. In the worst case you can always manipulate the hash and
@@ -22,8 +16,6 @@ example where we will have a blueprint with two datasets and we will
 remove one of them so the new project will have just portion of the
 model.
 
-
-'src/12\_working\_with\_blueprints/removing\_dataset\_from\_blueprint.rb'
 ```ruby
 # encoding: utf-8
 
