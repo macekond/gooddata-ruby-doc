@@ -12,7 +12,8 @@
 		"Advanced": [
 			"working_with_projects",
 			"working_with_users",
-			"working_with_permissions"
+			"working_with_permissions",
+			"working_with_models"
 		],
 		"Blueprints": [
 			"what_is_blueprint",
@@ -29,14 +30,6 @@
 			"reconnect_date_dimensions",
 			"taking_portion_of_model",
 			"playing_with_computed_attributes"
-		],
-		"Model Setup": [
-			"changing_id_of_and_object",
-			"counting_number_of_lines",
-			"finding_out_date_dimensions",
-			"deleting_data_in_dataset",
-			"getting_info_about_unknown_project",
-			"replacing_date_dimensions"
 		],
 		"Working With Your Data": [
 			"metrics_from_attribute",
