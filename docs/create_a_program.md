@@ -5,9 +5,6 @@ sidebar_label: Scripting
 title: Scripting
 ---
 
-Running your own file
---------
-
 Let’s assume that your fantastic code that you have is fairly simple.
 You would like to print the title of the project. So the session looks
 something like this

@@ -5,14 +5,8 @@ sidebar_label: Logging
 title: Logging
 ---
 
-Goal
--------
-
-Your script doesn’t work or throws a weird error. You want to see
+If your script doesn’t work or throws a weird error, you want to see
 detailed logging information to understand what is going on.
-
-How-to
---------
 
 GoodData Ruby SDK uses the standard Ruby logger that you can use in
 standard way

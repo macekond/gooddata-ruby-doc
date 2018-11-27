@@ -5,30 +5,13 @@
 			"jack_in",
 			"create_a_program",
 			"connecting_to_gooddata",
-			"connecting_to_gooddata_using_sso",
-			"connecting_to_different_server",
-			"connecting_to_gd_with_sst",
 			"handling_credentials",
-			"using_a_project",
-			"using_api_directly",
-			"verify_ssl",
-			"using_asynchronous_tasks",
+			"using_gooddata_platform",
 			"logging"
 		],
-		"Projects": [
-			"create_a_project",
-			"renaming_project",
-			"cloning_project",
-			"cloning_project_between_orgs",
-			"create_a_project_using_specific_environment",
-			"creating_project_from_template",
-			"migrating_metadata_objects",
-			"delete_all_data",
-			"delete_project",
-			"listing_roles",
-			"setting_and_updating_project_metadata",
-			"create_custom_color_palette",
-			"looking_up_metadata_objects"
+		"Advanced": [
+			"working_with_projects",
+			"working_with_users"
 		],
 		"Permissions": [
 			"quickly_set_up_user_filters",
@@ -54,22 +37,6 @@
 			"reconnect_date_dimensions",
 			"taking_portion_of_model",
 			"playing_with_computed_attributes"
-		],
-		"Users": [
-			"list_project_users",
-			"checking_user_in_project",
-			"enabling_disabling_users",
-			"invite_users_from_csv",
-			"send_invitation",
-			"list_organization_users",
-			"adding_user_to_organization",
-			"adding_users_to_organization_from_csv_file",
-			"adding_user_to_project",
-			"adding_users_to_project_from_domain",
-			"adding_users_to_project_and_organization_from_csv_file",
-			"updating_domain_profile",
-			"working_with_groups",
-			"deleting_users_from_all_projects"
 		],
 		"Model Setup": [
 			"changing_id_of_and_object",

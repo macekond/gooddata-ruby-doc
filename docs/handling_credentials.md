@@ -5,8 +5,6 @@ sidebar_label: Handling Credentials Securely
 title: Handling Credentials Securely
 ---
 
-How-to
---------
 When you decide to share your scripts, you should extract your credentials to
 a separate file that is not shared.
 
