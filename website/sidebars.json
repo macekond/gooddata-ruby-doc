@@ -11,14 +11,8 @@
 		],
 		"Advanced": [
 			"working_with_projects",
-			"working_with_users"
-		],
-		"Permissions": [
-			"quickly_set_up_user_filters",
-			"checking_filters",
-			"create_data_filters_from_columnar_csv",
-			"setting_up_simple_data_filter",
-			"listing_variables"
+			"working_with_users",
+			"working_with_permissions"
 		],
 		"Project Templates": [
 			"what_is_blueprint",
