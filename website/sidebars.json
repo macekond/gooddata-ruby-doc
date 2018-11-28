@@ -22,20 +22,9 @@
 			"working_with_lifecycle"
 		],
 		"Blueprints": [
-			"what_is_blueprint",
 			"creating_project_from_blueprint",
 			"loading_data",
-			"updating_model_with_blueprint",
-			"specifying_data_type",
-			"work_with_folders",
-			"building_small_project_on_one_page",
-			"using_gd_types",
-			"moving_fields_around",
-			"playing_with_toy_model",
-			"refactoring_datasets",
-			"reconnect_date_dimensions",
-			"taking_portion_of_model",
-			"playing_with_computed_attributes"
+			"advanced_blueprint_examples"
 		]
 	}
 }

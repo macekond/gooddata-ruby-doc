@@ -208,7 +208,7 @@ Computing Ad Hoc Report
 
 You can also make some ad hoc computation.
 
-We are using the recipe [Working with HR Demo project](playing_with_toy_model.md) here so
+We are using the recipe [Working with HR Demo project](advanced_blueprint_examples.md#hr-demo-project) here so
 spin it up if you want to follow the code.
 
 
