@@ -54,8 +54,6 @@
     "Using GoodData Platform": "Using GoodData Platform",
     "what_is_blueprint": "What is Blueprint",
     "What is Blueprint": "What is Blueprint",
-    "wip_segments": "Working with segments",
-    "Working with segments": "Working with segments",
     "work_with_folders": "Working with Folders",
     "Working with Folders": "Working with Folders",
     "working_with_automation": "Automation and Performance",
@@ -64,6 +62,8 @@
     "Using Dashboards": "Using Dashboards",
     "working_with_deployments": "Deployment How-tos",
     "Deployment How-tos": "Deployment How-tos",
+    "working_with_lifecycle": "Working with Lifecycle",
+    "Working with Lifecycle": "Working with Lifecycle",
     "working_with_models": "Model Setup",
     "Model Setup": "Model Setup",
     "working_with_permissions": "Setting Permissions",
@@ -79,8 +79,7 @@
     "Docs": "Docs",
     "Basics": "Basics",
     "Advanced Guides": "Advanced Guides",
-    "Blueprints": "Blueprints",
-    "Working with lifecycle": "Working with lifecycle"
+    "Blueprints": "Blueprints"
   },
   "pages-strings": {
     "Help Translate|recruit community translators for your project": "Help Translate",

@@ -18,7 +18,8 @@
 			"working_with_reports",
 			"working_with_dashboards",
 			"working_with_deployments",
-			"working_with_automation"
+			"working_with_automation",
+			"working_with_lifecycle"
 		],
 		"Blueprints": [
 			"what_is_blueprint",
@@ -35,10 +36,6 @@
 			"reconnect_date_dimensions",
 			"taking_portion_of_model",
 			"playing_with_computed_attributes"
-		],
-		"Working with lifecycle": [
-			"wip_segments",
-			"data_products"
 		]
 	}
 }
