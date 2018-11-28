@@ -14,7 +14,8 @@
 			"working_with_users",
 			"working_with_permissions",
 			"working_with_models",
-			"working_with_your_data"
+			"working_with_your_data",
+			"working_with_reports"
 		],
 		"Blueprints": [
 			"what_is_blueprint",
@@ -52,18 +53,6 @@
 			"visualizing_dag",
 			"register_notification_rule",
 			"automated_data_distribution"
-		],
-		"Working with reports": [
-			"computing_existing_report",
-			"comparing_reports",
-			"updating_report_definition",
-			"report_with_lines_in_datasets",
-			"resetting_color_mapping",
-			"compute_a_report",
-			"work_with_results",
-			"export_report",
-			"remove_old_versions_from_report",
-			"filters_in_reports"
 		],
 		"Working with dashboards": [
 			"listing_dashboards",

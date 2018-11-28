@@ -1,8 +1,8 @@
 ---
 id: playing_with_toy_model
 author: GoodData
-sidebar_label: Demo project
-title: Demo project
+sidebar_label: HR Demo project
+title: HR Demo project
 ---
 
 You can play with blueprints on this toy project. Use our HR example which models a small company and people inside
