@@ -15,7 +15,8 @@
 			"working_with_permissions",
 			"working_with_models",
 			"working_with_your_data",
-			"working_with_reports"
+			"working_with_reports",
+			"working_with_dashboards"
 		],
 		"Blueprints": [
 			"what_is_blueprint",
@@ -37,9 +38,6 @@
 			"all_projects", 
 			"speeding_things_up" 
 		],
-		"Testing": [ 
-			"test_a_report" 
-		],
 		"Deployment how-tos": [
 			"process_deployment",
 			"process_redeployment",
@@ -53,11 +51,6 @@
 			"visualizing_dag",
 			"register_notification_rule",
 			"automated_data_distribution"
-		],
-		"Working with dashboards": [
-			"listing_dashboards",
-			"listing_dashboard_tabs",
-			"working_with_tab"
 		],
 		"Working with lifecycle": [
 			"wip_segments",

@@ -447,3 +447,8 @@ puts project.compute_report(left: project.metrics.first,
                             filters: [[label, :not, 'San Francisco', 'Prague']])
 
 ```
+
+Testing Reports
+------
+
+We used testing reports as en example in the basic chapter [Logging and Testing](logging.md#testing).
