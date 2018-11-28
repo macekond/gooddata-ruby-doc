@@ -13,7 +13,8 @@
 			"working_with_projects",
 			"working_with_users",
 			"working_with_permissions",
-			"working_with_models"
+			"working_with_models",
+			"working_with_your_data"
 		],
 		"Blueprints": [
 			"what_is_blueprint",
@@ -30,14 +31,6 @@
 			"reconnect_date_dimensions",
 			"taking_portion_of_model",
 			"playing_with_computed_attributes"
-		],
-		"Working With Your Data": [
-			"metrics_from_attribute",
-			"metrics_from_facts",
-			"metrics_to_csv",
-			"changing_number_formatting_on_metric",
-			"creating_metrics",
-			"metrics_with_filters"
 		],
 		"Automation how-tos": [ 
 			"all_projects", 
