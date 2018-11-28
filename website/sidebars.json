@@ -9,14 +9,16 @@
 			"using_gooddata_platform",
 			"logging"
 		],
-		"Advanced": [
+		"Advanced Guides": [
 			"working_with_projects",
 			"working_with_users",
 			"working_with_permissions",
 			"working_with_models",
 			"working_with_your_data",
 			"working_with_reports",
-			"working_with_dashboards"
+			"working_with_dashboards",
+			"working_with_deployments",
+			"working_with_automation"
 		],
 		"Blueprints": [
 			"what_is_blueprint",
@@ -33,24 +35,6 @@
 			"reconnect_date_dimensions",
 			"taking_portion_of_model",
 			"playing_with_computed_attributes"
-		],
-		"Automation how-tos": [ 
-			"all_projects", 
-			"speeding_things_up" 
-		],
-		"Deployment how-tos": [
-			"process_deployment",
-			"process_redeployment",
-			"adding_a_schedule",
-			"disabling_schedules",
-			"executing_a_schedule",
-			"executing_process",
-			"run_after_schedule",
-			"changing_an_existing_schedule",
-			"investigating_executions",
-			"visualizing_dag",
-			"register_notification_rule",
-			"automated_data_distribution"
 		],
 		"Working with lifecycle": [
 			"wip_segments",
