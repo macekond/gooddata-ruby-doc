@@ -1,0 +1,44 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Scripting · Ruby SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Scripting · Ruby SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://gooddata.github.io/gooddata-ruby-doc/index.html"/><meta property="og:description" content="Let’s assume that your fantastic code that you have is fairly simple."/><meta property="og:image" content="https://gooddata.github.io/gooddata-ruby-doc/img/docusaurus.png"/><link rel="shortcut icon" href="/gooddata-ruby-doc/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/gooddata-ruby-doc/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/gooddata-ruby-doc/"><img class="logo" src="/gooddata-ruby-doc/img/gooddata-ruby.svg"/><h2 class="headerTitle">Ruby SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/gooddata-ruby-doc/docs/getting_started.html" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Basics</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Basics</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/getting_started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/jack_in.html">Interactive Ruby Console</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/gooddata-ruby-doc/docs/create_a_program.html">Scripting</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/connecting_to_gooddata.html">Connecting to Gooddata Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/handling_credentials.html">Handling Credentials Securely</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/using_gooddata_platform.html">Using GoodData Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/logging.html">Logging and Testing</a></li></ul></div><div class="navGroup navGroupActive"><h3>Advanced Guides</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_projects.html">Working with Projects</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_users.html">Working with Users</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_permissions.html">Setting Permissions</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_models.html">Model Setup</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_your_data.html">Working with Your Data</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_reports.html">Working with Reports</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_dashboards.html">Using Dashboards</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_deployments.html">Deployment How-tos</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_automation.html">Automation and Performance</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_lifecycle.html">Working with Lifecycle</a></li></ul></div><div class="navGroup navGroupActive"><h3>Blueprints</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/creating_project_from_blueprint.html">Creating Project from Blueprint</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/loading_data.html">Loading Data to Project</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/advanced_blueprint_examples.html">Advanced Blueprint Examples</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Scripting</h1></header><article><div><span><p>Let’s assume that your fantastic code that you have is fairly simple.
+You would like to print the title of the project. So the session looks
+something like this</p>
+<pre><code class="hljs">project_live_session: puts project.title
+&quot;My project Test (2)&quot;
+=&gt; nil
+</code></pre>
+<p>Not too fancy but it is enough to help us illustrate couple of points.
+First you need to save your code to a file. Go ahead take your favorite
+text editor and create a new file and put your code into it so it looks
+like this</p>
+<pre><code class="hljs css ruby">puts client.projects
+</code></pre>
+<p>Go ahead and save it and call it 'my_first_sdk_program.rb'. Do not
+execute because it would not work now. Let’s add couple more things.</p>
+<p>Jack in does couple of things for you so you can be productive quickly
+but we have to handle them ourselves in a program.</p>
+<ul>
+<li><p>Loads Automation SDK libraries</p></li>
+<li><p>It logs you in and provides you the client as a <code>client</code> variable</p></li>
+<li><p>It jacks into a project and provides you the project as a <code>project</code>
+variable. If you were wondering why the <code>project.title</code> worked in
+the interactive session in the first place since we never defined
+<code>project</code> this is why.</p></li>
+</ul>
+<p>We can easily do the same things with these 3 lines of code
+respectively. So add them to the file so the end result looks like this.</p>
+<pre><code class="hljs css ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+client = GoodData.connect(<span class="hljs-string">'username'</span>, <span class="hljs-string">'pass'</span>)
+project = client.projects(<span class="hljs-string">'project_id'</span>)
+puts project.title
+</code></pre>
+<p>Done. Save it.</p>
+<p>Now you can run it by using this command</p>
+<pre><code class="hljs">ruby my_first_sdk_program.rb
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="jack_in.html">← Interactive Ruby Console</a><a class="docs-next button" href="connecting_to_gooddata.html">Connecting to Gooddata Platform →</a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/gooddata-ruby-doc/" class="nav-home"><img src="/gooddata-ruby-doc/img/gooddata-ruby.svg" alt="Ruby SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/gooddata-ruby-doc/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc2.html">Guides (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/gooddata-ruby-doc/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/gooddata-ruby-doc/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/gooddata-ruby-doc/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 GoodData</section></footer></div></body></html>

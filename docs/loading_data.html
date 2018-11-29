@@ -1,0 +1,199 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Loading Data to Project · Ruby SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Loading Data to Project · Ruby SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://gooddata.github.io/gooddata-ruby-doc/index.html"/><meta property="og:description" content="Loading a Data Set to Project"/><meta property="og:image" content="https://gooddata.github.io/gooddata-ruby-doc/img/docusaurus.png"/><link rel="shortcut icon" href="/gooddata-ruby-doc/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/gooddata-ruby-doc/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/gooddata-ruby-doc/"><img class="logo" src="/gooddata-ruby-doc/img/gooddata-ruby.svg"/><h2 class="headerTitle">Ruby SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/gooddata-ruby-doc/docs/getting_started.html" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Blueprints</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Basics</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/getting_started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/jack_in.html">Interactive Ruby Console</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/create_a_program.html">Scripting</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/connecting_to_gooddata.html">Connecting to Gooddata Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/handling_credentials.html">Handling Credentials Securely</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/using_gooddata_platform.html">Using GoodData Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/logging.html">Logging and Testing</a></li></ul></div><div class="navGroup navGroupActive"><h3>Advanced Guides</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_projects.html">Working with Projects</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_users.html">Working with Users</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_permissions.html">Setting Permissions</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_models.html">Model Setup</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_your_data.html">Working with Your Data</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_reports.html">Working with Reports</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_dashboards.html">Using Dashboards</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_deployments.html">Deployment How-tos</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_automation.html">Automation and Performance</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_lifecycle.html">Working with Lifecycle</a></li></ul></div><div class="navGroup navGroupActive"><h3>Blueprints</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/creating_project_from_blueprint.html">Creating Project from Blueprint</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/gooddata-ruby-doc/docs/loading_data.html">Loading Data to Project</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/advanced_blueprint_examples.html">Advanced Blueprint Examples</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Loading Data to Project</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="loading-a-data-set-to-project"></a><a href="#loading-a-data-set-to-project" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Loading a Data Set to Project</h2>
+<p>To load data into a project, you have to have 3 things. Blueprint, project and data.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">'Acme project'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+    p.add_date_dimension(<span class="hljs-string">'committed_on'</span>)
+
+    p.add_dataset(<span class="hljs-string">'dataset.commits'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+      d.add_anchor(<span class="hljs-string">'attr.commits.id'</span>)
+      d.add_fact(<span class="hljs-string">'fact.commits.lines_changed'</span>)
+            d.add_attribute(<span class="hljs-string">'attr.commits.name'</span>)
+      d.add_label(<span class="hljs-string">'label.commits.name'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.commits.name'</span>)
+      d.add_date(<span class="hljs-string">'committed_on'</span>, <span class="hljs-symbol">:format</span> =&gt; <span class="hljs-string">'dd/MM/yyyy'</span>)
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+
+  project = client.create_project_from_blueprint(blueprint, <span class="hljs-symbol">auth_token:</span> <span class="hljs-string">'TOKEN'</span>)
+
+  <span class="hljs-comment"># By default names of the columns are the identifiers of the labels, facts, or names of references</span>
+  data = [
+    [<span class="hljs-string">'fact.commits.lines_changed'</span>, <span class="hljs-string">'label.commits.name'</span>, <span class="hljs-string">'committed_on'</span>],
+    [<span class="hljs-number">1</span>, <span class="hljs-string">'tomas'</span>, <span class="hljs-string">'01/01/2001'</span>],
+    [<span class="hljs-number">1</span>, <span class="hljs-string">'petr'</span>, <span class="hljs-string">'01/12/2001'</span>],
+    [<span class="hljs-number">1</span>, <span class="hljs-string">'jirka'</span>, <span class="hljs-string">'24/12/2014'</span>]]
+
+  project.upload(data, blueprint, <span class="hljs-string">'dataset.commits'</span>)
+
+  <span class="hljs-comment"># Now the data are loaded in. You can easily compute some number</span>
+  project.facts.first.create_metric(<span class="hljs-symbol">type:</span> <span class="hljs-symbol">:sum</span>).execute <span class="hljs-comment"># =&gt; 3</span>
+
+  <span class="hljs-comment"># By default data are loaded in full mode. This means that data override all previous data in the dataset</span>
+  data = [
+    [<span class="hljs-string">'fact.commits.lines_changed'</span>, <span class="hljs-string">'label.commits.name'</span>, <span class="hljs-string">'committed_on'</span>],
+    [<span class="hljs-number">10</span>, <span class="hljs-string">'tomas'</span>, <span class="hljs-string">'01/01/2001'</span>],
+    [<span class="hljs-number">10</span>, <span class="hljs-string">'petr'</span>, <span class="hljs-string">'01/12/2001'</span>],
+    [<span class="hljs-number">10</span>, <span class="hljs-string">'jirka'</span>, <span class="hljs-string">'24/12/2014'</span>]]
+  project.upload(data, blueprint, <span class="hljs-string">'dataset.commits'</span>)
+  project.facts.first.create_metric(<span class="hljs-symbol">type:</span> <span class="hljs-symbol">:sum</span>).execute <span class="hljs-comment"># =&gt; 30</span>
+
+  <span class="hljs-comment"># You can also load more data through INCREMENTAL mode</span>
+  project.upload(data, blueprint, <span class="hljs-string">'dataset.commits'</span>, <span class="hljs-symbol">:mode</span> =&gt; <span class="hljs-string">'INCREMENTAL'</span>)
+  project.facts.first.create_metric(<span class="hljs-symbol">type:</span> <span class="hljs-symbol">:sum</span>).execute <span class="hljs-comment"># =&gt; 60</span>
+
+  <span class="hljs-comment"># If you want to you can also specify what the names of the columns in the CSV is going to be</span>
+
+  blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">'Acme project'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+    p.add_date_dimension(<span class="hljs-string">'committed_on'</span>)
+
+    p.add_dataset(<span class="hljs-string">'dataset.commits'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+      d.add_anchor(<span class="hljs-string">'attr.commits.id'</span>)
+      d.add_fact(<span class="hljs-string">'fact.commits.lines_changed'</span>, <span class="hljs-symbol">column_name:</span> <span class="hljs-string">'fact'</span>)
+            d.add_attribute(<span class="hljs-string">'attr.commits.name'</span>)
+      d.add_label(<span class="hljs-string">'label.commits.name'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.commits.name'</span>, <span class="hljs-symbol">column_name:</span> <span class="hljs-string">'label'</span> )
+      d.add_date(<span class="hljs-string">'committed_on'</span>, <span class="hljs-symbol">:format</span> =&gt; <span class="hljs-string">'dd/MM/yyyy'</span>, <span class="hljs-symbol">column_name:</span> <span class="hljs-string">'ref'</span>)
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+
+  data = [
+    [<span class="hljs-string">'fact'</span>, <span class="hljs-string">'label'</span>, <span class="hljs-string">'ref'</span>],
+    [<span class="hljs-number">10</span>, <span class="hljs-string">'tomas'</span>, <span class="hljs-string">'01/01/2001'</span>],
+    [<span class="hljs-number">10</span>, <span class="hljs-string">'petr'</span>, <span class="hljs-string">'01/12/2001'</span>],
+    [<span class="hljs-number">10</span>, <span class="hljs-string">'jirka'</span>, <span class="hljs-string">'24/12/2014'</span>]]
+  project.upload(data, blueprint, <span class="hljs-string">'dataset.commits'</span>)
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="loading-multiple-data-sets-to-project"></a><a href="#loading-multiple-data-sets-to-project" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Loading Multiple Data Sets to Project</h2>
+<p>You can load multiple data sets into project at once.</p>
+<p>The GoodData platform supports loading multiple datasets from a set of
+CSV files in a single task. In addition to loading a single CSV at a
+time, you can now upload your CSV files, provide a JSON manifest file,
+and then execute the data load through a single API call. This method is
+particularly useful if your project contains many datasets, or if you
+are loading multiple datasets with larger data volumes. The multiple
+datasets processing is significantly faster in these situations.</p>
+<p>For more info see <a href="http://developer.gooddata.com/article/multiload-of-csv-data">GoodData
+Article</a>.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+<span class="hljs-keyword">require</span> <span class="hljs-string">'csv'</span>
+
+USERNAME = <span class="hljs-string">'YOUR_USERNAME'</span>
+PASSWORD = <span class="hljs-string">'YOUR_PASSWORD'</span>
+TOKEN = <span class="hljs-string">'YOUR_TOKEN'</span>
+
+GoodData.with_connection(USERNAME, PASSWORD) <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  <span class="hljs-comment"># Create LDM blueprint</span>
+  blueprint = GoodData::Model::ProjectBlueprint.from_json(<span class="hljs-string">'data/hr_manifest.json'</span>)
+
+  <span class="hljs-comment"># Create new project (datamart)</span>
+  project = GoodData::Project.create_from_blueprint(blueprint, <span class="hljs-symbol">auth_token:</span> TOKEN)
+  puts <span class="hljs-string">"Created project <span class="hljs-subst">#{project.pid}</span>"</span>
+
+  data = [
+    {
+      <span class="hljs-symbol">data:</span> <span class="hljs-string">'data/hr_departments.csv'</span>,
+      <span class="hljs-symbol">dataset:</span> <span class="hljs-string">'dataset.department'</span>,
+    },
+    {
+      <span class="hljs-symbol">data:</span> <span class="hljs-string">'data/hr_employees.csv'</span>,
+      <span class="hljs-symbol">dataset:</span> <span class="hljs-string">'dataset.employee'</span>
+    },
+    {
+      <span class="hljs-symbol">data:</span> <span class="hljs-string">'data/hr_salaries.csv'</span>,
+      <span class="hljs-symbol">dataset:</span> <span class="hljs-string">'dataset.salary'</span>,
+      <span class="hljs-symbol">options:</span> {<span class="hljs-symbol">:mode</span> =&gt; <span class="hljs-string">'INCREMENTAL'</span>}
+    }
+  ]
+  res = project.upload_multiple(data, blueprint)
+
+  puts JSON.pretty_generate(res)
+
+  puts <span class="hljs-string">'Done!'</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="loading-data-with-specific-date-format"></a><a href="#loading-data-with-specific-date-format" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Loading Data with Specific Date Format</h2>
+<p>You can specify a date loading format in your blueprint. If you do not
+specify any format then the default <em>MM/dd/yyyy</em> format is used</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">'Acme project'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+    p.add_date_dimension(<span class="hljs-string">'committed_on'</span>)
+
+    p.add_dataset(<span class="hljs-string">'dataset.commits'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+      d.add_anchor(<span class="hljs-string">'attr.commits.id'</span>)
+      d.add_fact(<span class="hljs-string">'fact.commits.lines_changed'</span>)
+      d.add_attribute(<span class="hljs-string">'attr.commits.name'</span>)
+      d.add_label(<span class="hljs-string">'label.commits.name'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.commits.name'</span>)
+      d.add_date(<span class="hljs-string">'committed_on'</span>, <span class="hljs-symbol">:dataset</span> =&gt; <span class="hljs-string">'committed_on'</span>)
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+
+  project = client.create_project_from_blueprint(blueprint, <span class="hljs-symbol">auth_token:</span> <span class="hljs-string">'token'</span>)
+
+  <span class="hljs-comment"># By default the dates are expected in format MM/dd/yyyy</span>
+  data = [
+    [<span class="hljs-string">'fact.commits.lines_changed'</span>, <span class="hljs-string">'label.commits.name'</span>, <span class="hljs-string">'committed_on'</span>],
+    [<span class="hljs-number">1</span>, <span class="hljs-string">'tomas'</span>, <span class="hljs-string">'01/01/2001'</span>],
+    [<span class="hljs-number">1</span>, <span class="hljs-string">'petr'</span>, <span class="hljs-string">'12/01/2001'</span>],
+    [<span class="hljs-number">1</span>, <span class="hljs-string">'jirka'</span>, <span class="hljs-string">'12/24/2014'</span>]]
+  project.upload(data, blueprint, <span class="hljs-string">'dataset.commits'</span>)
+  puts project.compute_report(<span class="hljs-symbol">top:</span> [project.facts.first.create_metric], <span class="hljs-symbol">left:</span> [<span class="hljs-string">'committed_on.date'</span>])
+  <span class="hljs-comment"># prints</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># [01/01/2001 | 3.0]</span>
+  <span class="hljs-comment"># [12/01/2001 | 3.0]</span>
+  <span class="hljs-comment"># [12/24/2014 | 3.0]</span>
+
+  <span class="hljs-comment"># if you try to load a differen format it will fail</span>
+  data = [[<span class="hljs-string">'fact.commits.lines_changed'</span>, <span class="hljs-string">'label.commits.name'</span>, <span class="hljs-string">'committed_on'</span>],
+          [<span class="hljs-number">1</span>, <span class="hljs-string">'tomas'</span>, <span class="hljs-string">'2001-01-01'</span>]]
+  project.upload(data, blueprint, <span class="hljs-string">'dataset.commits'</span>)
+
+  <span class="hljs-comment"># You can specify a different date format</span>
+  blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">'Acme project'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+    p.add_date_dimension(<span class="hljs-string">'committed_on'</span>)
+
+    p.add_dataset(<span class="hljs-string">'dataset.commits'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+      d.add_anchor(<span class="hljs-string">'attr.commits.id'</span>)
+      d.add_fact(<span class="hljs-string">'fact.commits.lines_changed'</span>)
+      d.add_attribute(<span class="hljs-string">'attr.commits.name'</span>)
+      d.add_label(<span class="hljs-string">'label.commits.name'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.commits.name'</span>)
+      d.add_date(<span class="hljs-string">'committed_on'</span>, <span class="hljs-symbol">:dataset</span> =&gt; <span class="hljs-string">'committed_on'</span>, <span class="hljs-symbol">format:</span> <span class="hljs-string">'yyyy-dd-MM'</span>)
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+
+  data = [
+    [<span class="hljs-string">'fact.commits.lines_changed'</span>, <span class="hljs-string">'label.commits.name'</span>, <span class="hljs-string">'committed_on'</span>],
+    [<span class="hljs-number">3</span>, <span class="hljs-string">'tomas'</span>, <span class="hljs-string">'2001-01-01'</span>],
+    [<span class="hljs-number">3</span>, <span class="hljs-string">'petr'</span>, <span class="hljs-string">'2001-01-12'</span>],
+    [<span class="hljs-number">3</span>, <span class="hljs-string">'jirka'</span>, <span class="hljs-string">'2014-24-12'</span>]]
+  project.upload(data, blueprint, <span class="hljs-string">'dataset.commits'</span>)
+  puts project.compute_report(<span class="hljs-symbol">top:</span> [project.facts.first.create_metric], <span class="hljs-symbol">left:</span> [<span class="hljs-string">'committed_on.date'</span>])
+  <span class="hljs-comment"># prints</span>
+  <span class="hljs-comment">#</span>
+  <span class="hljs-comment"># [01/01/2001 | 3.0]</span>
+  <span class="hljs-comment"># [12/01/2001 | 3.0]</span>
+  <span class="hljs-comment"># [12/24/2014 | 3.0]</span>
+<span class="hljs-keyword">end</span>  
+</code></pre>
+<p>Note couple of things We did not have to update the project to be able
+to load dates in a different format. Date format information is used
+only during the data upload and the model is unaffected. This is
+something to think about when you are inferring the blueprint from the
+model using <code>project.blueprint</code>. This information is not persisted in
+the project.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="creating_project_from_blueprint.html">← Creating Project from Blueprint</a><a class="docs-next button" href="advanced_blueprint_examples.html">Advanced Blueprint Examples →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#loading-a-data-set-to-project">Loading a Data Set to Project</a></li><li><a href="#loading-multiple-data-sets-to-project">Loading Multiple Data Sets to Project</a></li><li><a href="#loading-data-with-specific-date-format">Loading Data with Specific Date Format</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/gooddata-ruby-doc/" class="nav-home"><img src="/gooddata-ruby-doc/img/gooddata-ruby.svg" alt="Ruby SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/gooddata-ruby-doc/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc2.html">Guides (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/gooddata-ruby-doc/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/gooddata-ruby-doc/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/gooddata-ruby-doc/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 GoodData</section></footer></div></body></html>

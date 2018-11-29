@@ -1,0 +1,203 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Setting Permissions · Ruby SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Setting Permissions · Ruby SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://gooddata.github.io/gooddata-ruby-doc/index.html"/><meta property="og:description" content="Setting Up Simple Data Permission"/><meta property="og:image" content="https://gooddata.github.io/gooddata-ruby-doc/img/docusaurus.png"/><link rel="shortcut icon" href="/gooddata-ruby-doc/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/gooddata-ruby-doc/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/gooddata-ruby-doc/"><img class="logo" src="/gooddata-ruby-doc/img/gooddata-ruby.svg"/><h2 class="headerTitle">Ruby SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/gooddata-ruby-doc/docs/getting_started.html" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Advanced Guides</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Basics</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/getting_started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/jack_in.html">Interactive Ruby Console</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/create_a_program.html">Scripting</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/connecting_to_gooddata.html">Connecting to Gooddata Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/handling_credentials.html">Handling Credentials Securely</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/using_gooddata_platform.html">Using GoodData Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/logging.html">Logging and Testing</a></li></ul></div><div class="navGroup navGroupActive"><h3>Advanced Guides</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_projects.html">Working with Projects</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_users.html">Working with Users</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/gooddata-ruby-doc/docs/working_with_permissions.html">Setting Permissions</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_models.html">Model Setup</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_your_data.html">Working with Your Data</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_reports.html">Working with Reports</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_dashboards.html">Using Dashboards</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_deployments.html">Deployment How-tos</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_automation.html">Automation and Performance</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_lifecycle.html">Working with Lifecycle</a></li></ul></div><div class="navGroup navGroupActive"><h3>Blueprints</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/creating_project_from_blueprint.html">Creating Project from Blueprint</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/loading_data.html">Loading Data to Project</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/advanced_blueprint_examples.html">Advanced Blueprint Examples</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Setting Permissions</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="setting-up-simple-data-permission"></a><a href="#setting-up-simple-data-permission" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Setting Up Simple Data Permission</h2>
+<p>You can set a data permission (user filter or MUF filter) for
+one or two users.</p>
+<p>SDK offers couple of convenience features for doing this. Let’s first
+recap what we need to set up a data permission filter. We’ll be setting
+a simple filter along these lines</p>
+<pre><code class="hljs">WHERE city IN (San Francisco, Prague, Amsterdam)
+</code></pre>
+<ul>
+<li><p>We need to know the label to filter. In our case this is the <em>city</em>
+label</p></li>
+<li><p>We need to know the label’s values. In our case these are (San
+Francisco, Prague, Amsterdam)</p></li>
+<li><p>We also need to know the user assigned with the filter. We’ll use
+your account in the example (you may use any valid user).</p></li>
+</ul>
+<p>Although we present this as an executable script this is something that
+is often done interactively. So do not fear to jack in to a project and
+follow along.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    <span class="hljs-comment"># First let's grab an attribute</span>
+    attribute = project.attributes(<span class="hljs-string">'attr.region.city'</span>)
+    <span class="hljs-comment"># to set up a value we need a specific label</span>
+    <span class="hljs-comment"># if the attribute has only one label, you can easily grab it by calling #primary_label</span>
+    label = attribute.primary_label
+    <span class="hljs-comment"># if a label has multiple labels, you can select the correct one like this</span>
+    <span class="hljs-comment"># label = attribute.label_by_name('City Name')</span>
+    <span class="hljs-comment"># Let's construct filters we are going to set up</span>
+    <span class="hljs-comment"># We will do it for two hypothetical users</span>
+    filters = [
+      [<span class="hljs-string">'john.doe@example.com'</span>, label.uri, <span class="hljs-string">'San Francisco'</span>, <span class="hljs-string">'Amsterdam'</span>],
+      [<span class="hljs-string">'jane.doe@example.com'</span>, label.uri, <span class="hljs-string">'San Francisco'</span>, <span class="hljs-string">'Prague'</span>]
+    ]
+    <span class="hljs-comment"># Obvious question might be how do you know that the values are correct</span>
+    <span class="hljs-comment"># you can find out like this label.value?('Amsterdam')</span>
+    <span class="hljs-comment"># Let's now update the project</span>
+    project.add_data_permissions(filters)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span> 
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="list-data-permissions"></a><a href="#list-data-permissions" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>List Data Permissions</h2>
+<p>There is no UI that would provide a good overview and API is a little
+crude but with help of SDK you can get around that.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    project.data_permissions.pmap {<span class="hljs-params">|f|</span> [f.related.login, f.pretty_expression]}
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="setting-data-permissions-from-csv-column-format"></a><a href="#setting-data-permissions-from-csv-column-format" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Setting Data Permissions from CSV (column format)</h2>
+<p>You can also set data permissions for multiple users. Let's have a
+CSV with two columns that associate user with a single data permission’s
+value. We’ll use the same city example from the examples above.</p>
+<p>The SDK offers couple of convenience features for doing this. Let’s first
+recap what we need to set up a filter.</p>
+<p>In this case we will be setting a simple data permission for the city
+label in form of following filter</p>
+<pre><code class="hljs">WHERE city IN ('San Francisco', 'Prague', 'Amsterdam')
+</code></pre>
+<ul>
+<li><p>We need to know the label to filter. In our case this is the <em>city</em>
+label</p></li>
+<li><p>We need to know the label’s values. In our case these are (San
+Francisco, Prague, Amsterdam)</p></li>
+<li><p>We also need to know the user assigned with the filter. We’ll use
+your account in the example (you may use any valid user).</p></li>
+</ul>
+<p>Let’s say we want to set up these specific values</p>
+<pre><code class="hljs">['john.doe@example.com', 'San Francisco', 'Amsterdam']
+['jane.doe@example.com', 'San Francisco', 'Prague']
+</code></pre>
+<p>We’ll capture these data permissions in the following CSV (data.csv)</p>
+<pre><code class="hljs">login,city
+john.doe@example.com,San Francisco
+john.doe@example.com,Amsterdam
+jane.doe@example.com,San Francisco
+jane.doe@example.com,Prague
+</code></pre>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    <span class="hljs-comment"># First let's grab an attribute</span>
+    attribute = project.attributes(<span class="hljs-string">'attr.region.city'</span>)
+    <span class="hljs-comment"># to set up a value we need a specific label</span>
+    <span class="hljs-comment"># if the attribute has only one label, you can easily grab it by calling #primary_label</span>
+    label = attribute.primary_label
+    <span class="hljs-comment"># if a label has multiple labels, you can select the correct one like this</span>
+    <span class="hljs-comment"># label = attribute.label_by_name('City name')</span>
+    filters = GoodData::UserFilterBuilder::get_filters(<span class="hljs-string">'data.csv'</span>, { 
+      <span class="hljs-symbol">:type</span> =&gt; <span class="hljs-symbol">:filter</span>, 
+      <span class="hljs-symbol">:labels</span> =&gt; [{<span class="hljs-symbol">:label</span> =&gt; label, <span class="hljs-symbol">:column</span> =&gt; <span class="hljs-string">'city'</span>}]
+      })      
+    project.add_data_permissions(filters)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Several things has to be true for this code to work correctly</p>
+<ul>
+<li><p>All the users are members of the target project</p></li>
+<li><p>All the label’s (city) values are present in the data loaded in the
+project</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="setting-data-permissions-from-csv-row-format"></a><a href="#setting-data-permissions-from-csv-row-format" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Setting Data Permissions from CSV (row format)</h2>
+<p>You can also set data permissions for multiple users. Let's have a
+CSV with two columns that associate user with a single data permission’s
+value. We’ll use the same city example from the examples above.</p>
+<p>The SDK offers couple of convenience features for doing this. Let’s first
+recap what we need to set up a filter.</p>
+<p>In this case we will be setting a simple data permission for the city
+label in form of following filter</p>
+<pre><code class="hljs">WHERE city IN ('San Francisco', 'Prague', 'Amsterdam')
+</code></pre>
+<ul>
+<li><p>We need to know the label to filter. In our case this is the <em>city</em>
+label</p></li>
+<li><p>We need to know the label’s values. In our case these are (San
+Francisco, Prague, Amsterdam)</p></li>
+<li><p>We also need to know the user assigned with the filter. We’ll use
+your account in the example (you may use any valid user).</p></li>
+</ul>
+<p>Let’s say we want to set up these specific values</p>
+<pre><code class="hljs">['john.doe@example.com', 'San Francisco', 'Amsterdam']
+['jane.doe@example.com', 'San Francisco', 'Prague']
+</code></pre>
+<p>We’ll capture these data permissions in the following CSV (data.csv)</p>
+<pre><code class="hljs">john.doe@example.com,San Francisco,Amsterdam
+jane.doe@example.com,San Francisco,Prague,Berlin
+</code></pre>
+<p>Please note that the CSV format is different from the previous example.
+There are no headers because the file can have a different number of
+columns on each line.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    <span class="hljs-comment"># First let's grab an attribute</span>
+    attribute = project.attributes(<span class="hljs-string">'attr.region.city'</span>)
+    <span class="hljs-comment"># to set up a value we need a specific label</span>
+    <span class="hljs-comment"># if the attribute has only one label, you can easily grab it by calling #primary_label</span>
+    label = attribute.primary_label
+    <span class="hljs-comment"># if a label has multiple labels, you can select the correct one like this</span>
+    <span class="hljs-comment"># label = attribute.label_by_name('City name')</span>
+    filters = GoodData::UserFilterBuilder::get_filters(<span class="hljs-string">'data.csv'</span>, { 
+      <span class="hljs-symbol">:type</span> =&gt; <span class="hljs-symbol">:filter</span>, 
+      <span class="hljs-symbol">:labels</span> =&gt; [{<span class="hljs-symbol">:label</span> =&gt; label}]
+      })
+    project.add_data_permissions(filters)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Several things has to be true for this code to work correctly</p>
+<ul>
+<li><p>All the users are members of the target project</p></li>
+<li><p>All the label’s (city) values are present in the data loaded in the
+project</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="list-variable-values"></a><a href="#list-variable-values" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>List Variable Values</h2>
+<p>If you have variables in your project, you can see the values in a readable fashion.</p>
+<p>The SDK tries to hide the differences from Data Permissions so this recipe
+is analogy to <a href="/gooddata-ruby-doc/docs/working_with_permissions.html#list-data-permissions">List Data Permissions</a> recipe.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+<span class="hljs-comment"># fill this in</span>
+VARIABLE_IDENTIFIER = <span class="hljs-string">'variable_identifier'</span>
+PROJECT_ID = <span class="hljs-string">'project_id'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(PROJECT_ID) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    var = project.variables(VARIABLE_IDENTIFIER)
+    var.values.pmap <span class="hljs-keyword">do</span> <span class="hljs-params">|var|</span>
+      owner = var.related.<span class="hljs-keyword">class</span> == GoodData::Project ? <span class="hljs-string">"[PROJECT DEFAULT]"</span> : var.related.login <span class="hljs-keyword">rescue</span> <span class="hljs-literal">nil</span>
+      [owner, var.pretty_expression]
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Unlike the Data Permissions, the Variables have a concept of default value for
+the project. If a specific values is not provided for a user the project
+default is used. You can noticed these users to have &quot;TRUE&quot; as a value.
+The project value is marked as [PROJECT DEFAULT] in the output.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="working_with_users.html">← Working with Users</a><a class="docs-next button" href="working_with_models.html">Model Setup →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#setting-up-simple-data-permission">Setting Up Simple Data Permission</a></li><li><a href="#list-data-permissions">List Data Permissions</a></li><li><a href="#setting-data-permissions-from-csv-column-format">Setting Data Permissions from CSV (column format)</a></li><li><a href="#setting-data-permissions-from-csv-row-format">Setting Data Permissions from CSV (row format)</a></li><li><a href="#list-variable-values">List Variable Values</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/gooddata-ruby-doc/" class="nav-home"><img src="/gooddata-ruby-doc/img/gooddata-ruby.svg" alt="Ruby SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/gooddata-ruby-doc/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc2.html">Guides (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/gooddata-ruby-doc/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/gooddata-ruby-doc/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/gooddata-ruby-doc/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 GoodData</section></footer></div></body></html>

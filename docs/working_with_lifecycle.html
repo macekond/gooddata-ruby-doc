@@ -1,0 +1,253 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Working with Lifecycle · Ruby SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Working with Lifecycle · Ruby SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://gooddata.github.io/gooddata-ruby-doc/index.html"/><meta property="og:description" content="Life-cycle Segments"/><meta property="og:image" content="https://gooddata.github.io/gooddata-ruby-doc/img/docusaurus.png"/><link rel="shortcut icon" href="/gooddata-ruby-doc/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/gooddata-ruby-doc/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/gooddata-ruby-doc/"><img class="logo" src="/gooddata-ruby-doc/img/gooddata-ruby.svg"/><h2 class="headerTitle">Ruby SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/gooddata-ruby-doc/docs/getting_started.html" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Advanced Guides</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Basics</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/getting_started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/jack_in.html">Interactive Ruby Console</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/create_a_program.html">Scripting</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/connecting_to_gooddata.html">Connecting to Gooddata Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/handling_credentials.html">Handling Credentials Securely</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/using_gooddata_platform.html">Using GoodData Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/logging.html">Logging and Testing</a></li></ul></div><div class="navGroup navGroupActive"><h3>Advanced Guides</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_projects.html">Working with Projects</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_users.html">Working with Users</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_permissions.html">Setting Permissions</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_models.html">Model Setup</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_your_data.html">Working with Your Data</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_reports.html">Working with Reports</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_dashboards.html">Using Dashboards</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_deployments.html">Deployment How-tos</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_automation.html">Automation and Performance</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/gooddata-ruby-doc/docs/working_with_lifecycle.html">Working with Lifecycle</a></li></ul></div><div class="navGroup navGroupActive"><h3>Blueprints</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/creating_project_from_blueprint.html">Creating Project from Blueprint</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/loading_data.html">Loading Data to Project</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/advanced_blueprint_examples.html">Advanced Blueprint Examples</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Working with Lifecycle</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="life-cycle-segments"></a><a href="#life-cycle-segments" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Life-cycle Segments</h2>
+<p>You can setup and execute a life-cycle management
+configuration to distribute new versions of dashboards, reports, and
+metrics from a master template to multiple target projects.</p>
+<p>You can use life-cycle management API to create a life-cycle segment,
+associate it with its master template project, and populate the segment
+with target projects that are going to receive the new versions of
+objects from the master template. First let’s align on the terminology.</p>
+<p>Organization - Organization is an object that contains all users and
+projects that you or your company have provisioned to the GoodData
+platform. Organization can also contain white-labeling configuration
+(your custom colors, logos, URLs etc.). Lifecycle management segments
+and projects are always set up within an organization.</p>
+<p>Lifecycle segment represents a group of projects that contain the same
+analytical objects. New versions of these objects can be distributed
+from so called master template project to the segment’s projects. The
+segment’s projects can also contain ad-hoc objects (e.g. reports or
+metrics) that are not touched (not updated nor deleted) by the lifecycle
+processes. Lifecycle segments are usually used to represent a different
+tiers (e.g. bronze/silver/gold) tiers of an analytical solution.</p>
+<p>Master template is a project that contains the latest and greatest
+versions of objects that are distributed to the segment’s projects. We
+recommend to keep the master’s project immutable once it gets associated
+with a segment. So a new master template project should be cloned from
+the previous master and associated with the segment for each new version
+of your solution. Lifecycle segment can be associated with just one
+master at any given time.</p>
+<p>Client - is user-assigned ID of a segment’s project. The client ID is
+associated with a GoodData generated project ID during segment
+provisioning operation. The client ID is stable identification of
+certain tenant’s project. It can be associated with different project
+IDs during it’s lifecycle.</p>
+<p>Having defined some terminology we present code that will do several
+things.</p>
+<ul>
+<li><p>sets up a segment with master project (along with some data and
+dashboard)</p></li>
+<li><p>creates a client within a segment. The client is not yet associated
+with a project at this time.</p></li>
+<li><p>releases new master project</p></li>
+<li><p>provisions new project for the client (this will ensure client’s
+project has the same model, dashboard but no data )</p></li>
+<li><p>changes the dashboard in master</p></li>
+<li><p>makes another release</p></li>
+<li><p>synchronizes the clients with updated version</p></li>
+<li><p>adds a client</p></li>
+<li><p>provisions new project for the second client too</p></li>
+</ul>
+<pre><code class="hljs css ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+TOKEN = <span class="hljs-string">'token'</span>
+PASSWORD = <span class="hljs-string">'pass'</span>
+
+<span class="hljs-comment"># Connect to GoodData a specific organization's (aka domain's) URL</span>
+client = GoodData.connect(<span class="hljs-string">'mustang@gooddata.com'</span>, PASSWORD, <span class="hljs-symbol">server:</span> <span class="hljs-string">'https://mustangs.intgdc.com'</span>, <span class="hljs-symbol">verify_ssl:</span> <span class="hljs-literal">false</span> )
+<span class="hljs-comment"># Organization (aka domain)</span>
+domain = client.domain(<span class="hljs-string">'mustangs'</span>)
+
+seq_number = <span class="hljs-number">8</span>
+
+<span class="hljs-comment"># Prepare master project</span>
+<span class="hljs-comment"># ======================</span>
+
+<span class="hljs-comment"># Create LDM blueprint</span>
+blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">'HR Demo Project'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+  p.add_date_dimension(<span class="hljs-string">'dataset.payment'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Payment'</span>)
+
+  p.add_dataset(<span class="hljs-string">'dataset.department'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Department'</span>, <span class="hljs-symbol">folder:</span> <span class="hljs-string">'Department &amp; Employee'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.department.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Department ID'</span>)
+    d.add_label(<span class="hljs-string">'label.department.id'</span>, <span class="hljs-symbol">reference:</span><span class="hljs-string">'attr.department.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Department ID'</span>)
+    d.add_label(<span class="hljs-string">'label.department.name'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.department.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Department Name'</span>)
+    d.add_attribute(<span class="hljs-string">'attr.department.region'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Department Region'</span>)
+    d.add_label(<span class="hljs-string">'label.department.region'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.department.region'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Department Region'</span>)
+  <span class="hljs-keyword">end</span>
+
+  p.add_dataset(<span class="hljs-string">'dataset.employee'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Employee'</span>, <span class="hljs-symbol">folder:</span> <span class="hljs-string">'Department &amp; Employee'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.employee.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Employee ID'</span>)
+    d.add_label(<span class="hljs-string">'label.employee.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Employee ID'</span>, <span class="hljs-symbol">reference:</span><span class="hljs-string">'attr.employee.id'</span>)
+    d.add_label(<span class="hljs-string">'label.employee.fname'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Employee Firstname'</span>, <span class="hljs-symbol">reference:</span><span class="hljs-string">'attr.employee.id'</span>)
+    d.add_label(<span class="hljs-string">'label.employee.lname'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Employee Lastname'</span>, <span class="hljs-symbol">reference:</span><span class="hljs-string">'attr.employee.id'</span>)
+    d.add_reference(<span class="hljs-string">'dataset.department'</span>)
+  <span class="hljs-keyword">end</span>
+
+  p.add_dataset(<span class="hljs-string">'dataset.salary'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Salary'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.salary.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Salary ID'</span>, <span class="hljs-symbol">folder:</span> <span class="hljs-string">'Salary'</span>)
+    d.add_label(<span class="hljs-string">'label.salary.id'</span>, <span class="hljs-symbol">reference:</span><span class="hljs-string">'attr.salary.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Salary ID'</span>, <span class="hljs-symbol">folder:</span> <span class="hljs-string">'Salary'</span>)
+    d.add_fact(<span class="hljs-string">'fact.salary.amount'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Amount'</span>, <span class="hljs-symbol">folder:</span> <span class="hljs-string">'Salary'</span>)
+    d.add_date(<span class="hljs-string">'dataset.payment'</span>, <span class="hljs-symbol">format:</span> <span class="hljs-string">'yyyy-MM-dd'</span>)
+    d.add_reference(<span class="hljs-string">'dataset.employee'</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-comment"># Create the master template project</span>
+project = client.create_project_from_blueprint(blueprint, <span class="hljs-symbol">auth_token:</span> TOKEN)
+puts <span class="hljs-string">"Created master template project <span class="hljs-subst">#{project.pid}</span>"</span>
+
+<span class="hljs-comment"># Load data</span>
+department_data = [
+    [<span class="hljs-string">'label.department.id'</span>,<span class="hljs-string">'label.department.name'</span>, <span class="hljs-string">'label.department.region'</span>],
+    [<span class="hljs-string">'d1'</span>,<span class="hljs-string">'HQ General Management'</span>, <span class="hljs-string">'North America'</span>],
+    [<span class="hljs-string">'d2'</span>,<span class="hljs-string">'HQ Information Systems'</span>, <span class="hljs-string">'Europe'</span>]
+]
+project.upload(department_data, blueprint, <span class="hljs-string">'dataset.department'</span>)
+
+employee_data_with_dep = [
+    [<span class="hljs-string">'label.employee.id'</span>,<span class="hljs-string">'label.employee.fname'</span>,<span class="hljs-string">'label.employee.lname'</span>,<span class="hljs-string">'dataset.department'</span>, <span class="hljs-string">'label.department.region'</span>],
+    [<span class="hljs-string">'e1'</span>,<span class="hljs-string">'Sheri'</span>,<span class="hljs-string">'Nowmer'</span>,<span class="hljs-string">'d1'</span>, <span class="hljs-string">'North America'</span>],
+    [<span class="hljs-string">'e2'</span>,<span class="hljs-string">'Derrick'</span>,<span class="hljs-string">'Whelply'</span>,<span class="hljs-string">'d2'</span>, <span class="hljs-string">'Europe'</span>]
+]
+project.upload(employee_data_with_dep, blueprint, <span class="hljs-string">'dataset.employee'</span>)
+
+salary_data = [
+    [<span class="hljs-string">'label.salary.id'</span>,<span class="hljs-string">'dataset.employee'</span>,<span class="hljs-string">'fact.salary.amount'</span>,<span class="hljs-string">'dataset.payment'</span>],
+    [<span class="hljs-string">'s1'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-01-01'</span>], [<span class="hljs-string">'s2'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-01-01'</span>], [<span class="hljs-string">'s617'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-02-01'</span>],
+    [<span class="hljs-string">'s618'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-02-01'</span>], [<span class="hljs-string">'s1233'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-03-01'</span>], [<span class="hljs-string">'s1234'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-03-01'</span>],
+    [<span class="hljs-string">'s1849'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-04-01'</span>], [<span class="hljs-string">'s1850'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-04-01'</span>], [<span class="hljs-string">'s2465'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-05-01'</span>],
+    [<span class="hljs-string">'s2466'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-05-01'</span>], [<span class="hljs-string">'s3081'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-06-01'</span>], [<span class="hljs-string">'s3082'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-06-01'</span>],
+    [<span class="hljs-string">'s3697'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-07-01'</span>], [<span class="hljs-string">'s3698'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-07-01'</span>], [<span class="hljs-string">'s4313'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-08-01'</span>],
+    [<span class="hljs-string">'s4314'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-08-01'</span>], [<span class="hljs-string">'s4929'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-09-01'</span>], [<span class="hljs-string">'s4930'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-09-01'</span>],
+    [<span class="hljs-string">'s5545'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-10-01'</span>], [<span class="hljs-string">'s5546'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-10-01'</span>], [<span class="hljs-string">'s6161'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-11-01'</span>],
+    [<span class="hljs-string">'s6162'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-11-01'</span>], [<span class="hljs-string">'s6777'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-12-01'</span>], [<span class="hljs-string">'s6778'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-12-01'</span>],
+    [<span class="hljs-string">'s7393'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-01-01'</span>], [<span class="hljs-string">'s7394'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-01-01'</span>], [<span class="hljs-string">'s8548'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-02-01'</span>],
+    [<span class="hljs-string">'s8549'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-02-01'</span>], [<span class="hljs-string">'s9703'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-03-01'</span>], [<span class="hljs-string">'s9704'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-03-01'</span>],
+    [<span class="hljs-string">'s10858'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-04-01'</span>], [<span class="hljs-string">'s10859'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-04-01'</span>], [<span class="hljs-string">'s12013'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-05-01'</span>],
+    [<span class="hljs-string">'s12014'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-05-01'</span>], [<span class="hljs-string">'s13168'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-06-01'</span>], [<span class="hljs-string">'s13169'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-06-01'</span>],
+    [<span class="hljs-string">'s14323'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-07-01'</span>], [<span class="hljs-string">'s14324'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-07-01'</span>], [<span class="hljs-string">'s15478'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-08-01'</span>],
+    [<span class="hljs-string">'s15479'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-08-01'</span>], [<span class="hljs-string">'s16633'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-09-01'</span>], [<span class="hljs-string">'s16634'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-09-01'</span>],
+    [<span class="hljs-string">'s17788'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-10-01'</span>], [<span class="hljs-string">'s17789'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-10-01'</span>], [<span class="hljs-string">'s18943'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-11-01'</span>],
+    [<span class="hljs-string">'s18944'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-11-01'</span>], [<span class="hljs-string">'s20098'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-12-01'</span>], [<span class="hljs-string">'s20099'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-12-01'</span>]
+]
+project.upload(salary_data, blueprint, <span class="hljs-string">'dataset.salary'</span>)
+
+<span class="hljs-comment"># Create a report within the master template project</span>
+metric = project.facts(<span class="hljs-string">'fact.salary.amount'</span>).create_metric
+metric.save
+report = project.create_report(<span class="hljs-symbol">title:</span> <span class="hljs-string">'My report'</span>, <span class="hljs-symbol">left:</span> [<span class="hljs-string">'label.department.name'</span>], <span class="hljs-symbol">top:</span> [metric])
+
+<span class="hljs-comment"># Create a dashboard within the master template project</span>
+dashboard = project.create_dashboard(<span class="hljs-symbol">:title</span> =&gt; <span class="hljs-string">'Test Dashboard'</span>)
+tab = dashboard.create_tab(<span class="hljs-symbol">:title</span> =&gt; <span class="hljs-string">'Tab Title #1'</span>)
+tab.title = <span class="hljs-string">'Test #42'</span>
+item = tab.add_report_item(<span class="hljs-symbol">:report</span> =&gt; report, <span class="hljs-symbol">:position_x</span> =&gt; <span class="hljs-number">10</span>, <span class="hljs-symbol">:position_y</span> =&gt; <span class="hljs-number">20</span>)
+item.position_x = <span class="hljs-number">400</span>
+item.position_y = <span class="hljs-number">300</span>
+dashboard.lock
+dashboard.save
+
+<span class="hljs-comment"># Create new lifecycle segment</span>
+<span class="hljs-comment"># ============================</span>
+
+segment = domain.create_segment(<span class="hljs-symbol">segment_id:</span> <span class="hljs-string">"segment_<span class="hljs-subst">#{seq_number}</span>"</span>, <span class="hljs-symbol">master_project:</span> project)
+
+<span class="hljs-comment"># Release the segment</span>
+<span class="hljs-comment"># ===================</span>
+segment.synchronize_clients
+
+
+<span class="hljs-comment"># Create new client</span>
+<span class="hljs-comment"># =================</span>
+segment_client = segment.create_client(<span class="hljs-symbol">id:</span> <span class="hljs-string">"client_<span class="hljs-subst">#{seq_number}</span>"</span>)
+
+
+<span class="hljs-comment"># Provision new project for the client</span>
+<span class="hljs-comment"># ====================================</span>
+domain.provision_client_projects
+
+<span class="hljs-comment"># The new project contains all the objects from the master template</span>
+segment.clients.first.project.pid
+<span class="hljs-comment"># =&gt; aerkc6562oiauaof9mxtowcc4fl5vwb4</span>
+segment.clients.first.project.metrics.count
+<span class="hljs-comment"># =&gt; 1</span>
+segment.clients.first.project.dashboards.first.title
+<span class="hljs-comment"># =&gt; 'Test Dashboard'</span>
+
+<span class="hljs-comment"># The client project should not have any data from master</span>
+segment.master_project.metrics.first.execute
+<span class="hljs-comment"># =&gt; 0.366E6</span>
+segment.clients.first.project.metrics.first.execute
+<span class="hljs-comment"># =&gt; nil</span>
+
+<span class="hljs-comment"># Update master and propagate changes</span>
+<span class="hljs-comment"># ===================================</span>
+
+<span class="hljs-comment"># Now let's change something in our master.</span>
+<span class="hljs-comment"># Let's change a title in master and transfer to the clients</span>
+dashboard.title = <span class="hljs-string">'Better Test Dashboard'</span>
+dashboard.save
+
+<span class="hljs-comment"># Release the segment and synchronize clients</span>
+segment.synchronize_clients
+
+<span class="hljs-comment"># Check the results in the client's project</span>
+segment.clients.first.project.dashboards.first.title
+<span class="hljs-comment"># =&gt; "Better Test Dashboard"</span>
+
+<span class="hljs-comment"># Add additional clients</span>
+<span class="hljs-comment"># ======================</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># This is it. Just for illustration let's create another client. This basically just means repeating the flow.</span>
+<span class="hljs-comment"># We already have our master prepared so let's just create a new client.</span>
+another_segment_client = segment.create_client(<span class="hljs-symbol">id:</span> <span class="hljs-string">"client_<span class="hljs-subst">#{seq_number + <span class="hljs-number">1</span>}</span>"</span>)
+
+<span class="hljs-comment"># currently there should be only one project for the first client</span>
+segment.clients.map { <span class="hljs-params">|c|</span> [c.id, c.project_uri]}
+<span class="hljs-comment"># =&gt; [["client_8", "/gdc/projects/aerkc6562oiauaof9mxtowcc4fl5vwb4"], ["client_9", nil]]</span>
+
+<span class="hljs-comment"># Let's provision project. This will provision it with project from last call of 'domain.synchronize_clients'</span>
+domain.provision_client_projects
+
+<span class="hljs-comment"># Let's check we have a project</span>
+segment.clients.map { <span class="hljs-params">|c|</span> [c.id, c.project_uri]}
+<span class="hljs-comment"># =&gt; [["client_8", "/gdc/projects/aerkc6562oiauaof9mxtowcc4fl5vwb4"], ["client_9", "/gdc/projects/yxpp45hf39bigezp3ug8pm6kc9h6tihv"]]</span>
+
+<span class="hljs-comment"># Let's also verify that we have a latest version. The new project should contain the updated version of the dashboard beacuse we've already released it via 'synchonize_clients'</span>
+segment.clients(<span class="hljs-string">"client_<span class="hljs-subst">#{seq_number + <span class="hljs-number">1</span>}</span>"</span>).project.dashboards.first.title
+<span class="hljs-comment"># =&gt; "Better Test Dashboard"</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="organizing-segments-into-data-products"></a><a href="#organizing-segments-into-data-products" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Organizing Segments into Data Products</h2>
+<p>You can encapsule multiple segments into a data product for
+better granularity.</p>
+<p>This solution is based on the terminology and examples presented in
+chapter regarding <a href="#01_wip_segments.asciidoc">Segments</a>.</p>
+<p>This code will do several things:</p>
+<ul>
+<li><p>sets up a segment in the legacy way, referencing no dataproduct</p></li>
+<li><p>sets up another segment as a part of a dataproduct</p></li>
+<li><p>shows that the segments are only included in the specific
+dataproduct that was used to create them</p></li>
+</ul>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># Create a data product</span>
+custom_data_product = domain.create_data_product(<span class="hljs-symbol">id:</span> <span class="hljs-string">'data-product'</span>)
+<span class="hljs-comment"># Create new lifecycle segment without referencing a data product</span>
+first_segment = domain.create_segment(<span class="hljs-symbol">segment_id:</span> <span class="hljs-string">'segment-1'</span>, <span class="hljs-symbol">master_project:</span> project)
+<span class="hljs-comment"># the API defaults the data product to 'default', which should be present in all domains</span>
+<span class="hljs-comment"># that means the above call is equal to</span>
+default_data_product = domain.data_products(<span class="hljs-string">'default'</span>)
+default_data_product.create_segment(<span class="hljs-symbol">segment_id:</span> <span class="hljs-string">'segment-1'</span>, <span class="hljs-symbol">master_project:</span> project)
+<span class="hljs-comment"># Create another segment as a part of the data product</span>
+second_segment = custom_data_product.create_segment(<span class="hljs-symbol">segment_id:</span> <span class="hljs-string">'segment-2'</span>, <span class="hljs-symbol">master_project:</span> project)
+<span class="hljs-comment"># the first_segment is then only present in the default_data_product</span>
+default_data_product.segments.find { <span class="hljs-params">|s|</span> s.segment_id == first_segment.segment_id }
+<span class="hljs-comment"># =&gt; #&lt;DataProduct:#&gt;</span>
+<span class="hljs-comment"># and not present in the custom_data_product we created</span>
+custom_data_product.segments.find { <span class="hljs-params">|s|</span> s.segment_id == first_segment.segment_id }
+<span class="hljs-comment"># =&gt; nil</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="working_with_automation.html">← Automation and Performance</a><a class="docs-next button" href="creating_project_from_blueprint.html">Creating Project from Blueprint →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#life-cycle-segments">Life-cycle Segments</a></li><li><a href="#organizing-segments-into-data-products">Organizing Segments into Data Products</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/gooddata-ruby-doc/" class="nav-home"><img src="/gooddata-ruby-doc/img/gooddata-ruby.svg" alt="Ruby SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/gooddata-ruby-doc/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc2.html">Guides (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/gooddata-ruby-doc/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/gooddata-ruby-doc/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/gooddata-ruby-doc/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 GoodData</section></footer></div></body></html>

@@ -1,0 +1,231 @@
+$homesplashBgOverflow: 15;
+$homesplashBgOverflowProduct: ($homesplashBgOverflow * ((100 - 2 * $homesplashBgOverflow) / 100)) / 100;
+
+.homeSplashFade {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 0;
+    box-shadow: inset 0 0 13px 0 transparentize($gd-color-dark, 0.93);
+    color: $gd-color-white;
+    background-image:
+        linear-gradient(
+            -180deg,
+            transparentize($gd-color-highlight, 1) 0%,
+            transparentize($gd-color-positive, 0.21) 100%
+        );
+    background-position: center;
+
+    &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 24px;
+        opacity: 0.05;
+        background-image:
+            linear-gradient(
+                -180deg,
+                transparentize($gd-color-dark, 1) 0%,
+                transparentize($gd-color-dark, 0.48) 77%,
+                $gd-color-dark 100%
+            );
+    }
+
+    .homeSplashFadeBg {
+        position: absolute;
+        top: percentage(-$homesplashBgOverflow / 100);
+        right: 0;
+        bottom: percentage(-$homesplashBgOverflow / 100);
+        left: 0;
+        background-image: url('../img/homepage/splash-banner.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center top;
+        transform: translate3d(0, percentage(-$homesplashBgOverflowProduct), 0);
+        transition: transform 1ms;
+    }
+}
+
+.projectTitle {
+    margin-top: 4.68rem;
+    color: inherit;
+    font-weight: bold;
+}
+
+.projectDescription {
+    margin: 1.25rem;
+    font-size: 2rem;
+    line-height: 2.75rem;
+}
+
+.homeContainer {
+    .button,
+    .button-link {
+        display: inline-block;
+        margin: 1rem auto;
+    }
+
+    .button {
+        padding: 0.7rem 4.1rem;
+        border: 2px solid $gd-color-white;
+        border-radius: 3px;
+        color: $gd-color-white;
+        font-size: 1rem;
+        text-align: center;
+        background-color: transparentize($gd-color-dark, 0.85);
+        transition: background-color 0.2s;
+
+        &:hover,
+        &:focus,
+        &:active {
+            text-decoration: none !important;
+            background-color: transparentize($gd-color-dark, 0.65);
+        }
+    }
+
+    .button-link {
+        color: transparentize($gd-color-white, 0.2);
+        font-size: 1rem;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: transparentize($gd-color-white, 0.1);
+        }
+    }
+
+    .homeWrapper {
+        position: relative;
+        padding-bottom: 369px;
+
+        @media #{$medium-down} {
+            padding-bottom: 40%;
+        }
+    }
+}
+
+.promoSection {
+    position: static;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-position: center bottom;
+        background-repeat: no-repeat;
+    }
+
+    &::before {
+        height: 318px;
+        background-image: url('../img/homepage/splash-bottom-image.png');
+        background-size: contain;
+    }
+
+    &::after {
+        height: 369px;
+        background-image: url('../img/homepage/splash-bottom.svg');
+    }
+
+    .promoRow {
+        .pluginRowBlock {
+            display: block;
+        }
+    }
+}
+
+.getStartedSection {
+    padding: 5rem 1.25rem 1rem;
+    box-shadow: inset 0 1px 2px 0 transparentize($gd-color-dark, 0.7);
+    background-image: linear-gradient(-130deg, $gd-color-highlight 0%, $gd-color-positive 100%);
+
+    h2 {
+        color: $gd-color-text-light;
+    }
+}
+
+.backgroundBlock-white {
+    background-color: $gd-color-white;
+}
+
+.backgroundBlock-gray {
+    background-color: $gray-2;
+    background-image:
+        linear-gradient(
+            -180deg,
+            transparentize($gd-color-state-blank, 1) calc(100% - 100px),
+            transparentize(#59626b, 0.89) 100%
+        );
+}
+
+.social-buttons {
+    display: inline-block;
+    padding: 2rem 0;
+    margin: 5.375rem auto 0.5rem;
+    border-top: 1px solid transparentize($gd-color-white, 0.7);
+    color: $gd-color-text-light;
+
+    h4,
+    a {
+        height: 1.875rem;
+        display: inline-block;
+        color: inherit;
+        line-height: 1.875rem;
+        vertical-align: middle;
+
+        @media #{$medium-down} {
+            display: block;
+            text-align: center;
+        }
+    }
+
+    h4 {
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+}
+
+.social-button {
+    margin: 0 0 0 2.5rem;
+
+    &::before {
+        content: '';
+        display: inline-block;
+        width: 1.875rem;
+        height: 1.875rem;
+        margin: -0.1rem 0.6rem 0 0;
+        vertical-align: middle;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        opacity: 0.9;
+        transition: all 0.2s;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        &::before {
+            opacity: 1;
+        }
+    }
+
+    &.github::before {
+        background-image: url('../img/homepage/github-logo.png');
+    }
+
+    &.stackoverflow::before {
+        background-image: url('../img/homepage/stackoverflow-logo.png');
+    }
+
+    &.twitter::before {
+        background-image: url('../img/homepage/twitter-logo.png');
+    }
+
+    @media #{$medium-down} {
+        margin: 1rem 0;
+    }
+}

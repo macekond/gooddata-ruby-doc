@@ -1,0 +1,310 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Working with Projects · Ruby SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Working with Projects · Ruby SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://gooddata.github.io/gooddata-ruby-doc/index.html"/><meta property="og:description" content="Creating Empty Project"/><meta property="og:image" content="https://gooddata.github.io/gooddata-ruby-doc/img/docusaurus.png"/><link rel="shortcut icon" href="/gooddata-ruby-doc/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/gooddata-ruby-doc/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/gooddata-ruby-doc/"><img class="logo" src="/gooddata-ruby-doc/img/gooddata-ruby.svg"/><h2 class="headerTitle">Ruby SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/gooddata-ruby-doc/docs/getting_started.html" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Advanced Guides</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Basics</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/getting_started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/jack_in.html">Interactive Ruby Console</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/create_a_program.html">Scripting</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/connecting_to_gooddata.html">Connecting to Gooddata Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/handling_credentials.html">Handling Credentials Securely</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/using_gooddata_platform.html">Using GoodData Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/logging.html">Logging and Testing</a></li></ul></div><div class="navGroup navGroupActive"><h3>Advanced Guides</h3><ul><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/gooddata-ruby-doc/docs/working_with_projects.html">Working with Projects</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_users.html">Working with Users</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_permissions.html">Setting Permissions</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_models.html">Model Setup</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_your_data.html">Working with Your Data</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_reports.html">Working with Reports</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_dashboards.html">Using Dashboards</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_deployments.html">Deployment How-tos</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_automation.html">Automation and Performance</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_lifecycle.html">Working with Lifecycle</a></li></ul></div><div class="navGroup navGroupActive"><h3>Blueprints</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/creating_project_from_blueprint.html">Creating Project from Blueprint</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/loading_data.html">Loading Data to Project</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/advanced_blueprint_examples.html">Advanced Blueprint Examples</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Working with Projects</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="creating-empty-project"></a><a href="#creating-empty-project" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating Empty Project</h2>
+<p>If you need to create a project programmatically:</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+client = GoodData.connect
+project = client.create_project(<span class="hljs-symbol">title:</span> <span class="hljs-string">'My project title'</span>, <span class="hljs-symbol">auth_token:</span> <span class="hljs-string">'PROJECT_CREATION_TOKEN'</span>)
+
+<span class="hljs-comment"># after some time the project is created and you can start working with it</span>
+puts project.uri
+puts project.title <span class="hljs-comment"># =&gt; 'My project title'</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="renaming-project"></a><a href="#renaming-project" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Renaming Project</h2>
+<p>If you need to rename the project:</p>
+<pre><code class="hljs css ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+client = GoodData.connect
+project = client.projects(<span class="hljs-string">'project_id'</span>)
+project.title = <span class="hljs-string">"New and much better title"</span>
+project.save
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="cloning-project"></a><a href="#cloning-project" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cloning Project</h2>
+<p>You can create an exact copy of en existing project:</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+client = GoodData.connect
+project = client.projects(<span class="hljs-string">'project_pid'</span>)
+cloned_project = project.clone(<span class="hljs-symbol">title:</span> <span class="hljs-string">'New title'</span>,
+                               <span class="hljs-symbol">auth_token:</span> <span class="hljs-string">'token'</span>,
+                               <span class="hljs-symbol">users:</span> <span class="hljs-literal">false</span>,
+                               <span class="hljs-symbol">data:</span> <span class="hljs-literal">true</span>,
+                               <span class="hljs-symbol">exclude_schedules:</span> <span class="hljs-literal">true</span>,
+                               <span class="hljs-symbol">cross_data_center_export:</span> <span class="hljs-literal">true</span>)
+</code></pre>
+<p>There are four options that you can specify. You can pick if you want to
+clone just metadata (e.g. attributes, facts, metrics reports, dashboards
+etc.) or also data (this is default). Also you can choose if you want to
+transfer all old project’s users to the new project. No users are
+transferred by default. In the example above we explicitly specified the
+<em>users</em> and <em>data</em> optional parameters so you can see how it works.
+Setting the exclude_schedules to true causes scheduled emails to be
+omitted from the transfer. The cross_data_center_export specifies
+whether the export can be used in any data center.</p>
+<h2><a class="anchor" aria-hidden="true" id="cloning-project-across-organizations"></a><a href="#cloning-project-across-organizations" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Cloning Project across Organizations</h2>
+<p>Usually you would be happy using <code>project.clone</code> but sometimes you need
+more granularity in controlling who is doing what. In this recipe we are
+going to explain what is happening when you clone a project and how you
+can leverage the lower level API.</p>
+<p>When the project clone is done SDK actually orchestrates couple of calls
+together</p>
+<ol>
+<li><p>Exports a project, obtaining an export package token. The token is a
+pointer to a package that is stored at GoodData premises.</p></li>
+<li><p>Creates an empty project</p></li>
+<li><p>Imports the package (from step 1) into a freshly created project
+from step 2</p></li>
+</ol>
+<p>All these 3 calls are asynchronous by default. SDK makes sure that
+things happen in the correct order and exposes it as synchronous
+operation.</p>
+<p>Sometimes more granular things are need for example when you need to
+clone a project to different organization. This means that clone would
+not work since you cannot have one user in 2 organizations. We decided
+to expose the methods to allow you doing the three steps above so anyone
+can mix and match.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+user_from_login = <span class="hljs-string">'john@example.com'</span>
+user_to_login = <span class="hljs-string">'jane@example.com'</span>
+
+client_from = GoodData.connect(user_from_login, <span class="hljs-string">'password'</span>, <span class="hljs-symbol">server:</span> <span class="hljs-string">'https://customer_1_domain.gooddata.com'</span>)
+client_to = GoodData.connect(user_to_login, <span class="hljs-string">'password'</span>, <span class="hljs-symbol">server:</span> <span class="hljs-string">'https://customer_2_domain.gooddata.com'</span>)
+
+from_project = client_from.projects(<span class="hljs-string">'project_pid_1'</span>)
+to_project = client_to.create_project(<span class="hljs-symbol">:title</span> =&gt; <span class="hljs-string">"project_title"</span>, <span class="hljs-symbol">:auth_token</span> =&gt; <span class="hljs-string">"TOKEN"</span>)
+
+export_token = from_project.export_clone(<span class="hljs-symbol">authorized_users:</span> [user_to_login],
+                                         <span class="hljs-symbol">data:</span> <span class="hljs-literal">true</span>,
+                                         <span class="hljs-symbol">exclude_schedules:</span> <span class="hljs-literal">true</span>,
+                                         <span class="hljs-symbol">cross_data_center_export:</span> <span class="hljs-literal">true</span>)
+to_project.import_clone(export_token)
+</code></pre>
+<p>The options for <code>Project#export_clone</code> are the same as for
+<code>Project#clone</code> with a couple additions. You can specify which users
+will be able to import the package using the <code>authorized_users</code> option.
+If you want to use the export in another data-center, set
+<code>cross_data_center_export</code> to true.</p>
+<p>You can also leverage this more granular interface when you need to
+clone one project to multiple target projects.</p>
+<h2><a class="anchor" aria-hidden="true" id="creating-empty-project-using-specific-environment"></a><a href="#creating-empty-project-using-specific-environment" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating Empty Project using specific environment</h2>
+<p>You can create a project programmatically using specific environment. The TESTING
+projects are not backed up and may be discarded during a platform maintenance.</p>
+<ul>
+<li><p>PRODUCTION <em>(DEFAULT)</em></p></li>
+<li><p>DEVELOPMENT</p></li>
+<li><p>TESTING</p></li>
+</ul>
+<p>Note that the environment names are case sensitive.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+client = GoodData.connect
+project = client.create_project(<span class="hljs-symbol">title:</span> <span class="hljs-string">'My project title'</span>, <span class="hljs-symbol">auth_token:</span> <span class="hljs-string">'PROJECT_CREATION_TOKEN'</span>, <span class="hljs-symbol">:environment</span> =&gt; <span class="hljs-string">'TESTING'</span>)
+
+<span class="hljs-comment"># after some time the project is created and you can start working with it</span>
+puts project.uri
+puts project.environment <span class="hljs-comment"># =&gt; 'TESTING'</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="creating-project-from-template"></a><a href="#creating-project-from-template" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating Project from Template</h2>
+<p>You have a template created for you and you would like to spin a project
+from this template.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+client = GoodData.connect
+project = client.create_project(<span class="hljs-symbol">title:</span> <span class="hljs-string">'New project'</span>,
+                                <span class="hljs-symbol">template:</span> <span class="hljs-string">'/projectTemplates/SuperSoda/1/'</span>,
+                                <span class="hljs-symbol">auth_token:</span> <span class="hljs-string">'token'</span>)
+</code></pre>
+<p>Note that people behind SDK do not endorse usage of templates so
+consider it being here for legacy purposes.</p>
+<h2><a class="anchor" aria-hidden="true" id="migrating-objects-between-projects"></a><a href="#migrating-objects-between-projects" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Migrating objects between projects</h2>
+<p>If you have metadata objects (reports/metrics/dashboards) you can transfer them between projects:</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: UTF-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  target_project = c.projects(<span class="hljs-string">'target_project_id'</span>)
+
+  <span class="hljs-comment"># Lets log into project you would like to transfer from</span>
+  GoodData.with_project(<span class="hljs-string">'master_project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|master_project|</span>
+    <span class="hljs-comment"># find objects you would like to transfer</span>
+    <span class="hljs-comment"># here we transfer all reports containing word "sales" in the title</span>
+    reports = master_project.reports.select { <span class="hljs-params">|r|</span> r.title =~ <span class="hljs-regexp">/sales/</span> }
+    <span class="hljs-keyword">begin</span>
+      master_project.transfer_objects(reports, <span class="hljs-symbol">project:</span> target_project)
+    <span class="hljs-keyword">rescue</span> ObjectsMigrationError
+      puts <span class="hljs-string">'Object transfer failed'</span>
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Occasionally you need to transfer objects to multiple projects. To make it easier SDK provides a convenient method for this.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: UTF-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  target_project_1 = c.projects(<span class="hljs-string">'target_project_id_1'</span>)
+  target_project_2 = c.projects(<span class="hljs-string">'target_project_id_2'</span>)
+
+  <span class="hljs-comment"># Lets log into project you would like to transfer from</span>
+  GoodData.with_project(<span class="hljs-string">'master_project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|master_project|</span>
+    <span class="hljs-comment"># find objects you would like to transfer</span>
+    <span class="hljs-comment"># here we transfer all reports containing word "sales" in the title</span>
+    reports = master_project.reports.select { <span class="hljs-params">|r|</span> r.title =~ <span class="hljs-regexp">/sales/</span> }
+    result = master_project.transfer_objects(reports, <span class="hljs-symbol">project:</span> [target_project_1, target_project_2])
+
+    <span class="hljs-comment"># If you provided an array of projects the method will not throw an exception on failed</span>
+    <span class="hljs-comment"># imports. It returns an array of results an you have to investigate to know what is up.</span>
+    <span class="hljs-comment"># The shape of results is in shape</span>
+    <span class="hljs-comment"># {</span>
+    <span class="hljs-comment">#   project: target_project,</span>
+    <span class="hljs-comment">#   result: true</span>
+    <span class="hljs-comment"># }</span>
+    puts <span class="hljs-string">"<span class="hljs-subst">#{result.select {<span class="hljs-params">|r|</span> r[<span class="hljs-symbol">:result</span>] }</span>.count} projects succeeded"</span>
+    puts <span class="hljs-string">"<span class="hljs-subst">#{result.reject {<span class="hljs-params">|r|</span> r[<span class="hljs-symbol">:result</span>] }</span>.count} projects failed"</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Objects import happen in two stages. First you export objects with an API call. This creates a package on our platform and provides you with a token. You can then use the token to initiate the import. In most cases you do not care about these details and 2 methods above are all what you need. In some cases though you want the low level control. Here is a quick example how to use those lower level methods.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: UTF-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  target_project = c.projects(<span class="hljs-string">'target_project_id'</span>)
+
+  <span class="hljs-comment"># Lets log into project you would like to transfer from</span>
+  GoodData.with_project(<span class="hljs-string">'master_project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|master_project|</span>
+    <span class="hljs-comment"># find objects you would like to transfer</span>
+    <span class="hljs-comment"># here we transfer all reports containing word "sales" in the title</span>
+    reports = master_project.reports.select { <span class="hljs-params">|r|</span> r.title =~ <span class="hljs-regexp">/sales/</span> }
+    <span class="hljs-keyword">begin</span>
+      token = master_project.objects_export(reports)
+    <span class="hljs-keyword">rescue</span> ObjectsExportError
+      puts <span class="hljs-string">"Export failed"</span>
+    <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">begin</span>
+      target_project.objects_import(token)
+    <span class="hljs-keyword">rescue</span> ObjectsImportError
+      puts <span class="hljs-string">"Import failed"</span>
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="deleting-a-project"></a><a href="#deleting-a-project" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Deleting a Project</h2>
+<p>You can delete a project programmatically:</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_pid'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    project.delete
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span> 
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="listing-roles"></a><a href="#listing-roles" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Listing Roles</h2>
+<p>You can list the roles you have available in your project:</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_pid'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    <span class="hljs-comment"># Usually what is useful is to see the titles</span>
+    pp project.roles.map(&amp;<span class="hljs-symbol">:title</span>)
+    <span class="hljs-comment"># But occassionally you need identifiers and urls as well</span>
+    pp project.roles.map(&amp;<span class="hljs-symbol">:identifier</span>)
+    pp project.roles.map(&amp;<span class="hljs-symbol">:uri</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span> 
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="setting-and-updating-project-metadata-storage"></a><a href="#setting-and-updating-project-metadata-storage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Setting and Updating Project Metadata Storage</h2>
+<p>You can use project metadata storage to store some additional information.</p>
+<p>Each project has a small API that allows to set some values in a simple
+key value manner. This is usually used for storing some information that
+do not fit into the data.</p>
+<pre><code class="hljs css ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+client = GoodData.connect
+project = client.projects(<span class="hljs-string">'project_id'</span>)
+
+<span class="hljs-comment"># You can set some metadata</span>
+p.set_metadata(<span class="hljs-string">'key'</span>, <span class="hljs-string">'value'</span>)
+
+<span class="hljs-comment"># You can access the project metadata in two ways</span>
+<span class="hljs-comment"># </span>
+<span class="hljs-comment"># First is to get specific key directly</span>
+p.metadata(<span class="hljs-string">'key'</span>)
+<span class="hljs-comment"># =&gt; 'value</span>
+<span class="hljs-comment"># In case you try to access a nonexisting key you will get 404</span>
+
+<span class="hljs-comment"># Second is to access all metadata. This will return them as a Hash which you can access as usual</span>
+m = p.metadata
+<span class="hljs-comment"># =&gt; {"key"=&gt;"value"}</span>
+m[<span class="hljs-string">'key'</span>]
+<span class="hljs-comment"># =&gt; "value"</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="create-custom-color-palette"></a><a href="#create-custom-color-palette" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Create custom color palette</h2>
+<p>You can create a set of color palette to decorate your reports.</p>
+<p>Create custom color palette with your color definitions. You can reset
+your project to use the default color palette if needed.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    colors = [
+      { <span class="hljs-symbol">r:</span> <span class="hljs-number">25</span>, <span class="hljs-symbol">g:</span> <span class="hljs-number">36</span>, <span class="hljs-symbol">b:</span> <span class="hljs-number">48</span> },
+      { <span class="hljs-symbol">r:</span> <span class="hljs-number">33</span>, <span class="hljs-symbol">g:</span> <span class="hljs-number">36</span>, <span class="hljs-symbol">b:</span> <span class="hljs-number">64</span> },
+      { <span class="hljs-symbol">r:</span> <span class="hljs-number">42</span>, <span class="hljs-symbol">g:</span> <span class="hljs-number">61</span>, <span class="hljs-symbol">b:</span> <span class="hljs-number">81</span> }
+    ]
+
+    project.create_custom_color_palette(colors)
+
+    <span class="hljs-comment"># get the current color palette</span>
+    current_color_palette = project.current_color_palette.colors
+
+    project.reset_color_palette
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="looking-up-metadata-objects"></a><a href="#looking-up-metadata-objects" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Looking up Metadata Objects</h2>
+<p>If you need to retrieve metadata objects (e.g. metrics, facts,
+labels) by numeric ID, string identifier or URI, use <code>GoodData::MdObject#[]</code> to
+look up your metadata objects. This method is aliased <code>#get_by_id</code>.</p>
+<pre><code class="hljs css ruby">options = { <span class="hljs-symbol">project:</span> project, <span class="hljs-symbol">client:</span> client }
+id = metric.obj_id
+<span class="hljs-comment"># =&gt; "2258"</span>
+GoodData::MdObject[id, options].<span class="hljs-keyword">class</span>
+<span class="hljs-comment"># =&gt; GoodData::Metric</span>
+
+identifier = metric.identifier
+<span class="hljs-comment"># =&gt; "metric.total.claim.amount"</span>
+GoodData::MdObject[identifier, options].<span class="hljs-keyword">class</span>
+<span class="hljs-comment"># =&gt; GoodData::Metric</span>
+
+uri = metric.uri
+<span class="hljs-comment"># =&gt; "/gdc/md/zlf5mgyd1txaztohukv8xwv1jjm28zvg/obj/2258"</span>
+GoodData::MdObject[uri, options].<span class="hljs-keyword">class</span>
+<span class="hljs-comment"># =&gt; GoodData::Metric</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="logging.html">← Logging</a><a class="docs-next button" href="working_with_users.html">Working with Users →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#creating-empty-project">Creating Empty Project</a></li><li><a href="#renaming-project">Renaming Project</a></li><li><a href="#cloning-project">Cloning Project</a></li><li><a href="#cloning-project-across-organizations">Cloning Project across Organizations</a></li><li><a href="#creating-empty-project-using-specific-environment">Creating Empty Project using specific environment</a></li><li><a href="#creating-project-from-template">Creating Project from Template</a></li><li><a href="#migrating-objects-between-projects">Migrating objects between projects</a></li><li><a href="#deleting-a-project">Deleting a Project</a></li><li><a href="#listing-roles">Listing Roles</a></li><li><a href="#setting-and-updating-project-metadata-storage">Setting and Updating Project Metadata Storage</a></li><li><a href="#create-custom-color-palette">Create custom color palette</a></li><li><a href="#looking-up-metadata-objects">Looking up Metadata Objects</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/gooddata-ruby-doc/" class="nav-home"><img src="/gooddata-ruby-doc/img/gooddata-ruby.svg" alt="Ruby SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/gooddata-ruby-doc/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc2.html">Guides (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/gooddata-ruby-doc/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/gooddata-ruby-doc/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/gooddata-ruby-doc/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 GoodData</section></footer></div></body></html>

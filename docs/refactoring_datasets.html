@@ -1,0 +1,138 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Refactoring datasets · Ruby SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Refactoring datasets · Ruby SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://gooddata.github.io/gooddata-ruby-doc/index.html"/><meta property="og:description" content="How to work on your project. Note, this is work in progress."/><meta property="og:image" content="https://gooddata.github.io/gooddata-ruby-doc/img/docusaurus.png"/><link rel="shortcut icon" href="/gooddata-ruby-doc/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/gooddata-ruby-doc/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/gooddata-ruby-doc/"><img class="logo" src="/gooddata-ruby-doc/img/gooddata-ruby.svg"/><h2 class="headerTitle">Ruby SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/gooddata-ruby-doc/docs/getting_started.html" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Refactoring datasets</h1></header><article><div><span><p>How to work on your project. Note, this is work in progress.</p>
+<p>Use SDK refactoring features.</p>
+<p>Let’s have a look at two hypothetical but very common scenarios that you
+probably encountered in during career.</p>
+<h2><a class="anchor" aria-hidden="true" id="one-dataset-problem"></a><a href="#one-dataset-problem" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>One Dataset problem</h2>
+<p>Lets' say you have model like this</p>
+<pre><code class="hljs css ruby">blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">'Not so great project'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+  p.add_dataset(<span class="hljs-string">'dataset.reps'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Sale Reps'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.reps.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Sales Rep'</span>)
+    d.add_label(<span class="hljs-string">'label.reps.id'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.reps.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Sales Rep Name'</span>)
+  <span class="hljs-keyword">end</span>
+
+  p.add_dataset(<span class="hljs-string">'dataset.regions'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Sale Reps'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.regions.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Sales Region'</span>)
+    d.add_label(<span class="hljs-string">'label.regions.id'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.regions.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Sales Rep Name'</span>)
+  <span class="hljs-keyword">end</span>
+
+  p.add_dataset(<span class="hljs-string">'dataset.sales'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Department'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.sales.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Sale Id'</span>)
+    d.add_label(<span class="hljs-string">'label.sales.id'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.sales.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Sales tracking number'</span>)
+    d.add_fact(<span class="hljs-string">'fact.sales.amount'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Amount'</span>)
+    d.add_attribute(<span class="hljs-string">'attr.sales.stage'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Stage'</span>)
+    d.add_label(<span class="hljs-string">'label.sales.stage'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Stage Name'</span>, <span class="hljs-symbol">reference:</span><span class="hljs-string">'attr.sales.stage'</span>)
+    d.add_reference(<span class="hljs-string">'dataset.regions'</span>)
+    d.add_reference(<span class="hljs-string">'dataset.reps'</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>There is one problem. We should definitely extract the attribute from
+'dataset.sales' dataset somewhere else. Also the anchor for this dataset
+has a label. Unless we do not have specific reason for it we should
+extract it somewhere else.</p>
+<p>We can try to ask SDK to help us</p>
+<pre><code class="hljs css ruby">refactored_blueprint = blueprint.refactor_split_df(<span class="hljs-string">'dataset.sales'</span>)
+
+<span class="hljs-comment"># Let's have a look around</span>
+refactored_blueprint.datasets.map(&amp;<span class="hljs-symbol">:title</span>)
+
+refactored_blueprint.datasets.map {<span class="hljs-params">|d|</span> [d.title, d.id]}
+=&gt; [[<span class="hljs-string">"Sale Reps"</span>, <span class="hljs-string">"dataset.reps"</span>],
+    [<span class="hljs-string">"Sale Reps"</span>, <span class="hljs-string">"dataset.regions"</span>],
+    [<span class="hljs-string">"Department"</span>, <span class="hljs-string">"dataset.sales"</span>],
+    [<span class="hljs-string">"Dataset.Sales Dim"</span>, <span class="hljs-string">"dataset.sales_dim"</span>]]
+
+<span class="hljs-comment"># So there is a new dataset</span>
+<span class="hljs-comment"># If we print it out in repl</span>
+refactored_blueprint.datasets(<span class="hljs-string">'dataset.sales_dim'</span>)
+<span class="hljs-comment"># prints</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># {</span>
+<span class="hljs-comment">#   :type=&gt;:dataset,</span>
+<span class="hljs-comment">#   :id=&gt;"dataset.sales_dim",</span>
+<span class="hljs-comment">#   :columns=&gt;</span>
+<span class="hljs-comment">#    [{:type=&gt;:anchor, :id=&gt;"vymysli_id"},</span>
+<span class="hljs-comment">#     {:type=&gt;:label, :id=&gt;"label.vymysli_id", :reference=&gt;"vymysli_id"},</span>
+<span class="hljs-comment">#     {:type=&gt;:attribute, :id=&gt;"attr.sales.stage", :title=&gt;"Stage"},</span>
+<span class="hljs-comment">#     {:type=&gt;:label,</span>
+<span class="hljs-comment">#      :id=&gt;"label.sales.stage",</span>
+<span class="hljs-comment">#      :title=&gt;"Stage Name",</span>
+<span class="hljs-comment">#      :reference=&gt;"attr.sales.stage"}]}</span>
+</code></pre>
+<p>You can see that there is stage attribute right there. And it prepared
+an anchor for us. The naming definitely needs touch ups (User should be
+able to specify the ids somehow) but the structure is there. Now let’s
+have a look what happened to sales dataset</p>
+<pre><code class="hljs css ruby">refactored_blueprint.datasets(<span class="hljs-string">'dataset.sales'</span>)
+<span class="hljs-comment"># prints</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># {:id=&gt;"dataset.sales",</span>
+<span class="hljs-comment">#    :type=&gt;:dataset,</span>
+<span class="hljs-comment">#    :columns=&gt;</span>
+<span class="hljs-comment">#     [{:type=&gt;:anchor, :id=&gt;"attr.sales.id", :title=&gt;"Sale Id"},</span>
+<span class="hljs-comment">#      {:type=&gt;:label,</span>
+<span class="hljs-comment">#       :id=&gt;"label.sales.id",</span>
+<span class="hljs-comment">#       :reference=&gt;"attr.sales.id",</span>
+<span class="hljs-comment">#       :title=&gt;"Sales tracking number"},</span>
+<span class="hljs-comment">#      {:type=&gt;:fact, :id=&gt;"fact.sales.amount", :title=&gt;"Amount"},</span>
+<span class="hljs-comment">#      {:type=&gt;:reference, :dataset=&gt;"dataset.regions"},</span>
+<span class="hljs-comment">#      {:type=&gt;:reference, :dataset=&gt;"dataset.reps"},</span>
+<span class="hljs-comment">#      {:type=&gt;:reference, :dataset=&gt;"dataset.sales_dim"}]</span>
+</code></pre>
+<p>You can see that the attribute has gone alongside the labels. Only facts
+remain. A new reference was added so the reports should still be
+working. This might seem just a minor issue but once you start creating
+more complex models with multiple stars you find this technique a
+necessity so why not automate it?</p>
+<h2><a class="anchor" aria-hidden="true" id="multiple-facts-in-one-dataset"></a><a href="#multiple-facts-in-one-dataset" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Multiple facts in one dataset</h2>
+<p>Another problem we will look at is splitting fact tables because of
+facts. Consider this model:</p>
+<pre><code class="hljs css ruby">blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">'Not so great project'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+
+  p.add_dataset(<span class="hljs-string">'dataset.orders_dim'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Orders Dimension'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.orders_dim.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Order'</span>)
+    d.add_label(<span class="hljs-string">'label.dataset.orders_dim.id'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.orders_dim.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Order Id'</span>)
+  <span class="hljs-keyword">end</span>
+
+  p.add_dataset(<span class="hljs-string">'dataset.orders_fact'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Orders Fact Table'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.orders_fact.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Sales Rep'</span>)
+    d.add_fact(<span class="hljs-string">'fact.dataset.orders_fact.amount_ordered'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Amount Ordered'</span>)
+    d.add_fact(<span class="hljs-string">'fact.dataset.orders_fact.amount_shipped'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Amount Shipped'</span>)
+    d.add_reference(<span class="hljs-string">'dataset.orders_dim'</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>What you want to do is have a look at how many shipments were ordered
+and shipped on particular day. But if you keep the facts in one dataset
+you will have all kinds of trouble with nil values. Much better is to
+split the fact tables in two. Again we can try doing that with SDK</p>
+<p>Note: it seems it currently does not work with date references. We need
+to update this so I omitted it in the example so it works.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># you define which dataset you would like to split. Secnd parameter is list of facts you would like to move and the last one is the id of the new dataset</span>
+refactored_blueprint = blueprint.refactor_split_facts(<span class="hljs-string">'dataset.orders_fact'</span>, [<span class="hljs-string">'fact.dataset.orders_fact.amount_shipped'</span>], <span class="hljs-string">'dataset.orders_shipped_fact'</span>)
+
+<span class="hljs-comment"># Again Let's explore</span>
+refactored_blueprint.datasets.count <span class="hljs-comment"># =&gt; 3</span>
+
+refactored_blueprint.datasets.map {<span class="hljs-params">|d|</span> [d.title, d.id]}
+<span class="hljs-comment"># =&gt; [["Orders Dimension", "dataset.orders_dim"],</span>
+<span class="hljs-comment">#     ["Orders Fact Table", "dataset.orders_fact"],</span>
+<span class="hljs-comment">#     ["Dataset.Orders Shipped Fact", "dataset.orders_shipped_fact"]]</span>
+
+<span class="hljs-comment"># There is a new dataset "dataset.orders_shipped_fact"</span>
+refactored_blueprint.datasets(<span class="hljs-string">'dataset.orders_shipped_fact'</span>)
+<span class="hljs-comment"># prints</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># {</span>
+<span class="hljs-comment">#   :id=&gt;"dataset.orders_shipped_fact",</span>
+<span class="hljs-comment">#   :type=&gt;:dataset,</span>
+<span class="hljs-comment">#   :columns=&gt; [</span>
+<span class="hljs-comment">#     {:type=&gt;:anchor, :id=&gt;"dataset.orders_shipped_fact.id"},</span>
+<span class="hljs-comment">#     {:type=&gt;:fact,</span>
+<span class="hljs-comment">#      :id=&gt;"fact.dataset.orders_fact.amount_shipped",</span>
+<span class="hljs-comment">#      :title=&gt;"Amount Shipped"},</span>
+<span class="hljs-comment">#     {:type=&gt;:reference, :dataset=&gt;"dataset.orders_dim"}]}</span>
+</code></pre>
+<p>These are 2 basic ways how to refactor a blueprint in an assisted and
+automated fashion.</p>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#one-dataset-problem">One Dataset problem</a></li><li><a href="#multiple-facts-in-one-dataset">Multiple facts in one dataset</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/gooddata-ruby-doc/" class="nav-home"><img src="/gooddata-ruby-doc/img/gooddata-ruby.svg" alt="Ruby SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/gooddata-ruby-doc/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc2.html">Guides (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/gooddata-ruby-doc/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/gooddata-ruby-doc/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/gooddata-ruby-doc/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 GoodData</section></footer></div></body></html>

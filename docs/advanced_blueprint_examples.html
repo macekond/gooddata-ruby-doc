@@ -1,0 +1,721 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Advanced Blueprint Examples · Ruby SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Advanced Blueprint Examples · Ruby SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://gooddata.github.io/gooddata-ruby-doc/index.html"/><meta property="og:description" content="Using Blueprint to Update Model"/><meta property="og:image" content="https://gooddata.github.io/gooddata-ruby-doc/img/docusaurus.png"/><link rel="shortcut icon" href="/gooddata-ruby-doc/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/gooddata-ruby-doc/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/gooddata-ruby-doc/"><img class="logo" src="/gooddata-ruby-doc/img/gooddata-ruby.svg"/><h2 class="headerTitle">Ruby SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/gooddata-ruby-doc/docs/getting_started.html" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Blueprints</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Basics</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/getting_started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/jack_in.html">Interactive Ruby Console</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/create_a_program.html">Scripting</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/connecting_to_gooddata.html">Connecting to Gooddata Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/handling_credentials.html">Handling Credentials Securely</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/using_gooddata_platform.html">Using GoodData Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/logging.html">Logging and Testing</a></li></ul></div><div class="navGroup navGroupActive"><h3>Advanced Guides</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_projects.html">Working with Projects</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_users.html">Working with Users</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_permissions.html">Setting Permissions</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_models.html">Model Setup</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_your_data.html">Working with Your Data</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_reports.html">Working with Reports</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_dashboards.html">Using Dashboards</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_deployments.html">Deployment How-tos</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_automation.html">Automation and Performance</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_lifecycle.html">Working with Lifecycle</a></li></ul></div><div class="navGroup navGroupActive"><h3>Blueprints</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/creating_project_from_blueprint.html">Creating Project from Blueprint</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/loading_data.html">Loading Data to Project</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/gooddata-ruby-doc/docs/advanced_blueprint_examples.html">Advanced Blueprint Examples</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Advanced Blueprint Examples</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="using-blueprint-to-update-model"></a><a href="#using-blueprint-to-update-model" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using Blueprint to Update Model</h2>
+<p>Blueprints are easy to create programmatically and even to merge them
+together. In this example we will create a simple blueprint with one
+dataset and then add an additional field into blueprint and update the
+model.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+BLUEPRINT_FILE = <span class="hljs-string">'blueprint_file.json'</span>
+
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    blueprint = GoodData::Model::ProjectBlueprint.from_json(BLUEPRINT_FILE)
+    update = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">'update'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+      p.add_dataset(<span class="hljs-string">'repos'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+        d.add_attribute(<span class="hljs-string">'region'</span>)
+      <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">end</span>
+    new_blueprint = blueprint.merge(update)
+    <span class="hljs-keyword">unless</span> new_blueprint.valid?
+        pp new_blueprint.validate
+        fail <span class="hljs-string">"New blueprint is not valid"</span>
+    <span class="hljs-keyword">end</span>
+    project.update_from_blueprint(new_blueprint)
+    <span class="hljs-comment"># now you can look at the model and verify there is new attribute present</span>
+    project.attributes.find {<span class="hljs-params">|a|</span> a.title == <span class="hljs-string">'Region'</span>}
+    new_blueprint.store_to_file(BLUEPRINT_FILE)
+
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>In the example above we have created a new model and updated it right
+away. This is not a typical situation however and there are couple of
+things that you need to be aware of.</p>
+<p>It is more common that you would like to gradually update the model in
+an existing project as the new requirements arrive. For that to be
+possible you have to take the &quot;old&quot; blueprint from some place where it
+is persisted. We will show a basic way how to save a blueprint to a
+file.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+BLUEPRINT_FILE = <span class="hljs-string">'blueprint_file.json'</span>
+
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    blueprint = GoodData::Model::ProjectBlueprint.from_json(BLUEPRINT_FILE)
+    update = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">'update'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+      p.add_dataset(<span class="hljs-string">'repos'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+        d.add_attribute(<span class="hljs-string">'region'</span>)
+      <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">end</span>
+    new_blueprint = blueprint.merge(update)
+    <span class="hljs-keyword">unless</span> new_blueprint.valid?
+            pp new_blueprint.validate
+            fail <span class="hljs-string">"New blueprint is not valid"</span>
+    <span class="hljs-keyword">end</span>
+    project.update_from_blueprint(new_blueprint)
+    <span class="hljs-comment"># now you can look at the model and verify there is new attribute present</span>
+    project.attributes.find {<span class="hljs-params">|a|</span> a.title == <span class="hljs-string">'Region'</span>}
+    new_blueprint.store_to_file(BLUEPRINT_FILE)
+
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="specifying-fields-data-type"></a><a href="#specifying-fields-data-type" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Specifying Fields Data Type</h2>
+<p>You can specify a different data type for attribute or fact in
+a blueprint.</p>
+<p>Each column in blueprint is eventually translated into a physical column
+in a database. While the defaults are typically what you want sometimes
+it might be useful to override them. You can specify the data type with
+gd_data_type clause.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">'Acme project'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+    p.add_date_dimension(<span class="hljs-string">'committed_on'</span>)
+
+    p.add_dataset(<span class="hljs-string">'dataset.commits'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+      d.add_anchor(<span class="hljs-string">'attr.commits.id'</span>)
+      d.add_fact(<span class="hljs-string">'fact.commtis.lines_changed'</span>, <span class="hljs-symbol">gd_data_type:</span> <span class="hljs-string">'integer'</span>)
+      d.add_attribute(<span class="hljs-string">'attr.commits.name'</span>)
+      d.add_label(<span class="hljs-string">'label.commits.name'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.commits.name'</span>)
+      d.add_date(<span class="hljs-string">'committed_on'</span>, <span class="hljs-symbol">:format</span> =&gt; <span class="hljs-string">'dd/MM/yyyy'</span>)
+    <span class="hljs-keyword">end</span>
+
+    project = client.create_project_from_blueprint(blueprint, <span class="hljs-symbol">auth_token:</span> <span class="hljs-string">'token'</span>)
+
+    <span class="hljs-comment"># This is going to fail since we are trying to upload 1.2 into INT numeric type</span>
+    data = [[<span class="hljs-string">'fact.commtis.lines_changed'</span>, <span class="hljs-string">'label.commits.name'</span>, <span class="hljs-string">'committed_on'</span>],
+          [<span class="hljs-number">1.2</span>, <span class="hljs-string">'tomas'</span>, <span class="hljs-string">'01/01/2001'</span>]]
+    project.upload(data, blueprint, <span class="hljs-string">'dataset.commits'</span>)
+
+    <span class="hljs-comment"># This is going to pass since we are trying to upload 1 into INT numeric type</span>
+    data = [[<span class="hljs-string">'fact.commtis.lines_changed'</span>, <span class="hljs-string">'label.commits.name'</span>, <span class="hljs-string">'committed_on'</span>],
+          [<span class="hljs-number">1</span>, <span class="hljs-string">'tomas'</span>, <span class="hljs-string">'01/01/2001'</span>]]
+    project.upload(data, blueprint, <span class="hljs-string">'dataset.commits'</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>These data types are currently supported on the platform</p>
+<ul>
+<li>DECIMAL(m, d)</li>
+<li>INTEGER</li>
+<li>LONG</li>
+<li>VARCHAR(n)</li>
+</ul>
+<p>The case where this is very useful are</p>
+<ul>
+<li><p>if you use values from smaller domain (for example integers) you can
+leverage appropriate data type to save space and speed things up</p></li>
+<li><p>if you are using facts with atypical precision (the default is
+DECIMAL(12,2)) you can leverage decimal type with larger precision</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="working-with-folders"></a><a href="#working-with-folders" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Working with Folders</h2>
+<p>You can use folders for organizing your project’s model.</p>
+<p>By default all the attributes and facts are automatically assigned a
+folder based on it’s dataset name. This name is either generated from
+the dataset’s name or title (if defined). You can override this default
+and specify your own folder for any field.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">"my_blueprint"</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+    p.add_dataset(<span class="hljs-string">'dataset.reps'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Awesome Sales Reps'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+      d.add_anchor(<span class="hljs-string">'attr.reps.id'</span>)
+      d.add_label(<span class="hljs-string">'label.reps.id'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.reps.id'</span>)
+      d.add_attribute(<span class="hljs-string">'attr.reps.name'</span>)
+      d.add_label(<span class="hljs-string">'label.reps.name'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.reps.name'</span>)
+    <span class="hljs-keyword">end</span>
+
+    p.add_dataset(<span class="hljs-string">'dataset.regions'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+      d.add_anchor(<span class="hljs-string">'attr.regions.id'</span>)
+      d.add_label(<span class="hljs-string">'label.regions.id'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.regions.id'</span>)
+      d.add_attribute(<span class="hljs-string">'attr.regions.name'</span>)
+      d.add_label(<span class="hljs-string">'label.regions.name'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.regions.name'</span>)
+    <span class="hljs-keyword">end</span>
+
+    p.add_dataset(<span class="hljs-string">'dataset.opportunities'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+      d.add_anchor(<span class="hljs-string">'attr.opportunities.id'</span>)
+      d.add_fact(<span class="hljs-string">'fact.amount'</span>, <span class="hljs-symbol">folder:</span> <span class="hljs-string">'My Special Folder'</span>)
+      d.add_reference(<span class="hljs-string">'dataset.reps'</span>)
+      d.add_reference(<span class="hljs-string">'dataset.regions'</span>)
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+
+  project = client.create_project_from_blueprint(blueprint, <span class="hljs-symbol">auth_token:</span> <span class="hljs-string">'token_id'</span>)
+
+  <span class="hljs-comment"># Currently there is not support in SDK to directly explore folders but we can reach to API directly</span>
+  <span class="hljs-comment"># You can also go to the project in your browser and look for folders there</span>
+  client.get(<span class="hljs-string">"<span class="hljs-subst">#{project.md[<span class="hljs-string">'query'</span>]}</span>/dimensions"</span>)[<span class="hljs-string">'query'</span>][<span class="hljs-string">'entries'</span>].map {<span class="hljs-params">|i|</span> i[<span class="hljs-string">'title'</span>]} <span class="hljs-comment"># =&gt; ["Dataset.Opportunities", "Awesome Sales Reps", "Dataset.Regions"]</span>
+
+  client.get(<span class="hljs-string">"<span class="hljs-subst">#{project.md[<span class="hljs-string">'query'</span>]}</span>/folders"</span>)[<span class="hljs-string">'query'</span>][<span class="hljs-string">'entries'</span>].map {<span class="hljs-params">|i|</span> i[<span class="hljs-string">'title'</span>]} <span class="hljs-comment"># =&gt; ["My Special Folder"]</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Folders are not removed. If you would publish a model that doesn’t
+contain an existing folder, the folder isn’t automatically removed (it
+is empty).</p>
+<h2><a class="anchor" aria-hidden="true" id="creating-project-in-one-page-of-code"></a><a href="#creating-project-in-one-page-of-code" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating Project in One Page of Code</h2>
+<p>You can create the whole project via code. You need to have a provisioning token for project creation.</p>
+<p>What we will do is to create a simple project with 4 datasets. Load
+couple of line of data create a simple report and invite 2 other people
+to it. All this will fit on one page of code. Let’s get to it.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection(<span class="hljs-string">'user'</span>, <span class="hljs-string">'password'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">'Acme project'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+    p.add_date_dimension(<span class="hljs-string">'committed_on'</span>)
+    p.add_dataset(<span class="hljs-string">'devs'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+      d.add_anchor(<span class="hljs-string">'attr.dev'</span>)
+      d.add_label(<span class="hljs-string">'label.dev_id'</span>, <span class="hljs-symbol">:reference</span> =&gt; <span class="hljs-string">'attr.dev'</span>)
+      d.add_label(<span class="hljs-string">'label.dev_email'</span>, <span class="hljs-symbol">:reference</span> =&gt; <span class="hljs-string">'attr.dev'</span>)
+    <span class="hljs-keyword">end</span>
+    p.add_dataset(<span class="hljs-string">'commits'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+      d.add_anchor(<span class="hljs-string">'attr.commits_id'</span>)
+      d.add_fact(<span class="hljs-string">'fact.lines_changed'</span>)
+      d.add_date(<span class="hljs-string">'committed_on'</span>)
+      d.add_reference(<span class="hljs-string">'devs'</span>)
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+  project = GoodData::Project.create_from_blueprint(blueprint, <span class="hljs-symbol">auth_token:</span> <span class="hljs-string">''</span>)
+  puts <span class="hljs-string">"Created project <span class="hljs-subst">#{project.pid}</span>"</span>
+
+  <span class="hljs-comment"># Load data</span>
+  commits_data = [
+    [<span class="hljs-string">'fact.lines_changed'</span>, <span class="hljs-string">'committed_on'</span>, <span class="hljs-string">'devs'</span>],
+    [<span class="hljs-number">1</span>, <span class="hljs-string">'01/01/2014'</span>, <span class="hljs-number">1</span>],
+    [<span class="hljs-number">3</span>, <span class="hljs-string">'01/02/2014'</span>, <span class="hljs-number">2</span>],
+    [<span class="hljs-number">5</span>, <span class="hljs-string">'05/02/2014'</span>, <span class="hljs-number">3</span>]]
+  project.upload(commits_data, blueprint, <span class="hljs-string">'commits'</span>)
+
+  devs_data = [
+    [<span class="hljs-string">'label.dev_id'</span>, <span class="hljs-string">'label.dev_email'</span>],
+    [<span class="hljs-number">1</span>, <span class="hljs-string">'tomas@gooddata.com'</span>],
+    [<span class="hljs-number">2</span>, <span class="hljs-string">'petr@gooddata.com'</span>],
+    [<span class="hljs-number">3</span>, <span class="hljs-string">'jirka@gooddata.com'</span>]]
+  project.upload(devs_data, blueprint, <span class="hljs-string">'devs'</span>)
+
+  <span class="hljs-comment"># create a metric</span>
+  metric = project.facts(<span class="hljs-string">'fact.lines_changed'</span>).create_metric
+  metric.save
+  report = project.create_report(<span class="hljs-symbol">title:</span> <span class="hljs-string">'Awesome_report'</span>, <span class="hljs-symbol">top:</span> [metric], <span class="hljs-symbol">left:</span> [<span class="hljs-string">'label.dev_email'</span>])
+  report.save
+  [<span class="hljs-string">'john@example.com'</span>].each <span class="hljs-keyword">do</span> <span class="hljs-params">|email|</span>
+    p.invite(email, <span class="hljs-string">'admin'</span>, <span class="hljs-string">"Guys checkout this report <span class="hljs-subst">#{report.browser_uri}</span>"</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="using-attribute-types-when-creating-project"></a><a href="#using-attribute-types-when-creating-project" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using Attribute Types when Creating Project</h2>
+<p>You can specify certain label’s data type see <a href="http://developer.gooddata.com/article/setting-up-data-for-geo-charts">this
+document</a>
+for more details.</p>
+<p>You need to have a provisioning token for project creation.</p>
+<p>We’ll create a simple project’s blueprint that contains a label with the
+'GDC.link' (hyperlink) datatype in the code snippet below.</p>
+<p><strong>Common types</strong></p>
+<ul>
+<li>GDC.link</li>
+<li>GDC.text</li>
+<li>GDC.time</li>
+</ul>
+<p><strong>Types for Geo</strong></p>
+<ul>
+<li><p>GDC.geo.pin <em>(Geo pushpin)</em></p></li>
+<li><p>GDC.geo.ausstates.name <em>(Australia States (Name))</em></p></li>
+<li><p>GDC.geo.ausstates.code <em>(Australia States (ISO code))</em></p></li>
+<li><p>GDC.geo.usstates.name <em>(US States (Name))</em></p></li>
+<li><p>GDC.geo.usstates.geo_id <em>(US States (US Census ID))</em></p></li>
+<li><p>GDC.geo.usstates.code <em>(US States (2-letter code))</em></p></li>
+<li><p>GDC.geo.uscounties.geo_id <em>(US Counties (US Census ID))</em></p></li>
+<li><p>GDC.geo.worldcountries.name <em>(World countries (Name))</em></p></li>
+<li><p>GDC.geo.worldcountries.iso2 <em>(World countries (ISO a2))</em></p></li>
+<li><p>GDC.geo.worldcountries.iso3 <em>(World countries (ISO a3))</em></p></li>
+<li><p>GDC.geo.czdistricts.name <em>(Czech Districts (Name))</em></p></li>
+<li><p>GDC.geo.czdistricts.name_no_diacritics <em>(Czech Districts)</em></p></li>
+<li><p>GDC.geo.czdistricts.nuts4 <em>(Czech Districts (NUTS 4))</em></p></li>
+<li><p>GDC.geo.czdistricts.knok <em>(Czech Districts (KNOK))</em></p></li>
+</ul>
+<pre><code class="hljs css ruby">
+<span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">'Beers Project'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+    p.add_date_dimension(<span class="hljs-string">'created_at'</span>)
+
+    <span class="hljs-comment"># Add Breweries Dataset</span>
+    p.add_dataset(<span class="hljs-string">'dataset.breweries'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Breweries'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+      d.add_anchor(<span class="hljs-string">'attr.breweries.brewery_id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Brewery ID'</span>)
+      d.add_label(<span class="hljs-string">'label.breweries.brewery_id.brewery_id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Brewery ID'</span>, <span class="hljs-symbol">:reference</span> =&gt; <span class="hljs-string">'attr.breweries.brewery_id'</span>)
+      d.add_label(<span class="hljs-string">'label.breweries.brewery_id.name'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Brewery Name'</span>, <span class="hljs-symbol">:reference</span> =&gt; <span class="hljs-string">'attr.breweries.brewery_id'</span>)
+      d.add_label(<span class="hljs-string">'label.breweries.brewery_id.link'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Brewery URL'</span>, <span class="hljs-symbol">:reference</span> =&gt; <span class="hljs-string">'attr.breweries.brewery_id'</span>, <span class="hljs-symbol">:gd_type</span> =&gt; <span class="hljs-string">'GDC.link'</span>) <span class="hljs-comment"># &lt;--- Notice this!</span>
+      d.add_date(<span class="hljs-string">'created_at'</span>, <span class="hljs-symbol">:dataset</span> =&gt; <span class="hljs-string">'created_at'</span>)
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+
+  project = GoodData::Project.create_from_blueprint(blueprint, <span class="hljs-symbol">auth_token:</span> <span class="hljs-string">'YOUR_TOKEN_HERE'</span>)
+  puts <span class="hljs-string">"Created project <span class="hljs-subst">#{project.pid}</span>"</span>
+
+  GoodData::with_project(project) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+    <span class="hljs-comment"># Load Brewery Data</span>
+    data = [
+      <span class="hljs-string">%w(label.breweries.brewery_id.brewery_id label.breweries.brewery_id.name label.breweries.brewery_id.link created_at)</span>,
+      [<span class="hljs-number">1</span>, <span class="hljs-string">'21st Amendment Brewery'</span>, <span class="hljs-string">'http://21st-amendment.com/'</span>, <span class="hljs-string">'06/23/2015'</span>],
+      [<span class="hljs-number">2</span>, <span class="hljs-string">'Almanac Beer Company'</span>, <span class="hljs-string">'http://www.almanacbeer.com/'</span>, <span class="hljs-string">'06/23/2015'</span>],
+      [<span class="hljs-number">3</span>, <span class="hljs-string">'Anchor Brewing Company'</span>, <span class="hljs-string">'http://www.anchorbrewing.com/'</span>, <span class="hljs-string">'06/23/2015'</span>],
+      [<span class="hljs-number">4</span>, <span class="hljs-string">'Ballast Point Brewing Company'</span>, <span class="hljs-string">'http://www.ballastpoint.com/'</span>, <span class="hljs-string">'06/23/2015'</span>],
+      [<span class="hljs-number">5</span>, <span class="hljs-string">'San Francisco Brewing Company'</span>, <span class="hljs-string">'http://www.ballastpoint.com/'</span>, <span class="hljs-string">'06/23/2015'</span>],
+      [<span class="hljs-number">6</span>, <span class="hljs-string">'Speakeasy Ales and Lagers'</span>, <span class="hljs-string">'http://www.goodbeer.com/'</span>, <span class="hljs-string">'06/23/2015'</span>]
+    ]
+    GoodData::Model.upload_data(data, blueprint, <span class="hljs-string">'dataset.breweries'</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="moving-fields-in-blueprint"></a><a href="#moving-fields-in-blueprint" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Moving Fields in Blueprint</h2>
+<p>If you created a model, you can now move a field to different dataset.</p>
+<p>We will use variation of our hr demo model. If you look at that model
+you can see that we have an attribute <strong>region</strong> defined on departments
+dataset. This is how you (hypothetically) originally created the project
+and everything was fine but you realized that you would like to assign
+the region to people dataset not departments dataset.</p>
+<p>Before we start changing things spin up the project go inside the
+project and create a report which show <strong>SUM(Amount)</strong> sliced by
+<strong>Region</strong>.</p>
+<p>Now let’s move the attribute between datasets.</p>
+<pre><code class="hljs css ruby">client = GoodData.connect
+project = client.projects(<span class="hljs-string">'PROJECT_ID'</span>)
+
+blueprint = project.blueprint
+blueprint.move!(<span class="hljs-string">'attr.department.region'</span>, <span class="hljs-string">'dataset.department'</span>, <span class="hljs-string">'dataset.employee'</span>)
+project.update_from_blueprint(blueprint)
+</code></pre>
+<p>Since we moved the attribute we have to load new data for it in the context of new dataset. The old dataset (departments) is fine since we just removed a column.</p>
+<pre><code class="hljs css ruby">employee_data_with_dep = [
+    [<span class="hljs-string">'label.employee.id'</span>,<span class="hljs-string">'label.employee.fname'</span>,<span class="hljs-string">'label.employee.lname'</span>,<span class="hljs-string">'dataset.department'</span>, <span class="hljs-string">'label.department.region'</span>],
+    [<span class="hljs-string">'e1'</span>,<span class="hljs-string">'Sheri'</span>,<span class="hljs-string">'Nowmer'</span>,<span class="hljs-string">'d1'</span>, <span class="hljs-string">'North America'</span>],
+    [<span class="hljs-string">'e2'</span>,<span class="hljs-string">'Derrick'</span>,<span class="hljs-string">'Whelply'</span>,<span class="hljs-string">'d2'</span>, <span class="hljs-string">'Europe'</span>]
+]
+project.upload(employee_data_with_dep, blueprint, <span class="hljs-string">'dataset.employee'</span>)
+</code></pre>
+<p>Now go ahead and check the original report. Yes, it is still working
+fine. It gives different numbers since we changed the meaning of it but
+we did not break anything.</p>
+<h2><a class="anchor" aria-hidden="true" id="hr-demo-project"></a><a href="#hr-demo-project" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HR Demo project</h2>
+<p>You can play with blueprints on this toy project. Use our HR example which models a small company and people inside
+it. We tried to use majority of the features that the blueprint builder
+supports so you can take it as a starting point when you are creating
+yours.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+<span class="hljs-comment"># Connect to platform (using credentials in ~/.gooddata)</span>
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+
+  <span class="hljs-comment"># Create LDM blueprint</span>
+  blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">'HR Demo Project'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+    p.add_date_dimension(<span class="hljs-string">'dataset.payment'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Payment'</span>)
+
+    p.add_dataset(<span class="hljs-string">'dataset.department'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Department'</span>, <span class="hljs-symbol">folder:</span> <span class="hljs-string">'Department &amp; Employee'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+      d.add_anchor(<span class="hljs-string">'attr.department.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Department ID'</span>)
+      d.add_label(<span class="hljs-string">'label.department.id'</span>, <span class="hljs-symbol">reference:</span><span class="hljs-string">'attr.department.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Department ID'</span>)
+      d.add_label(<span class="hljs-string">'label.department.name'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.department.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Department Name'</span>)
+      d.add_attribute(<span class="hljs-string">'attr.department.region'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Department Region'</span>)
+      d.add_label(<span class="hljs-string">'label.department.region'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.department.region'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Department Region'</span>)
+    <span class="hljs-keyword">end</span>
+
+    p.add_dataset(<span class="hljs-string">'dataset.employee'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Employee'</span>, <span class="hljs-symbol">folder:</span> <span class="hljs-string">'Department &amp; Employee'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+      d.add_anchor(<span class="hljs-string">'attr.employee.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Employee ID'</span>)
+      d.add_label(<span class="hljs-string">'label.employee.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Employee ID'</span>, <span class="hljs-symbol">reference:</span><span class="hljs-string">'attr.employee.id'</span>)
+      d.add_label(<span class="hljs-string">'label.employee.fname'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Employee Firstname'</span>, <span class="hljs-symbol">reference:</span><span class="hljs-string">'attr.employee.id'</span>)
+      d.add_label(<span class="hljs-string">'label.employee.lname'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Employee Lastname'</span>, <span class="hljs-symbol">reference:</span><span class="hljs-string">'attr.employee.id'</span>)
+      d.add_reference(<span class="hljs-string">'dataset.department'</span>)
+    <span class="hljs-keyword">end</span>
+
+    p.add_dataset(<span class="hljs-string">'dataset.salary'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Salary'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+      d.add_anchor(<span class="hljs-string">'attr.salary.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Salary ID'</span>, <span class="hljs-symbol">folder:</span> <span class="hljs-string">'Salary'</span>)
+      d.add_label(<span class="hljs-string">'label.salary.id'</span>, <span class="hljs-symbol">reference:</span><span class="hljs-string">'attr.salary.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Salary ID'</span>, <span class="hljs-symbol">folder:</span> <span class="hljs-string">'Salary'</span>)
+      d.add_fact(<span class="hljs-string">'fact.salary.amount'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Amount'</span>, <span class="hljs-symbol">folder:</span> <span class="hljs-string">'Salary'</span>)
+      d.add_date(<span class="hljs-string">'dataset.payment'</span>, <span class="hljs-symbol">format:</span> <span class="hljs-string">'yyyy-MM-dd'</span>)
+      d.add_reference(<span class="hljs-string">'dataset.employee'</span>)
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+
+  <span class="hljs-comment"># Create new project (datamart)</span>
+  project = GoodData::Project.create_from_blueprint(blueprint, <span class="hljs-symbol">auth_token:</span> token)
+  puts <span class="hljs-string">"Created project <span class="hljs-subst">#{project.pid}</span>"</span>
+
+  <span class="hljs-comment"># Load data</span>
+  department_data = [
+      [<span class="hljs-string">'label.department.id'</span>,<span class="hljs-string">'label.department.name'</span>, <span class="hljs-string">'label.department.region'</span>],
+      [<span class="hljs-string">'d1'</span>,<span class="hljs-string">'HQ General Management'</span>, <span class="hljs-string">'North America'</span>],
+      [<span class="hljs-string">'d2'</span>,<span class="hljs-string">'HQ Information Systems'</span>, <span class="hljs-string">'Europe'</span>]
+  ]
+  project.upload(department_data, blueprint, <span class="hljs-string">'dataset.department'</span>)
+
+  employee_data = [
+      [<span class="hljs-string">'label.employee.id'</span>,<span class="hljs-string">'label.employee.fname'</span>,<span class="hljs-string">'label.employee.lname'</span>,<span class="hljs-string">'dataset.department'</span>, <span class="hljs-string">'label.department.region'</span>],
+      [<span class="hljs-string">'e1'</span>,<span class="hljs-string">'Sheri'</span>,<span class="hljs-string">'Nowmer'</span>,<span class="hljs-string">'d1'</span>, <span class="hljs-string">'North America'</span>],
+      [<span class="hljs-string">'e2'</span>,<span class="hljs-string">'Derrick'</span>,<span class="hljs-string">'Whelply'</span>,<span class="hljs-string">'d2'</span>, <span class="hljs-string">'Europe'</span>]
+  ]
+  project.upload(employee_data, blueprint, <span class="hljs-string">'dataset.employee'</span>)
+
+  employee_data_with_dep = [
+      [<span class="hljs-string">'label.employee.id'</span>,<span class="hljs-string">'label.employee.fname'</span>,<span class="hljs-string">'label.employee.lname'</span>,<span class="hljs-string">'dataset.department'</span>, <span class="hljs-string">'label.department.region'</span>],
+      [<span class="hljs-string">'e1'</span>,<span class="hljs-string">'Sheri'</span>,<span class="hljs-string">'Nowmer'</span>,<span class="hljs-string">'d1'</span>, <span class="hljs-string">'North America'</span>],
+      [<span class="hljs-string">'e2'</span>,<span class="hljs-string">'Derrick'</span>,<span class="hljs-string">'Whelply'</span>,<span class="hljs-string">'d2'</span>, <span class="hljs-string">'Europe'</span>]
+  ]
+  project.upload(employee_data_with_dep, blueprint, <span class="hljs-string">'dataset.employee'</span>)
+
+
+
+  salary_data = [
+      [<span class="hljs-string">'label.salary.id'</span>,<span class="hljs-string">'dataset.employee'</span>,<span class="hljs-string">'fact.salary.amount'</span>,<span class="hljs-string">'dataset.payment'</span>],
+      [<span class="hljs-string">'s1'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-01-01'</span>], [<span class="hljs-string">'s2'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-01-01'</span>], [<span class="hljs-string">'s617'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-02-01'</span>],
+      [<span class="hljs-string">'s618'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-02-01'</span>], [<span class="hljs-string">'s1233'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-03-01'</span>], [<span class="hljs-string">'s1234'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-03-01'</span>],
+      [<span class="hljs-string">'s1849'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-04-01'</span>], [<span class="hljs-string">'s1850'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-04-01'</span>], [<span class="hljs-string">'s2465'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-05-01'</span>],
+      [<span class="hljs-string">'s2466'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-05-01'</span>], [<span class="hljs-string">'s3081'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-06-01'</span>], [<span class="hljs-string">'s3082'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-06-01'</span>],
+      [<span class="hljs-string">'s3697'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-07-01'</span>], [<span class="hljs-string">'s3698'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-07-01'</span>], [<span class="hljs-string">'s4313'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-08-01'</span>],
+      [<span class="hljs-string">'s4314'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-08-01'</span>], [<span class="hljs-string">'s4929'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-09-01'</span>], [<span class="hljs-string">'s4930'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-09-01'</span>],
+      [<span class="hljs-string">'s5545'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-10-01'</span>], [<span class="hljs-string">'s5546'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-10-01'</span>], [<span class="hljs-string">'s6161'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-11-01'</span>],
+      [<span class="hljs-string">'s6162'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-11-01'</span>], [<span class="hljs-string">'s6777'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10230'</span>,<span class="hljs-string">'2006-12-01'</span>], [<span class="hljs-string">'s6778'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'4810'</span>,<span class="hljs-string">'2006-12-01'</span>],
+      [<span class="hljs-string">'s7393'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-01-01'</span>], [<span class="hljs-string">'s7394'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-01-01'</span>], [<span class="hljs-string">'s8548'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-02-01'</span>],
+      [<span class="hljs-string">'s8549'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-02-01'</span>], [<span class="hljs-string">'s9703'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-03-01'</span>], [<span class="hljs-string">'s9704'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-03-01'</span>],
+      [<span class="hljs-string">'s10858'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-04-01'</span>], [<span class="hljs-string">'s10859'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-04-01'</span>], [<span class="hljs-string">'s12013'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-05-01'</span>],
+      [<span class="hljs-string">'s12014'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-05-01'</span>], [<span class="hljs-string">'s13168'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-06-01'</span>], [<span class="hljs-string">'s13169'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-06-01'</span>],
+      [<span class="hljs-string">'s14323'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-07-01'</span>], [<span class="hljs-string">'s14324'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-07-01'</span>], [<span class="hljs-string">'s15478'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-08-01'</span>],
+      [<span class="hljs-string">'s15479'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-08-01'</span>], [<span class="hljs-string">'s16633'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-09-01'</span>], [<span class="hljs-string">'s16634'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-09-01'</span>],
+      [<span class="hljs-string">'s17788'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-10-01'</span>], [<span class="hljs-string">'s17789'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-10-01'</span>], [<span class="hljs-string">'s18943'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-11-01'</span>],
+      [<span class="hljs-string">'s18944'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-11-01'</span>], [<span class="hljs-string">'s20098'</span>,<span class="hljs-string">'e1'</span>,<span class="hljs-string">'10440'</span>,<span class="hljs-string">'2007-12-01'</span>], [<span class="hljs-string">'s20099'</span>,<span class="hljs-string">'e2'</span>,<span class="hljs-string">'5020'</span>,<span class="hljs-string">'2007-12-01'</span>]
+  ]
+  project.upload(salary_data, blueprint, <span class="hljs-string">'dataset.salary'</span>)
+<span class="hljs-keyword">end</span> 
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="refactoring-datasets"></a><a href="#refactoring-datasets" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Refactoring datasets</h2>
+<p>How to work on your project. Note, this is work in progress.</p>
+<p>Use SDK refactoring features.</p>
+<p>Let’s have a look at two hypothetical but very common scenarios that you
+probably encountered in during career.</p>
+<h2><a class="anchor" aria-hidden="true" id="one-dataset-problem"></a><a href="#one-dataset-problem" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>One Dataset problem</h2>
+<p>Lets' say you have model like this</p>
+<pre><code class="hljs css ruby">blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">'Not so great project'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+  p.add_dataset(<span class="hljs-string">'dataset.reps'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Sale Reps'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.reps.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Sales Rep'</span>)
+    d.add_label(<span class="hljs-string">'label.reps.id'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.reps.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Sales Rep Name'</span>)
+  <span class="hljs-keyword">end</span>
+
+  p.add_dataset(<span class="hljs-string">'dataset.regions'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Sale Reps'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.regions.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Sales Region'</span>)
+    d.add_label(<span class="hljs-string">'label.regions.id'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.regions.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Sales Rep Name'</span>)
+  <span class="hljs-keyword">end</span>
+
+  p.add_dataset(<span class="hljs-string">'dataset.sales'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Department'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.sales.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Sale Id'</span>)
+    d.add_label(<span class="hljs-string">'label.sales.id'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.sales.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Sales tracking number'</span>)
+    d.add_fact(<span class="hljs-string">'fact.sales.amount'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Amount'</span>)
+    d.add_attribute(<span class="hljs-string">'attr.sales.stage'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Stage'</span>)
+    d.add_label(<span class="hljs-string">'label.sales.stage'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Stage Name'</span>, <span class="hljs-symbol">reference:</span><span class="hljs-string">'attr.sales.stage'</span>)
+    d.add_reference(<span class="hljs-string">'dataset.regions'</span>)
+    d.add_reference(<span class="hljs-string">'dataset.reps'</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>There is one problem. We should definitely extract the attribute from
+'dataset.sales' dataset somewhere else. Also the anchor for this dataset
+has a label. Unless we do not have specific reason for it we should
+extract it somewhere else.</p>
+<p>We can try to ask SDK to help us</p>
+<pre><code class="hljs css ruby">refactored_blueprint = blueprint.refactor_split_df(<span class="hljs-string">'dataset.sales'</span>)
+
+<span class="hljs-comment"># Let's have a look around</span>
+refactored_blueprint.datasets.map(&amp;<span class="hljs-symbol">:title</span>)
+
+refactored_blueprint.datasets.map {<span class="hljs-params">|d|</span> [d.title, d.id]}
+=&gt; [[<span class="hljs-string">"Sale Reps"</span>, <span class="hljs-string">"dataset.reps"</span>],
+    [<span class="hljs-string">"Sale Reps"</span>, <span class="hljs-string">"dataset.regions"</span>],
+    [<span class="hljs-string">"Department"</span>, <span class="hljs-string">"dataset.sales"</span>],
+    [<span class="hljs-string">"Dataset.Sales Dim"</span>, <span class="hljs-string">"dataset.sales_dim"</span>]]
+
+<span class="hljs-comment"># So there is a new dataset</span>
+<span class="hljs-comment"># If we print it out in repl</span>
+refactored_blueprint.datasets(<span class="hljs-string">'dataset.sales_dim'</span>)
+<span class="hljs-comment"># prints</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># {</span>
+<span class="hljs-comment">#   :type=&gt;:dataset,</span>
+<span class="hljs-comment">#   :id=&gt;"dataset.sales_dim",</span>
+<span class="hljs-comment">#   :columns=&gt;</span>
+<span class="hljs-comment">#    [{:type=&gt;:anchor, :id=&gt;"vymysli_id"},</span>
+<span class="hljs-comment">#     {:type=&gt;:label, :id=&gt;"label.vymysli_id", :reference=&gt;"vymysli_id"},</span>
+<span class="hljs-comment">#     {:type=&gt;:attribute, :id=&gt;"attr.sales.stage", :title=&gt;"Stage"},</span>
+<span class="hljs-comment">#     {:type=&gt;:label,</span>
+<span class="hljs-comment">#      :id=&gt;"label.sales.stage",</span>
+<span class="hljs-comment">#      :title=&gt;"Stage Name",</span>
+<span class="hljs-comment">#      :reference=&gt;"attr.sales.stage"}]}</span>
+</code></pre>
+<p>You can see that there is stage attribute right there. And it prepared
+an anchor for us. The naming definitely needs touch ups (User should be
+able to specify the ids somehow) but the structure is there. Now let’s
+have a look what happened to sales dataset</p>
+<pre><code class="hljs css ruby">refactored_blueprint.datasets(<span class="hljs-string">'dataset.sales'</span>)
+<span class="hljs-comment"># prints</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># {:id=&gt;"dataset.sales",</span>
+<span class="hljs-comment">#    :type=&gt;:dataset,</span>
+<span class="hljs-comment">#    :columns=&gt;</span>
+<span class="hljs-comment">#     [{:type=&gt;:anchor, :id=&gt;"attr.sales.id", :title=&gt;"Sale Id"},</span>
+<span class="hljs-comment">#      {:type=&gt;:label,</span>
+<span class="hljs-comment">#       :id=&gt;"label.sales.id",</span>
+<span class="hljs-comment">#       :reference=&gt;"attr.sales.id",</span>
+<span class="hljs-comment">#       :title=&gt;"Sales tracking number"},</span>
+<span class="hljs-comment">#      {:type=&gt;:fact, :id=&gt;"fact.sales.amount", :title=&gt;"Amount"},</span>
+<span class="hljs-comment">#      {:type=&gt;:reference, :dataset=&gt;"dataset.regions"},</span>
+<span class="hljs-comment">#      {:type=&gt;:reference, :dataset=&gt;"dataset.reps"},</span>
+<span class="hljs-comment">#      {:type=&gt;:reference, :dataset=&gt;"dataset.sales_dim"}]</span>
+</code></pre>
+<p>You can see that the attribute has gone alongside the labels. Only facts
+remain. A new reference was added so the reports should still be
+working. This might seem just a minor issue but once you start creating
+more complex models with multiple stars you find this technique a
+necessity so why not automate it?</p>
+<h2><a class="anchor" aria-hidden="true" id="multiple-facts-in-one-dataset"></a><a href="#multiple-facts-in-one-dataset" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Multiple facts in one dataset</h2>
+<p>Another problem we will look at is splitting fact tables because of
+facts. Consider this model:</p>
+<pre><code class="hljs css ruby">blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">'Not so great project'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+
+  p.add_dataset(<span class="hljs-string">'dataset.orders_dim'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Orders Dimension'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.orders_dim.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Order'</span>)
+    d.add_label(<span class="hljs-string">'label.dataset.orders_dim.id'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.orders_dim.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Order Id'</span>)
+  <span class="hljs-keyword">end</span>
+
+  p.add_dataset(<span class="hljs-string">'dataset.orders_fact'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Orders Fact Table'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.orders_fact.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Sales Rep'</span>)
+    d.add_fact(<span class="hljs-string">'fact.dataset.orders_fact.amount_ordered'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Amount Ordered'</span>)
+    d.add_fact(<span class="hljs-string">'fact.dataset.orders_fact.amount_shipped'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Amount Shipped'</span>)
+    d.add_reference(<span class="hljs-string">'dataset.orders_dim'</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>What you want to do is have a look at how many shipments were ordered
+and shipped on particular day. But if you keep the facts in one dataset
+you will have all kinds of trouble with nil values. Much better is to
+split the fact tables in two. Again we can try doing that with SDK</p>
+<p>Note: it seems it currently does not work with date references. We need
+to update this so I omitted it in the example so it works.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># you define which dataset you would like to split. Secnd parameter is list of facts you would like to move and the last one is the id of the new dataset</span>
+refactored_blueprint = blueprint.refactor_split_facts(<span class="hljs-string">'dataset.orders_fact'</span>, [<span class="hljs-string">'fact.dataset.orders_fact.amount_shipped'</span>], <span class="hljs-string">'dataset.orders_shipped_fact'</span>)
+
+<span class="hljs-comment"># Again Let's explore</span>
+refactored_blueprint.datasets.count <span class="hljs-comment"># =&gt; 3</span>
+
+refactored_blueprint.datasets.map {<span class="hljs-params">|d|</span> [d.title, d.id]}
+<span class="hljs-comment"># =&gt; [["Orders Dimension", "dataset.orders_dim"],</span>
+<span class="hljs-comment">#     ["Orders Fact Table", "dataset.orders_fact"],</span>
+<span class="hljs-comment">#     ["Dataset.Orders Shipped Fact", "dataset.orders_shipped_fact"]]</span>
+
+<span class="hljs-comment"># There is a new dataset "dataset.orders_shipped_fact"</span>
+refactored_blueprint.datasets(<span class="hljs-string">'dataset.orders_shipped_fact'</span>)
+<span class="hljs-comment"># prints</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># {</span>
+<span class="hljs-comment">#   :id=&gt;"dataset.orders_shipped_fact",</span>
+<span class="hljs-comment">#   :type=&gt;:dataset,</span>
+<span class="hljs-comment">#   :columns=&gt; [</span>
+<span class="hljs-comment">#     {:type=&gt;:anchor, :id=&gt;"dataset.orders_shipped_fact.id"},</span>
+<span class="hljs-comment">#     {:type=&gt;:fact,</span>
+<span class="hljs-comment">#      :id=&gt;"fact.dataset.orders_fact.amount_shipped",</span>
+<span class="hljs-comment">#      :title=&gt;"Amount Shipped"},</span>
+<span class="hljs-comment">#     {:type=&gt;:reference, :dataset=&gt;"dataset.orders_dim"}]}</span>
+</code></pre>
+<p>These are 2 basic ways how to refactor a blueprint in an assisted and
+automated fashion.</p>
+<h2><a class="anchor" aria-hidden="true" id="reconnect-date-dimension"></a><a href="#reconnect-date-dimension" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Reconnect date dimension</h2>
+<p>Occasionally you need to reconnect date dimensions. You did all the work
+on reports and last thing you are missing is to change all references in
+the model from one date dimension to another.</p>
+<p>With the SDK you can use swap_date_dimension! method on blueprint. I will
+give you two examples one will be with a sample blueprint created on the
+fly the second will show you how to do the same on an existing project.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">'Acme project'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+    p.add_date_dimension(<span class="hljs-string">'committed_on'</span>)
+    p.add_date_dimension(<span class="hljs-string">'signed_on'</span>)
+
+    p.add_dataset(<span class="hljs-string">'dataset.commits'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+      d.add_anchor(<span class="hljs-string">'attr.commits.id'</span>)
+      d.add_fact(<span class="hljs-string">'fact.commits.lines_changed'</span>)
+            d.add_attribute(<span class="hljs-string">'attr.commits.name'</span>)
+      d.add_label(<span class="hljs-string">'label.commits.name'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.commits.name'</span>)
+      d.add_date(<span class="hljs-string">'committed_on'</span>, <span class="hljs-symbol">:format</span> =&gt; <span class="hljs-string">'dd/MM/yyyy'</span>)
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+
+  <span class="hljs-comment"># Let's check that there are some references really pointing to committed_on dimension</span>
+  <span class="hljs-comment"># and none to signed_on dimension</span>
+
+  blueprint.datasets.flat_map(&amp;<span class="hljs-symbol">:references</span>).map(&amp;<span class="hljs-symbol">:reference</span>).<span class="hljs-keyword">include</span>?(<span class="hljs-string">'committed_on'</span>)
+  <span class="hljs-comment"># =&gt; true</span>
+  blueprint.datasets.flat_map(&amp;<span class="hljs-symbol">:references</span>).map(&amp;<span class="hljs-symbol">:reference</span>).<span class="hljs-keyword">include</span>?(<span class="hljs-string">'signed_on'</span>)
+  <span class="hljs-comment"># =&gt; false</span>
+
+  <span class="hljs-comment"># let's swap all the references</span>
+  blueprint.swap_date_dimension!(<span class="hljs-string">'committed_on'</span>, <span class="hljs-string">'signed_on'</span>)
+
+  <span class="hljs-comment"># Now if we check we see that there is no reference to committed_on dimension</span>
+  blueprint.datasets.flat_map(&amp;<span class="hljs-symbol">:references</span>).map(&amp;<span class="hljs-symbol">:reference</span>).<span class="hljs-keyword">include</span>?(<span class="hljs-string">'committed_on'</span>)
+  <span class="hljs-comment"># =&gt; false</span>
+  blueprint.datasets.flat_map(&amp;<span class="hljs-symbol">:references</span>).map(&amp;<span class="hljs-symbol">:reference</span>).<span class="hljs-keyword">include</span>?(<span class="hljs-string">'signed_on'</span>)
+  <span class="hljs-comment"># =&gt; true</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>The change in operating on an existing project is the same. The only
+difference is how you acquire the blueprint.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    blueprint = project.blueprint
+
+    blueprint.swap_date_dimension!(<span class="hljs-string">'committed_on'</span>, <span class="hljs-string">'signed_on'</span>)
+
+    <span class="hljs-comment"># Update the project with the new blueprint</span>
+    project.update_from_blueprint(blueprint)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="taking-portion-of-a-project-model"></a><a href="#taking-portion-of-a-project-model" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Taking portion of a project model</h2>
+<p>You have a project and you would like to create a new on with the same
+model but only portion of it.</p>
+<p>Blueprints can be easily manipulated because underneath they are just
+hashes of data. In the worst case you can always manipulate the hash and
+create the blueprint out of that. In some cases there are helper methods
+to make the code a little bit cleaner. In this example we will show an
+example where we will have a blueprint with two datasets and we will
+remove one of them so the new project will have just portion of the
+model.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+
+  <span class="hljs-comment"># This is a blueprint</span>
+  <span class="hljs-comment"># We could grab it from live project via project.blueprint but we will just</span>
+  <span class="hljs-comment"># create it inline so we do not have to spin up additional project</span>
+
+  blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">'Acme project'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+    p.add_date_dimension(<span class="hljs-string">'committed_on'</span>)
+
+    p.add_dataset(<span class="hljs-string">'dataset.commits'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+      d.add_anchor(<span class="hljs-string">'attr.commits.id'</span>)
+      d.add_fact(<span class="hljs-string">'fact.commits.lines_changed'</span>)
+      d.add_attribute(<span class="hljs-string">'attr.commits.name'</span>)
+      d.add_label(<span class="hljs-string">'label.commits.name'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.commits.name'</span>)
+      d.add_date(<span class="hljs-string">'committed_on'</span>, <span class="hljs-symbol">:dataset</span> =&gt; <span class="hljs-string">'committed_on'</span>)
+    <span class="hljs-keyword">end</span>
+
+    p.add_dataset(<span class="hljs-string">'dataset.commits2'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+      d.add_anchor(<span class="hljs-string">'attr.commits.id2'</span>)
+      d.add_fact(<span class="hljs-string">'fact.commits.lines_changed2'</span>)
+      d.add_attribute(<span class="hljs-string">'attr.commits.name2'</span>)
+      d.add_label(<span class="hljs-string">'label.commits.name2'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.commits.name2'</span>)
+      d.add_date(<span class="hljs-string">'committed_on'</span>, <span class="hljs-symbol">:dataset</span> =&gt; <span class="hljs-string">'committed_on'</span>)
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+
+  <span class="hljs-comment"># Now we need to manipulate it so it contains only portion of the model we want.</span>
+  <span class="hljs-comment"># In this case we want just dataset 'dataset.commits'.</span>
+  <span class="hljs-comment"># Take note that the project can be succesfully created only from a valid blueprint</span>
+  <span class="hljs-comment"># You can always check if the blueprint is valid by calling blueprint.valid?</span>
+  <span class="hljs-comment">#</span>
+
+  <span class="hljs-comment"># Let's remove the dataset</span>
+  <span class="hljs-comment"># We are going to user method remove_dataset! which means the blueprint will be changed in place</span>
+  <span class="hljs-comment"># You can also use remove_dataset in which case a new blueprint will be created and the old one will</span>
+  <span class="hljs-comment"># not be touched</span>
+  blueprint.remove_dataset!(<span class="hljs-string">'dataset.commits2'</span>)
+
+  <span class="hljs-comment"># Let's create a project based on the</span>
+  project = client.create_project_from_blueprint(blueprint, <span class="hljs-symbol">auth_token:</span> <span class="hljs-string">'token'</span>)
+
+  <span class="hljs-comment"># You can verify that the created project has only two datasets</span>
+  project.datasets.map(&amp;<span class="hljs-symbol">:identifier</span>)
+  <span class="hljs-comment"># =&gt; ["dataset.commits", "committed_on.dataset.dt"]</span>
+
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="playing-with-computed-attributes"></a><a href="#playing-with-computed-attributes" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Playing with Computed Attributes</h2>
+<p>You can create a computed attribute.</p>
+<p>Create an update blueprint that contains the computed attribute, merge
+it with the current blueprint and then update the project.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">'Acme project'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project_builder|</span>
+    project_builder.add_date_dimension(<span class="hljs-string">'created_on'</span>)
+
+    project_builder.add_dataset(<span class="hljs-string">'dataset.users'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Users Dataset'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|schema_builder|</span>
+      schema_builder.add_anchor(<span class="hljs-string">'attr.users.id'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Users ID'</span>, <span class="hljs-symbol">folder:</span> <span class="hljs-string">'Users ID folder'</span>)
+      schema_builder.add_label(<span class="hljs-string">'label.users.id_label1'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.users.id'</span>)
+      schema_builder.add_label(<span class="hljs-string">'label.users.id_label2'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.users.id'</span>, <span class="hljs-symbol">default_label:</span> <span class="hljs-literal">true</span>)
+      schema_builder.add_attribute(<span class="hljs-string">'attr.users.another_attr'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Another attr'</span>)
+      schema_builder.add_label(<span class="hljs-string">'label.users.another_attr_label'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.users.another_attr'</span>)
+      schema_builder.add_date(<span class="hljs-string">'created_on'</span>)
+      schema_builder.add_fact(<span class="hljs-string">'fact.users.some_number'</span>)
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+
+  project = client.create_project_from_blueprint(blueprint, <span class="hljs-symbol">auth_token:</span> <span class="hljs-string">'token'</span>)
+
+  metric = project.facts(<span class="hljs-string">'fact.users.some_number'</span>).create_metric(<span class="hljs-symbol">title:</span> <span class="hljs-string">'Test'</span>)
+  metric.save
+
+  attribute = project.attributes(<span class="hljs-string">'attr.users.another_attr'</span>)
+
+  update = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">"update"</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project_builder|</span>
+    project_builder.add_computed_attribute(
+      <span class="hljs-string">'attr.comp.my_computed_attr'</span>,
+      <span class="hljs-symbol">title:</span> <span class="hljs-string">'My computed attribute'</span>,
+      <span class="hljs-symbol">metric:</span> metric,
+      <span class="hljs-symbol">attribute:</span> attribute,
+      <span class="hljs-symbol">buckets:</span> [{ <span class="hljs-symbol">label:</span> <span class="hljs-string">'Low'</span>, <span class="hljs-symbol">highest_value:</span> <span class="hljs-number">1000</span> }, { <span class="hljs-symbol">label:</span> <span class="hljs-string">'Medium'</span>, <span class="hljs-symbol">highest_value:</span> <span class="hljs-number">2000</span> }, { <span class="hljs-symbol">label:</span> <span class="hljs-string">'High'</span> }]
+    )
+  <span class="hljs-keyword">end</span>
+
+  <span class="hljs-comment"># update the model in the project</span>
+  project.update_from_blueprint(blueprint.merge(update))
+
+  <span class="hljs-comment"># now you can verify there is new computed attribute present</span>
+  ca = project.attributes.find { <span class="hljs-params">|a|</span> a.title == <span class="hljs-string">'My computed attribute'</span> }
+  ca.computed_attribute?
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>In the example above we have created a computed attribute. Precondition:
+have an existing metric.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="loading_data.html">← Loading Data to Project</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#using-blueprint-to-update-model">Using Blueprint to Update Model</a></li><li><a href="#specifying-fields-data-type">Specifying Fields Data Type</a></li><li><a href="#working-with-folders">Working with Folders</a></li><li><a href="#creating-project-in-one-page-of-code">Creating Project in One Page of Code</a></li><li><a href="#using-attribute-types-when-creating-project">Using Attribute Types when Creating Project</a></li><li><a href="#moving-fields-in-blueprint">Moving Fields in Blueprint</a></li><li><a href="#hr-demo-project">HR Demo project</a></li><li><a href="#refactoring-datasets">Refactoring datasets</a></li><li><a href="#one-dataset-problem">One Dataset problem</a></li><li><a href="#multiple-facts-in-one-dataset">Multiple facts in one dataset</a></li><li><a href="#reconnect-date-dimension">Reconnect date dimension</a></li><li><a href="#taking-portion-of-a-project-model">Taking portion of a project model</a></li><li><a href="#playing-with-computed-attributes">Playing with Computed Attributes</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/gooddata-ruby-doc/" class="nav-home"><img src="/gooddata-ruby-doc/img/gooddata-ruby.svg" alt="Ruby SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/gooddata-ruby-doc/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc2.html">Guides (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/gooddata-ruby-doc/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/gooddata-ruby-doc/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/gooddata-ruby-doc/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 GoodData</section></footer></div></body></html>

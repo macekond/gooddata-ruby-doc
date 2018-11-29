@@ -1,0 +1,375 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Working with Reports · Ruby SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Working with Reports · Ruby SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://gooddata.github.io/gooddata-ruby-doc/index.html"/><meta property="og:description" content="Computing Report"/><meta property="og:image" content="https://gooddata.github.io/gooddata-ruby-doc/img/docusaurus.png"/><link rel="shortcut icon" href="/gooddata-ruby-doc/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/gooddata-ruby-doc/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/gooddata-ruby-doc/"><img class="logo" src="/gooddata-ruby-doc/img/gooddata-ruby.svg"/><h2 class="headerTitle">Ruby SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/gooddata-ruby-doc/docs/getting_started.html" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Advanced Guides</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Basics</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/getting_started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/jack_in.html">Interactive Ruby Console</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/create_a_program.html">Scripting</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/connecting_to_gooddata.html">Connecting to Gooddata Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/handling_credentials.html">Handling Credentials Securely</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/using_gooddata_platform.html">Using GoodData Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/logging.html">Logging and Testing</a></li></ul></div><div class="navGroup navGroupActive"><h3>Advanced Guides</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_projects.html">Working with Projects</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_users.html">Working with Users</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_permissions.html">Setting Permissions</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_models.html">Model Setup</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_your_data.html">Working with Your Data</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/gooddata-ruby-doc/docs/working_with_reports.html">Working with Reports</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_dashboards.html">Using Dashboards</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_deployments.html">Deployment How-tos</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_automation.html">Automation and Performance</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_lifecycle.html">Working with Lifecycle</a></li></ul></div><div class="navGroup navGroupActive"><h3>Blueprints</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/creating_project_from_blueprint.html">Creating Project from Blueprint</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/loading_data.html">Loading Data to Project</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/advanced_blueprint_examples.html">Advanced Blueprint Examples</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Working with Reports</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="computing-report"></a><a href="#computing-report" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Computing Report</h2>
+<p>You can execute an existing report programmatically.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    puts project.reports(<span class="hljs-number">1234</span>).execute
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="comparing-reports-across-projects"></a><a href="#comparing-reports-across-projects" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Comparing Reports across Projects</h2>
+<p>You created a new version of a project. You made some changes to the
+reports and you would like to verify that the report is still computing
+the same numbers.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  original_project = c.projects(<span class="hljs-string">'project_id_1'</span>)
+  new_project = c.projects(<span class="hljs-string">'project_id_2'</span>)
+
+  <span class="hljs-comment"># We assume that reports have unique name inside a project</span>
+  orig_reports = GoodData::Report.find_by_tag(<span class="hljs-string">'to_check'</span>, <span class="hljs-symbol">client:</span> c, <span class="hljs-symbol">project:</span> original_project).sort_by(&amp;<span class="hljs-symbol">:title</span>)
+  new_reports = GoodData::Report.find_by_tag(<span class="hljs-string">'to_check'</span>, <span class="hljs-symbol">client:</span> c, <span class="hljs-symbol">project:</span> new_project).sort_by(&amp;<span class="hljs-symbol">:title</span>)
+
+  results = orig_reports.zip(new_reports).pmap <span class="hljs-keyword">do</span> <span class="hljs-params">|reports|</span>
+    <span class="hljs-comment"># compute both reports and add the report at the end for being able to print a report later</span>
+    reports.map(&amp;<span class="hljs-symbol">:execute</span>) + [reports.last]
+  <span class="hljs-keyword">end</span>
+
+  results.map <span class="hljs-keyword">do</span> <span class="hljs-params">|res|</span>
+    orig_result, new_result, new_report = res
+    puts <span class="hljs-string">"<span class="hljs-subst">#{new_report.title}</span>, <span class="hljs-subst">#{orig_result == new_result}</span>"</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span> 
+</code></pre>
+<p>If there is more reports this can obviously take a lot of time so it
+would be nice if you could do computation or reports in parallel and not
+sequentially. Imagine we have a list of reports that should be checked
+tagged by tag <code>to_check</code>. Let’s rewrite previous code snippet to be
+parallel friendly.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  original_project = c.projects(<span class="hljs-string">'project_id_1'</span>)
+  new_project = c.projects(<span class="hljs-string">'project_id_2'</span>)
+
+  <span class="hljs-comment"># We assume that reports have unique name inside a project</span>
+  orig_reports = GoodData::Report.find_by_tag(<span class="hljs-string">'to_check'</span>, <span class="hljs-symbol">client:</span> c, <span class="hljs-symbol">project:</span> original_project).sort_by(&amp;<span class="hljs-symbol">:title</span>)
+  new_reports = GoodData::Report.find_by_tag(<span class="hljs-string">'to_check'</span>, <span class="hljs-symbol">client:</span> c, <span class="hljs-symbol">project:</span> new_project).sort_by(&amp;<span class="hljs-symbol">:title</span>)
+
+  results = orig_reports.zip(new_reports).pmap <span class="hljs-keyword">do</span> <span class="hljs-params">|reports|</span>
+    <span class="hljs-comment"># compute both reports and add the report at the end for being able to print a report later</span>
+    reports.map(&amp;<span class="hljs-symbol">:execute</span>) + [reports.last]
+  <span class="hljs-keyword">end</span>
+
+  results.map <span class="hljs-keyword">do</span> <span class="hljs-params">|res|</span>
+    orig_result, new_result, new_report = res
+    puts <span class="hljs-string">"<span class="hljs-subst">#{new_report.title}</span>, <span class="hljs-subst">#{orig_result == new_result}</span>"</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="updating-report-definition"></a><a href="#updating-report-definition" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Updating report definition</h2>
+<p>You can update report definition in your report in an easy way.
+You can also modify multiple reports in one or more projects.</p>
+<p>Use the Report#update_definition with block argument in following way.</p>
+<pre><code class="hljs css ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+<span class="hljs-keyword">require</span> <span class="hljs-string">'pp'</span>
+
+PID = <span class="hljs-string">'rq3enqarynvkt7q11u0stev65qdwpow8'</span>
+REPORT = <span class="hljs-string">'/gdc/md/rq3enqarynvkt7q11u0stev65qdwpow8/obj/1323'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(PID) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    report = project.reports(REPORT)
+
+    new_def = report.update_definition <span class="hljs-keyword">do</span> <span class="hljs-params">|rdef|</span>
+      rdef.title = <span class="hljs-string">"Test TITLE: <span class="hljs-subst">#{DateTime.now.strftime}</span>"</span>
+    <span class="hljs-keyword">end</span>
+
+    pp new_def
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Specify :new_definition ⇒ false if you do want to update the latest
+report definition instead of creating new one. New definition flag is
+true by default.</p>
+<pre><code class="hljs css ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+<span class="hljs-keyword">require</span> <span class="hljs-string">'pp'</span>
+
+PID = <span class="hljs-string">'rq3enqarynvkt7q11u0stev65qdwpow8'</span>
+REPORT = <span class="hljs-string">'/gdc/md/rq3enqarynvkt7q11u0stev65qdwpow8/obj/1323'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(PID) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    report = project.reports(REPORT)
+
+    new_def = report.update_definition(<span class="hljs-symbol">:new_definition</span> =&gt; <span class="hljs-literal">false</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|rdef|</span>
+      rdef.title = <span class="hljs-string">"Test TITLE: <span class="hljs-subst">#{DateTime.now.strftime}</span>"</span>
+    <span class="hljs-keyword">end</span>
+
+    pp new_def
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="creating-report-that-counts-records-in-all-datasets"></a><a href="#creating-report-that-counts-records-in-all-datasets" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating Report that Counts Records in All Datasets</h2>
+<p>Occasionally you need to know how many rows there are in each dataset.</p>
+<p>This is surprisingly difficult to do in GoodData UI but it is simple
+with the SDK. Here we are going to create the necessary metrics on the fly
+through inspection of a blueprint. Then we will create a report that
+will contain those metrics and compute it.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    blueprint = project.blueprint
+
+    <span class="hljs-comment"># let's grab anchor on each dataset. Anchor is a special attribute on each dataset</span>
+    <span class="hljs-comment"># this attribute defines the grain of the dataset if we "count" it we will get the number of lines</span>
+    <span class="hljs-comment"># in the dataset</span>
+    anchors = blueprint.datasets.map(&amp;<span class="hljs-symbol">:anchor</span>)
+
+    <span class="hljs-comment"># As is explained in Blueprint section. Objects in blueprint are project agnostic.</span>
+    <span class="hljs-comment"># Let's find corresponding attribute object in specific project</span>
+    attributes = anchors.pmap { <span class="hljs-params">|anchor|</span> anchor.in_project(project) }
+
+    <span class="hljs-comment"># Lets create a report on the fly that is going to have the metrics in the rows</span>
+    <span class="hljs-comment"># Take note that this is a real report on the platform that could be saved and alter reused</span>
+    puts project.compute_report(<span class="hljs-symbol">left:</span> attributes.map(&amp;<span class="hljs-symbol">:create_metric</span>))
+
+    <span class="hljs-comment"># This might result into something like this</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># [                                                            |   Values   ]</span>
+    <span class="hljs-comment"># [count of Records of timeline                                | 0.7306E4   ]</span>
+    <span class="hljs-comment"># [count of Activity                                           | 0.61496E6  ]</span>
+    <span class="hljs-comment"># [count of Opportunity                                        | 0.85171E6  ]</span>
+    <span class="hljs-comment"># [count of Product                                            | 0.5E1      ]</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="resetting-report-color-map"></a><a href="#resetting-report-color-map" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resetting Report Color Map</h2>
+<p>You can remove a color mapping out of a report.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    ids = [report_id_1, report_id_2, report_id_3]
+    ids.each <span class="hljs-keyword">do</span> <span class="hljs-params">|id|</span>
+      r = project.reports(id)
+      d = r.latest_report_definition
+      d.reset_color_mapping!
+      d.save
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span> 
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="computing-ad-hoc-report"></a><a href="#computing-ad-hoc-report" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Computing Ad Hoc Report</h2>
+<p>You can also make some ad hoc computation.</p>
+<p>We are using the recipe <a href="/gooddata-ruby-doc/docs/advanced_blueprint_examples.html#hr-demo-project">Working with HR Demo project</a> here so
+spin it up if you want to follow the code.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+
+    <span class="hljs-comment"># first let's create a metric and give it a reasonable identifier so we can read the examples</span>
+    m = project.facts(<span class="hljs-string">'fact.salary.amount'</span>).create_metric
+    m.identifier = <span class="hljs-string">"metrics.my_metric"</span>
+    m.save
+
+    <span class="hljs-comment"># metric can be referenced directly</span>
+    project.compute_report(<span class="hljs-symbol">left:</span> [<span class="hljs-string">'metrics.my_metric'</span>],
+                           <span class="hljs-symbol">top:</span> [<span class="hljs-string">'label.department.region'</span>])
+
+    <span class="hljs-comment"># or you can pass by reference if you already hold it</span>
+    m1 = project.metrics(<span class="hljs-string">'metrics.my_metric'</span>)
+    project.compute_report(<span class="hljs-symbol">left:</span> [m1],
+                           <span class="hljs-symbol">top:</span> [<span class="hljs-string">'label.department.region'</span>])
+
+    <span class="hljs-comment"># report can take attributes and in that case it will use the default label</span>
+    project.compute_report(<span class="hljs-symbol">left:</span> [m1],
+                           <span class="hljs-symbol">top:</span> [<span class="hljs-string">'attr.department.region'</span>, <span class="hljs-string">'dataset.payment.quarter.in.year'</span>])
+
+    <span class="hljs-comment"># for readability you might shuffle those labels to different section of report</span>
+    project.compute_report(<span class="hljs-symbol">left:</span> [m1, <span class="hljs-string">'dataset.payment.quarter.in.year'</span>],
+                            <span class="hljs-symbol">top:</span> [<span class="hljs-string">'attr.department.region'</span>])
+
+
+    <span class="hljs-comment"># there can be more than 1 metric in the group and the metric even does not have to be saved (if it is not it will be saved for you and removed after the computation)</span>
+    m2 = project.attributes(<span class="hljs-string">'attr.salary.id'</span>).create_metric
+    result = project.compute_report(<span class="hljs-symbol">left:</span> [m1, m2],
+                           <span class="hljs-symbol">top:</span> [<span class="hljs-string">'attr.department.region'</span>])
+    <span class="hljs-comment"># you can print out the results into console</span>
+    puts result
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="working-with-report-results"></a><a href="#working-with-report-results" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Working with report results</h2>
+<p>You have computed a report now you would like to get dirty with the data:</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+
+    <span class="hljs-comment"># first let's create a metric and give it a reasonable identifier so we can read the examples</span>
+    m1 = project.facts(<span class="hljs-string">'fact.salary.amount'</span>).create_metric
+    result = project.compute_report(<span class="hljs-symbol">left:</span> [m1, <span class="hljs-string">'dataset.payment.quarter.in.year'</span>],
+                            <span class="hljs-symbol">top:</span> [<span class="hljs-string">'attr.department.region'</span>])
+
+    <span class="hljs-comment"># You can print the result</span>
+    puts result
+    <span class="hljs-comment"># [   |               | Europe | North America]</span>
+    <span class="hljs-comment"># [Q1 | sum of Amount | 29490  | 62010        ]</span>
+    <span class="hljs-comment"># [Q2 | sum of Amount | 29490  | 62010        ]</span>
+    <span class="hljs-comment"># [Q3 | sum of Amount | 29490  | 62010        ]</span>
+    <span class="hljs-comment"># [Q4 | sum of Amount | 29490  | 62010        ]</span>
+
+    <span class="hljs-comment"># You can get size of report</span>
+    result.size <span class="hljs-comment"># =&gt; [5, 4]</span>
+
+    <span class="hljs-comment"># this gives you the overall size but you probably want to also know the</span>
+    <span class="hljs-comment"># size of the data portion</span>
+    result.data_size <span class="hljs-comment"># =&gt; [4, 2]</span>
+
+    <span class="hljs-comment"># you can learn if it is empty which comes handy for reports without data</span>
+    result.empty? <span class="hljs-comment"># =&gt; false</span>
+
+    <span class="hljs-comment"># You can access data as you would with matrix</span>
+    result[<span class="hljs-number">0</span>][<span class="hljs-number">3</span>] <span class="hljs-comment"># =&gt; "North America"</span>
+    result[<span class="hljs-number">2</span>] <span class="hljs-comment"># ["Q2", "sum of Amount", "29490", "62010"]</span>
+
+    <span class="hljs-comment"># You can ask questions about contents</span>
+    result.include_row? [<span class="hljs-string">"Q4"</span>, <span class="hljs-string">"sum of Amount"</span>, <span class="hljs-string">"29490"</span>, <span class="hljs-string">"62010"</span>] <span class="hljs-comment"># =&gt; true</span>
+    result.include_column? [<span class="hljs-string">"Europe"</span>, <span class="hljs-string">"29490"</span>, <span class="hljs-string">"29490"</span>, <span class="hljs-string">"29490"</span>, <span class="hljs-string">"29490"</span>] <span class="hljs-comment"># =&gt; false</span>
+
+    <span class="hljs-comment"># this is fine but there is a lot fo clutter caused byt the headers. The library provides you with methods to get only slice of the result and creates a new result</span>
+    <span class="hljs-comment"># Let's say I would like to get just data</span>
+    puts result.slice(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)
+    <span class="hljs-comment"># [29490 | 62010]</span>
+    <span class="hljs-comment"># [29490 | 62010]</span>
+    <span class="hljs-comment"># [29490 | 62010]</span>
+    <span class="hljs-comment"># [29490 | 62010]</span>
+
+    <span class="hljs-comment"># This is a worker method that is used to implement several helpers</span>
+    <span class="hljs-comment"># Previous example is equivalent with this</span>
+    puts result.data
+
+    puts result.without_top_headers
+    <span class="hljs-comment"># [Q1 | sum of Amount | 29490 | 62010]</span>
+    <span class="hljs-comment"># [Q2 | sum of Amount | 29490 | 62010]</span>
+    <span class="hljs-comment"># [Q3 | sum of Amount | 29490 | 62010]</span>
+    <span class="hljs-comment"># [Q4 | sum of Amount | 29490 | 62010]</span>
+
+    puts result.without_left_headers
+    <span class="hljs-comment"># [Europe | North America]</span>
+    <span class="hljs-comment"># [29490  | 62010        ]</span>
+    <span class="hljs-comment"># [29490  | 62010        ]</span>
+    <span class="hljs-comment"># [29490  | 62010        ]</span>
+    <span class="hljs-comment"># [29490  | 62010        ]</span>
+
+    <span class="hljs-comment"># All of those are again results so everything above works as expected</span>
+    result.data.include_row? [<span class="hljs-string">"29490"</span>, <span class="hljs-string">"62010"</span>] <span class="hljs-comment"># =&gt; true</span>
+
+    <span class="hljs-comment"># There are several other methods that might make your life easier. Consider the following</span>
+    result.diff result.without_top_headers
+    <span class="hljs-comment"># {</span>
+    <span class="hljs-comment">#   :added =&gt; [],</span>
+    <span class="hljs-comment">#    :removed =&gt; [[nil, nil, "Europe", "North America"]],</span>
+    <span class="hljs-comment">#    :same =&gt; [["Q1", "sum of Amount", "29490", "62010"],</span>
+    <span class="hljs-comment">#              ["Q2", "sum of Amount", "29490", "62010"],</span>
+    <span class="hljs-comment">#              ["Q3", "sum of Amount", "29490", "62010"],</span>
+    <span class="hljs-comment">#              ["Q4", "sum of Amount", "29490", "62010"]]</span>
+    <span class="hljs-comment"># }</span>
+
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="exporting-report-results"></a><a href="#exporting-report-results" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Exporting report results</h2>
+<p>You can export the report from GoodData into one of the
+typical formats for further processing or presentation.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    result = project.reports(<span class="hljs-string">'report_identifier'</span>).export(<span class="hljs-symbol">:csv</span>)
+    puts result
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>There are more formats supported and either of
+<code>:csv, :xls, :xlsx or :pdf</code> should work as an argument.</p>
+<p>The export returns the actual data so if you would like to have them
+stored into a file the responsibility is on you.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    report = project.reports(<span class="hljs-string">'report_identifier'</span>)
+    File.open(<span class="hljs-string">'export.csv'</span>, <span class="hljs-string">'wb'</span>) { <span class="hljs-params">|f|</span> f.write(report.export(<span class="hljs-symbol">:csv</span>)) }
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="removing-old-versions-from-report"></a><a href="#removing-old-versions-from-report" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Removing old versions from report</h2>
+<p>Occasionally you would like to clean up your project. The simplest way
+to do it is to get rid of the old version of reports.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    project.reports.peach <span class="hljs-keyword">do</span> <span class="hljs-params">|report|</span>
+      r.report.purge_report_of_unused_definitions!
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="computing-creating-reports-with-filters"></a><a href="#computing-creating-reports-with-filters" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Computing/creating reports with filters</h2>
+<p>While SDK does not provide full support for all types of filters. There
+are couple of useful wrappers that make it easier. If you need something
+special you can always go to the raw APIs. Currently there are two types
+of filters supported directly.</p>
+<p>The general shape of the solution looks like this. For project computation
+on the fly (no report is saved):</p>
+<pre><code class="hljs css ruby">project.compute_report(<span class="hljs-symbol">:left</span> =&gt; project.metrics.first, <span class="hljs-symbol">:filters</span> =&gt; [])
+</code></pre>
+<p>or like this:</p>
+<pre><code class="hljs css ruby">project.create_report(<span class="hljs-symbol">title:</span> <span class="hljs-string">'best report ever with filter'</span>,
+                      <span class="hljs-symbol">left:</span> project.metrics.first,
+                      <span class="hljs-symbol">filters:</span> [])
+</code></pre>
+<p>You can also create a persisted report. Variable filter is very simple, you
+just provide the variable into the filter:</p>
+<pre><code class="hljs css ruby">var = project.variables(<span class="hljs-string">'my_variable_identifier'</span>)
+puts project.compute_report(<span class="hljs-symbol">left:</span> project.metrics.first,
+                            <span class="hljs-symbol">filters:</span> [var])
+</code></pre>
+<p>Attribute name filter is probably the most commonly used filter type and it filters
+certain attribute on certain values. Imagine &quot;WHERE City IN [San
+Francisco, Prague]&quot;. You can set it up easily like this.</p>
+<pre><code class="hljs css ruby">label = project.labels(<span class="hljs-string">'label.regions.city.name'</span>)
+puts project.compute_report(<span class="hljs-symbol">left:</span> project.metrics.first,
+                            <span class="hljs-symbol">filters:</span> [[label, <span class="hljs-string">'San Francisco'</span>, <span class="hljs-string">'Prague'</span>]])
+
+<span class="hljs-comment"># You can also use a variation of NOT equal</span>
+
+label = project.labels(<span class="hljs-string">'label.regions.city.name'</span>)
+puts project.compute_report(<span class="hljs-symbol">left:</span> project.metrics.first,
+                            <span class="hljs-symbol">filters:</span> [[label, <span class="hljs-symbol">:not</span>, <span class="hljs-string">'San Francisco'</span>, <span class="hljs-string">'Prague'</span>]])
+
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="testing-reports"></a><a href="#testing-reports" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Testing Reports</h2>
+<p>We used testing reports as en example in the basic chapter <a href="/gooddata-ruby-doc/docs/logging.html#testing">Logging and Testing</a>.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="working_with_your_data.html">← Working with Your Data</a><a class="docs-next button" href="working_with_dashboards.html">Using Dashboards →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#computing-report">Computing Report</a></li><li><a href="#comparing-reports-across-projects">Comparing Reports across Projects</a></li><li><a href="#updating-report-definition">Updating report definition</a></li><li><a href="#creating-report-that-counts-records-in-all-datasets">Creating Report that Counts Records in All Datasets</a></li><li><a href="#resetting-report-color-map">Resetting Report Color Map</a></li><li><a href="#computing-ad-hoc-report">Computing Ad Hoc Report</a></li><li><a href="#working-with-report-results">Working with report results</a></li><li><a href="#exporting-report-results">Exporting report results</a></li><li><a href="#removing-old-versions-from-report">Removing old versions from report</a></li><li><a href="#computing-creating-reports-with-filters">Computing/creating reports with filters</a></li><li><a href="#testing-reports">Testing Reports</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/gooddata-ruby-doc/" class="nav-home"><img src="/gooddata-ruby-doc/img/gooddata-ruby.svg" alt="Ruby SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/gooddata-ruby-doc/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc2.html">Guides (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/gooddata-ruby-doc/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/gooddata-ruby-doc/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/gooddata-ruby-doc/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 GoodData</section></footer></div></body></html>

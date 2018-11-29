@@ -1,0 +1,251 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Creating Project from Blueprint · Ruby SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Creating Project from Blueprint · Ruby SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://gooddata.github.io/gooddata-ruby-doc/index.html"/><meta property="og:description" content="What is a Blueprint"/><meta property="og:image" content="https://gooddata.github.io/gooddata-ruby-doc/img/docusaurus.png"/><link rel="shortcut icon" href="/gooddata-ruby-doc/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/gooddata-ruby-doc/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/gooddata-ruby-doc/"><img class="logo" src="/gooddata-ruby-doc/img/gooddata-ruby.svg"/><h2 class="headerTitle">Ruby SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/gooddata-ruby-doc/docs/getting_started.html" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Blueprints</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Basics</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/getting_started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/jack_in.html">Interactive Ruby Console</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/create_a_program.html">Scripting</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/connecting_to_gooddata.html">Connecting to Gooddata Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/handling_credentials.html">Handling Credentials Securely</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/using_gooddata_platform.html">Using GoodData Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/logging.html">Logging and Testing</a></li></ul></div><div class="navGroup navGroupActive"><h3>Advanced Guides</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_projects.html">Working with Projects</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_users.html">Working with Users</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_permissions.html">Setting Permissions</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_models.html">Model Setup</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_your_data.html">Working with Your Data</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_reports.html">Working with Reports</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_dashboards.html">Using Dashboards</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_deployments.html">Deployment How-tos</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_automation.html">Automation and Performance</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_lifecycle.html">Working with Lifecycle</a></li></ul></div><div class="navGroup navGroupActive"><h3>Blueprints</h3><ul><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/gooddata-ruby-doc/docs/creating_project_from_blueprint.html">Creating Project from Blueprint</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/loading_data.html">Loading Data to Project</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/advanced_blueprint_examples.html">Advanced Blueprint Examples</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Creating Project from Blueprint</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="what-is-a-blueprint"></a><a href="#what-is-a-blueprint" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What is a Blueprint</h2>
+<p>Before we delve into examples involving blueprints let’s talk a moment
+what a blueprint is and what is a difference between blueprint and model
+when we talk about them at Gooddata.</p>
+<p>They mean the same thing but they are representing it in a different way
+and they live at different places. Both of them define a model of
+analytic application.</p>
+<p>The main difference is the fact that when we talk about model we mean a
+specific instance of a project which has specific instance of model with
+all its attributes and facts that live at GoodData platform. Each field
+has a URI and object_id and you can query it using the platform API.
+You can also ask questions like &quot;What object in the model has object_id
+1532?&quot; or &quot;Can you give me a link to dataset 'users' in the model?&quot;.</p>
+<p>When we talk about blueprint on the other hand we mean the abstract
+prescription that tells us how to create the model. A blueprint does not
+contain many of the details most prominently object_ids and URIs and
+strictly speaking each time you use a blueprint to create a model those
+things might be different. When a model is created from blueprint as a
+side effect, all the URIs and ids are created.</p>
+<p>So what are the benefits of the blueprint you might ask? Blueprint was
+specifically designed so you can have a description of the model that
+can live outside of GoodData platform. It has textual representation
+which you can commit into git and work with it in a programmatic way.
+Second it is intended that the many projects are created from one
+blueprint.</p>
+<h2><a class="anchor" aria-hidden="true" id="using-blueprint-to-create-a-project"></a><a href="#using-blueprint-to-create-a-project" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using Blueprint to Create a Project</h2>
+<p>You can create a new project with a data model programmatically.</p>
+<pre><code class="hljs css ruby">blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">"My project from blueprint"</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+  p.add_date_dimension(<span class="hljs-string">'created_on'</span>)
+
+  p.add_dataset(<span class="hljs-string">'dataset.users'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.users.id'</span>)
+    d.add_date(<span class="hljs-string">'created_on'</span>)
+    d.add_fact(<span class="hljs-string">'fact.users.amount'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Amount Sold'</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+project.facts(<span class="hljs-string">'fact.users.amount'</span>).title <span class="hljs-comment"># =&gt; 'Amount Sold'</span>
+</code></pre>
+<p>This created a project with very simple model with just two datasets.
+One is date dimension. The other is a typical fact table. For another
+more complex example check out the &quot;Working with HR Demo project&quot; recipe
+which uses many of the features we will explain here.</p>
+<p>Let’s have a look at couple of other variations and more complex
+examples.</p>
+<h2><a class="anchor" aria-hidden="true" id="defining-identifiers"></a><a href="#defining-identifiers" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Defining Identifiers</h2>
+<p>Majority of the objects defined in a blueprint will end up as object in
+metadata server in the project. Each of these objects has its URI,
+object id (this number is part of the URI) and identifier which is a
+textual id. URI and object id are created automatically during creation
+of a model and you cannot influence them in any way but you have to
+define the identifiers. This is also the first parameter in majority of
+the add_…​ commands. Namely</p>
+<pre><code class="hljs">add_anchor
+add_label
+add_dataset
+add_fact
+add_attribute
+</code></pre>
+<p>When you see this in the blueprint</p>
+<pre><code class="hljs css ruby">p.add_dataset(<span class="hljs-string">'dataset.users'</span>)
+</code></pre>
+<p>It means that later you would be able to do</p>
+<pre><code class="hljs css ruby">project.datasets(<span class="hljs-string">'dataset.users'</span>) <span class="hljs-comment"># this will search all the datasets and returns you the one with identifier 'dataset.users'.</span>
+</code></pre>
+<p>Similarly</p>
+<pre><code class="hljs css ruby">d.add_fact(<span class="hljs-string">'fact.users.some_number'</span>)
+</code></pre>
+<p>will result into you be able to do</p>
+<pre><code class="hljs css ruby">project.facts(<span class="hljs-string">'fact.users.some_number'</span>) <span class="hljs-comment"># this will search all the facts and returns you the one with identifier 'fact.users.some_number'.</span>
+</code></pre>
+<p>Identifier can be anything. The only condition is that it has to be unique in the context of a project. No 2 objects may have the same identifier. That being said it is useful to have some kind of convention how you assign the identifiers.</p>
+<p>Exception to this rule are references and date_references which we will discuss separately.</p>
+<h2><a class="anchor" aria-hidden="true" id="defining-attributes"></a><a href="#defining-attributes" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Defining Attributes</h2>
+<pre><code class="hljs css ruby">blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">"My project from blueprint"</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+  p.add_dataset(<span class="hljs-string">'dataset.users'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.users.id'</span>)
+    d.add_attribute(<span class="hljs-string">'attr.users.name'</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+blueprint.valid? <span class="hljs-comment"># =&gt; false</span>
+blueprint.validate <span class="hljs-comment"># =&gt; [{:type=&gt;:attribute_without_label, :attribute=&gt;"attr.users.name"}]</span>
+</code></pre>
+<p>You can do it like this:</p>
+<pre><code class="hljs css ruby">blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">"My project from blueprint"</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+  p.add_dataset(<span class="hljs-string">'dataset.users'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.users.id'</span>)
+    d.add_attribute(<span class="hljs-string">'attr.users.name'</span>)
+    d.add_label(<span class="hljs-string">'label.users.name.full_name'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.users.name'</span>)
+    d.add_label(<span class="hljs-string">'label.users.name.abbreviated_name'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.users.name'</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+blueprint.valid? <span class="hljs-comment"># =&gt; true</span>
+blueprint.validate <span class="hljs-comment"># =&gt; []</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="defining-anchors-connection-points"></a><a href="#defining-anchors-connection-points" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Defining anchors/connection_points</h2>
+<p>Since you might argue that anchor (you might also hear term connection
+point which means the same thing) is a special case of the attribute
+lets' talk about it a little. Yes it is true but there are additional
+things that make it that special one. There can be only one anchor in
+each dataset:</p>
+<pre><code class="hljs css ruby">blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">"My project from blueprint"</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+  p.add_dataset(<span class="hljs-string">'dataset.users'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.users.id'</span>)
+    d.add_anchor(<span class="hljs-string">'attr.users.id2'</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+blueprint.valid? <span class="hljs-comment"># =&gt; false</span>
+blueprint.validate <span class="hljs-comment"># =&gt; [{:type=&gt;:more_than_on_anchor, :dataset=&gt;"dataset.users"}]</span>
+</code></pre>
+<p>An anchor allows you to reference from other datasets. To do this you
+must first define a label. Anchors can have multiple labels the same as
+an attribute. We strongly recommend not to define an anchor with labels
+on fact tables (they are usually not referenced). The only exception to
+this rule is if you need to upsert data.</p>
+<pre><code class="hljs css ruby">blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">"My project from blueprint"</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+  p.add_dataset(<span class="hljs-string">'dataset.users'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.users.id'</span>)
+    d.add_label(<span class="hljs-string">'label.users.id'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.users.id'</span>)
+    d.add_attribute(<span class="hljs-string">'attr.users.name'</span>)
+    d.add_label(<span class="hljs-string">'label.users.name.full_name'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.users.name'</span>)
+  <span class="hljs-keyword">end</span>
+
+  p.add_dataset(<span class="hljs-string">'dataset.sales'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.sales.id'</span>)
+    d.add_fact(<span class="hljs-string">'fact.sales.amount'</span>)
+    d.add_reference(<span class="hljs-string">'dataset.users'</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+blueprint.valid? <span class="hljs-comment"># =&gt; true</span>
+</code></pre>
+<p>A good question is &quot;why you have to define the anchor if it has no
+labels?&quot;. The reason is that you still need the underlying attribute if
+you want to construct the count metric for fact table to answer question
+&quot;How many lines there is in the 'dataset.sales' dataset?&quot;. You can do
+this as follows with the SDK (with previous model).</p>
+<pre><code class="hljs css ruby">project.attributes(<span class="hljs-string">"attr.sales.id"</span>).create_metric.execute
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="defining-date-dimensions"></a><a href="#defining-date-dimensions" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Defining date dimensions</h2>
+<p>Dimensions in all tools and even in MAQL date are represented as a
+single unit (as in blueprint builder add_date_dimension). This is
+great for readability but can be misleading. The fact is that date
+dimension has several datasets that typically contain ~18 attributes. It
+is probably not surprising that the parameter to 'add_date_dimension'
+is not an identifier but a name that is used in titles and identifiers
+of all attributes. It is also a name that you can use in add_date
+function. For example:</p>
+<pre><code class="hljs css ruby">blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">"My project from blueprint"</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+  p.add_date_dimension(<span class="hljs-string">'created_on'</span>)
+
+  p.add_dataset(<span class="hljs-string">'dataset.users'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.users.id'</span>)
+    d.add_fact(<span class="hljs-string">'fact.users.some_number'</span>)
+    d.add_date(<span class="hljs-string">'created_on'</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>You can easily create a fiscal date dimension with a specific urn. For
+example:</p>
+<pre><code class="hljs css ruby">p.add_date_dimension(<span class="hljs-string">'created_on'</span>, <span class="hljs-symbol">urn:</span> <span class="hljs-string">'urn:pe:date'</span>)
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="defining-references"></a><a href="#defining-references" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Defining references</h2>
+<p>Typically in your model you need to reference other datasets. This is
+expressed in the blueprint builder with add_reference function. It
+takes only one parameter which is the identifier of referenced dataset.
+References do not have identifier since they are not represented as
+objects on the platform.</p>
+<pre><code class="hljs css ruby">blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">"My project from blueprint"</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+  p.add_dataset(<span class="hljs-string">'dataset.users'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.users.id'</span>)
+    d.add_attribute(<span class="hljs-string">'attr.users.name'</span>)
+    d.add_label(<span class="hljs-string">'attr.users.name.full_name'</span>, <span class="hljs-symbol">reference:</span> <span class="hljs-string">'attr.users.name'</span>)
+  <span class="hljs-keyword">end</span>
+
+  p.add_dataset(<span class="hljs-string">'dataset.sales'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.sales.id'</span>)
+    d.add_fact(<span class="hljs-string">'fact.sales.amount'</span>)
+    d.add_reference(<span class="hljs-string">'dataset.users'</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+blueprint.valid? <span class="hljs-comment"># =&gt; true</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="defining-date-references"></a><a href="#defining-date-references" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Defining date references</h2>
+<p>This is very similar to references but there is additional hint that you
+are referencing date dimension.</p>
+<pre><code class="hljs css ruby">blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">"My project from blueprint"</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+  p.add_date_dimension(<span class="hljs-string">'created_on'</span>)
+
+  p.add_dataset(<span class="hljs-string">'dataset.users'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.users.id'</span>)
+    d.add_date(<span class="hljs-string">'created_on'</span>)
+    d.add_fact(<span class="hljs-string">'fact.users.some_number'</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="defining-titles"></a><a href="#defining-titles" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Defining Titles</h2>
+<p>If you would build and open in the browser any of the models we built up
+to this point you probably noticed that the titles look off. Since we
+did not define anything SDK tries to do the right thing and tries to use
+the identifiers (with some tweaking for readability) as titles. While
+this might work it is usually not what you want. You can easily fix that
+by defining the titles explicitly.</p>
+<pre><code class="hljs css ruby">blueprint = GoodData::Model::ProjectBlueprint.build(<span class="hljs-string">"My project from blueprint"</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+  p.add_date_dimension(<span class="hljs-string">'created_on'</span>)
+
+  p.add_dataset(<span class="hljs-string">'dataset.users'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|d|</span>
+    d.add_anchor(<span class="hljs-string">'attr.users.id'</span>)
+    d.add_date(<span class="hljs-string">'created_on'</span>)
+    d.add_fact(<span class="hljs-string">'fact.users.amount'</span>, <span class="hljs-symbol">title:</span> <span class="hljs-string">'Amount Sold'</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+project.facts(<span class="hljs-string">'fact.users.amount'</span>).title <span class="hljs-comment"># =&gt; 'Amount Sold'</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="specifying-data-types"></a><a href="#specifying-data-types" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Specifying data types</h2>
+<p>Occasionally the default data types of the fields will not be what you
+want. You can redefine them for both labels and facts as expected with
+parameter :gd_data_type. There is more information about this in a
+following recipe.</p>
+<h2><a class="anchor" aria-hidden="true" id="getting-blueprint-from-existing-project"></a><a href="#getting-blueprint-from-existing-project" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Getting Blueprint from Existing Project</h2>
+<p>Sometimes, you need to reverse engineer a blueprint from an existing project.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    blueprint = project.blueprint
+
+    <span class="hljs-comment"># now you can start working with it</span>
+    blueprint.datasets.count <span class="hljs-comment"># =&gt; 3</span>
+    blueprint.datasets(<span class="hljs-symbol">:all</span>, <span class="hljs-symbol">include_date_dimensions:</span> <span class="hljs-literal">true</span>).count <span class="hljs-comment"># =&gt; 4</span>
+    blueprint.attributes.map(&amp;<span class="hljs-symbol">:title</span>)
+
+    <span class="hljs-comment"># You can also store it into file as json</span>
+    blueprint.store_to_file(<span class="hljs-string">'model.json'</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="working_with_lifecycle.html">← Working with Lifecycle</a><a class="docs-next button" href="loading_data.html">Loading Data to Project →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#what-is-a-blueprint">What is a Blueprint</a></li><li><a href="#using-blueprint-to-create-a-project">Using Blueprint to Create a Project</a></li><li><a href="#defining-identifiers">Defining Identifiers</a></li><li><a href="#defining-attributes">Defining Attributes</a></li><li><a href="#defining-anchors-connection-points">Defining anchors/connection_points</a></li><li><a href="#defining-date-dimensions">Defining date dimensions</a></li><li><a href="#defining-references">Defining references</a></li><li><a href="#defining-date-references">Defining date references</a></li><li><a href="#defining-titles">Defining Titles</a></li><li><a href="#specifying-data-types">Specifying data types</a></li><li><a href="#getting-blueprint-from-existing-project">Getting Blueprint from Existing Project</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/gooddata-ruby-doc/" class="nav-home"><img src="/gooddata-ruby-doc/img/gooddata-ruby.svg" alt="Ruby SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/gooddata-ruby-doc/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc2.html">Guides (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/gooddata-ruby-doc/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/gooddata-ruby-doc/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/gooddata-ruby-doc/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 GoodData</section></footer></div></body></html>

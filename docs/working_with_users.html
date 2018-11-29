@@ -1,0 +1,388 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Working with Users · Ruby SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Working with Users · Ruby SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://gooddata.github.io/gooddata-ruby-doc/index.html"/><meta property="og:description" content="You have to have a user who is an admin of an organization. If you don’t"/><meta property="og:image" content="https://gooddata.github.io/gooddata-ruby-doc/img/docusaurus.png"/><link rel="shortcut icon" href="/gooddata-ruby-doc/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/gooddata-ruby-doc/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/gooddata-ruby-doc/"><img class="logo" src="/gooddata-ruby-doc/img/gooddata-ruby.svg"/><h2 class="headerTitle">Ruby SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/gooddata-ruby-doc/docs/getting_started.html" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Advanced Guides</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Basics</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/getting_started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/jack_in.html">Interactive Ruby Console</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/create_a_program.html">Scripting</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/connecting_to_gooddata.html">Connecting to Gooddata Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/handling_credentials.html">Handling Credentials Securely</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/using_gooddata_platform.html">Using GoodData Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/logging.html">Logging and Testing</a></li></ul></div><div class="navGroup navGroupActive"><h3>Advanced Guides</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_projects.html">Working with Projects</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/gooddata-ruby-doc/docs/working_with_users.html">Working with Users</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_permissions.html">Setting Permissions</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_models.html">Model Setup</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_your_data.html">Working with Your Data</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_reports.html">Working with Reports</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_dashboards.html">Using Dashboards</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_deployments.html">Deployment How-tos</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_automation.html">Automation and Performance</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_lifecycle.html">Working with Lifecycle</a></li></ul></div><div class="navGroup navGroupActive"><h3>Blueprints</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/creating_project_from_blueprint.html">Creating Project from Blueprint</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/loading_data.html">Loading Data to Project</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/advanced_blueprint_examples.html">Advanced Blueprint Examples</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Working with Users</h1></header><article><div><span><p>You have to have a user who is an admin of an organization. If you don’t
+have the organization admin account, please contact your primary
+GoodData contact person or GoodData support (e-mail
+<a href="mailto:support@gooddata.com">support@gooddata.com</a>).</p>
+<h2><a class="anchor" aria-hidden="true" id="listing-project-s-users"></a><a href="#listing-project-s-users" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Listing Project’s Users</h2>
+<p>You can list users in a given project:</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection(<span class="hljs-string">'user'</span>, <span class="hljs-string">'password'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(<span class="hljs-string">'project_pid'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    pp project.users
+    <span class="hljs-comment"># You might want to see just name and login</span>
+    pp project.users.map {<span class="hljs-params">|u|</span> [u.login, u.name]}
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span> 
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="checking-user-membership-in-project"></a><a href="#checking-user-membership-in-project" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Checking User Membership in Project</h2>
+<p>You can check whether a user is part of a project.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection(<span class="hljs-string">'user'</span>, <span class="hljs-string">'password'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(<span class="hljs-string">'project_pid'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    project.member?(<span class="hljs-string">'jane.doe@example.com'</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span> 
+</code></pre>
+<p>You can ask on membership not just by login but also check an object.
+This might be useful especially if you check a user from several
+projects.</p>
+<h2><a class="anchor" aria-hidden="true" id="enabling-and-disabling-users"></a><a href="#enabling-and-disabling-users" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Enabling and Disabling Users</h2>
+<p>You can enable or disable a particular user in a GoodData project.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+<span class="hljs-comment"># Connect to platform using credentials</span>
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_pid'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    keepers = [<span class="hljs-string">'john@example.com'</span>, c.user.login]
+    <span class="hljs-comment"># We collect all users and remove those from the keepers array</span>
+    users_to_disable = project.users.reject { <span class="hljs-params">|u|</span> keepers.<span class="hljs-keyword">include</span>?(u.login) }
+    <span class="hljs-comment"># disable all users</span>
+    users_to_disable.pmap { <span class="hljs-params">|u|</span> u.disable }
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Disable all users in GoodData project</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># We collect all users minus current user</span>
+<span class="hljs-comment"># so we do not disable ourselves from the project</span>
+users_to_disable = project.users.reject { <span class="hljs-params">|u|</span> u.login == c.user.login }
+<span class="hljs-comment"># disable all users</span>
+users_to_disable.pmap {<span class="hljs-params">|u|</span> u.disable}
+</code></pre>
+<p>If you want to keep more than one user you can do something like this</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># We collect all users and remove those from the keepers array</span>
+users_to_disable = project.users.reject { <span class="hljs-params">|u|</span> keepers.<span class="hljs-keyword">include</span>?(u.login) }
+<span class="hljs-comment"># disable all users</span>
+users_to_disable.pmap { <span class="hljs-params">|u|</span> u.disable }
+</code></pre>
+<p>As you can see from the above examples possibilities are endless and you
+can easily enable or disable users just by correctly prepare the array
+of users to work with by using regular methods on arrays.</p>
+<h2><a class="anchor" aria-hidden="true" id="invite-users-from-csv"></a><a href="#invite-users-from-csv" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Invite Users from CSV</h2>
+<p>If you have a CSV file containing users, their roles and passwords, you can create them in a bulk.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: UTF-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+<span class="hljs-comment"># Project ID</span>
+PROJECT_ID = <span class="hljs-string">'we1vvh4il93r0927r809i3agif50d7iz'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(PROJECT_ID) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    path = File.join(File.dirname(__FILE_<span class="hljs-number">_</span>), <span class="hljs-string">'..'</span>, <span class="hljs-string">'data'</span>, <span class="hljs-string">'users.csv'</span>)
+    puts <span class="hljs-string">"Loading <span class="hljs-subst">#{path}</span>"</span>
+    CSV.foreach(path, <span class="hljs-symbol">:headers</span> =&gt; <span class="hljs-literal">true</span>, <span class="hljs-symbol">:return_headers</span> =&gt; <span class="hljs-literal">false</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|user|</span>
+      email = user[<span class="hljs-number">0</span>]
+      role = user[<span class="hljs-number">1</span>]
+      project.invite(email, role)
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="inviting-users-to-project"></a><a href="#inviting-users-to-project" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Inviting Users to Project</h2>
+<p>You can invite a user into project.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+client = GoodData.connect
+project = client.projects(<span class="hljs-string">'project_pid'</span>)
+
+project.invite(<span class="hljs-string">'joe@example.com'</span>, <span class="hljs-string">'admin'</span>, <span class="hljs-string">'Hey Joe, look at this.'</span>)
+</code></pre>
+<p>Invitation can be sent by any administrator. Invited user receives
+invitation e-mail with invitation confirmation. If you want to add user
+into a project without the e-mail and confirmation, please consult the
+recipe Adding users to Project.</p>
+<h2><a class="anchor" aria-hidden="true" id="listing-organization-s-users"></a><a href="#listing-organization-s-users" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Listing Organization’s Users</h2>
+<p>You can list all users in an organization.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+<span class="hljs-comment"># Connect to platform using credentials</span>
+client = GoodData.connect
+
+domain = client.domain(<span class="hljs-string">'domain_name'</span>)
+users = domain.users
+pp users
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="adding-user-to-organization"></a><a href="#adding-user-to-organization" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Adding User to Organization</h2>
+<p>You can add a user to organization programmatically.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+client = GoodData.connect
+
+<span class="hljs-comment"># Get your domain ..</span>
+domain = client.domain(<span class="hljs-string">'domain_name'</span>)
+
+<span class="hljs-comment"># Generate random password</span>
+pass = (<span class="hljs-number">0</span>...<span class="hljs-number">10</span>).map { (<span class="hljs-string">'a'</span>..<span class="hljs-string">'z'</span>).to_a[rand(<span class="hljs-number">26</span>)] }.join
+
+new_user = domain.add_user(
+  <span class="hljs-symbol">:login</span> =&gt; <span class="hljs-string">'new.user@gooddata.com'</span>,
+  <span class="hljs-symbol">:password</span> =&gt; pass,
+  <span class="hljs-symbol">:first_name</span> =&gt; <span class="hljs-string">'First'</span>,
+  <span class="hljs-symbol">:last_name</span> =&gt; <span class="hljs-string">'Last'</span>,
+  <span class="hljs-symbol">:email</span> =&gt; <span class="hljs-string">'test@gooddata.com'</span>,
+  <span class="hljs-symbol">:sso_provider</span> =&gt; <span class="hljs-string">'some_sso'</span>
+)
+
+pp new_user
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="adding-multiple-users-to-organization-from-csv"></a><a href="#adding-multiple-users-to-organization-from-csv" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Adding Multiple Users to Organization from CSV</h2>
+<p>If you have a CSV file containing information about users, you can add them to organization all at once.</p>
+<p>We assume that you have a file with details ready. The file can look for
+example like this:</p>
+<pre><code class="hljs">login,first_name,last_name,password
+john@example.com,John,Doe,12345678
+</code></pre>
+<p>The headers we used are defaults. If you have different ones you will
+have to do some mangling. Minimal information that you have to provide
+for the user creation to be successful is login.</p>
+<p>First let’s have a look how to implement an addition with having the
+file as in the example above. This has the advantage that you do not
+have to mangle with the headers.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+<span class="hljs-keyword">require</span> <span class="hljs-string">'active_support/all'</span>
+
+client = GoodData.connect
+
+domain = client.domain(<span class="hljs-string">'domain-name'</span>)
+users = []
+CSV.foreach(<span class="hljs-string">'data.csv'</span>, <span class="hljs-symbol">:headers</span> =&gt; <span class="hljs-literal">true</span>, <span class="hljs-symbol">:return_headers</span> =&gt; <span class="hljs-literal">false</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|row|</span>
+  users &lt;&lt; row.to_hash.symbolize_keys
+<span class="hljs-keyword">end</span>
+
+domain.create_users(users)
+</code></pre>
+<p>Sometimes though what you have is that the file that comes from the system has different headers than would be ideal. One possible thing you can do is to transform it in a separate ETL process or you can change the code slightly to compensate. In the next code snippet we will show you how to do just that.</p>
+<p>Imagine you have a file like this</p>
+<pre><code class="hljs">UserLogin,FirstName,LastName,UserPassword
+john@example.com,John,Doe,12345678
+</code></pre>
+<p>Notice that it is exactly the same information as before. The only
+difference is that you have different headers.</p>
+<p>This is the code add those users to a domain.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+client = GoodData.connect
+
+headers = [<span class="hljs-string">"UserLogin"</span>, <span class="hljs-string">"FirstName"</span>, <span class="hljs-string">"LastName"</span>, <span class="hljs-string">"UserPassword"</span>]
+new_headers = [<span class="hljs-symbol">:login</span>, <span class="hljs-symbol">:first_name</span>, <span class="hljs-symbol">:last_name</span>, <span class="hljs-symbol">:password</span>]
+
+domain = client.domain(<span class="hljs-string">'domain-name'</span>)
+users = []
+CSV.foreach(<span class="hljs-string">'data.csv'</span>, <span class="hljs-symbol">:headers</span> =&gt; <span class="hljs-literal">true</span>, <span class="hljs-symbol">:return_headers</span> =&gt; <span class="hljs-literal">false</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|row|</span>
+  new_data = new_headers.zip(row.to_hash.values_at(*headers))
+  users &lt;&lt; Hash[new_data]
+<span class="hljs-keyword">end</span>
+
+domain.create_users(users)
+</code></pre>
+<p>Notice that the bulk of the code is the same. The only differences are
+that we defined <code>headers</code> which contain the values of the headers in the
+CSV file provided. Variable <code>new_headers</code> provide the corresponding
+values for those headers that the SDK expects. Take not that the
+position is important and the headers for corresponding columns has to
+be in the same order in both variables.</p>
+<p>The most important line in the code is this</p>
+<pre><code class="hljs css ruby">new_headers.zip(row.to_hash.values_at(*headers))
+</code></pre>
+<p>What it does is it exchanges the keys from <code>headers</code> to those defined in
+<code>new_headers</code>. This code does not return a Hash but array of key value
+pairs. This can be turned into a hash with this</p>
+<pre><code class="hljs css ruby">Hash[*new_data]
+</code></pre>
+<p>The rest of the code is the same as in previous example.</p>
+<h2><a class="anchor" aria-hidden="true" id="adding-user-from-organization-to-project"></a><a href="#adding-user-from-organization-to-project" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Adding User from Organization to Project</h2>
+<p>You can take users in organization (domain) and add them into a project.</p>
+<pre><code class="hljs css ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  <span class="hljs-comment"># Get your domain ..</span>
+  domain = client.domain(<span class="hljs-string">'domain_name'</span>)
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    <span class="hljs-comment"># Let's get all users except of ourselves</span>
+    users_to_add = domain.users.reject { <span class="hljs-params">|u|</span> u.login == client.user.login }
+    <span class="hljs-comment"># Let's add all as viewer</span>
+    users_to_add.each { <span class="hljs-params">|u|</span> project.add_user(u, <span class="hljs-string">'Viewer'</span>, <span class="hljs-symbol">domain:</span> domain) }
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="adding-users-from-organization-to-multiple-projects"></a><a href="#adding-users-from-organization-to-multiple-projects" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Adding Users from Organization to Multiple Projects</h2>
+<p>You already have all the user profiles created in your organization (domain). If you
+have many projects, youcan add those users to them at once.</p>
+<p>We assume that you have a file with details which users should be added
+to a project. The file has to contain three pieces of information. Who
+you would like to add to a project, role that the user should take on in
+that project and which project he should be added to. The headers we
+used are defaults. If you have different ones you will have to do some
+mangling. Example of how to do that can be found in recipe
+adding_users_to_domain.</p>
+<p>Sometimes the case might be that you would like to add users to a slew
+of projects in one go. Let’s illustrate this on one example. Let’s
+imagine that you have a file like this</p>
+<pre><code class="hljs">pid,login,role
+asl50ejow6bzp97i9pxlbcm3vkuvzQ72,john@example.com,admin
+</code></pre>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+<span class="hljs-keyword">require</span> <span class="hljs-string">'active_support/all'</span>
+
+GoodData.with_connection(<span class="hljs-string">'user'</span>, <span class="hljs-string">'password'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  domain = client.domain(<span class="hljs-string">'domain-name'</span>)
+  users = []
+  CSV.foreach(<span class="hljs-string">'data.csv'</span>, <span class="hljs-symbol">:headers</span> =&gt; <span class="hljs-literal">true</span>, <span class="hljs-symbol">:return_headers</span> =&gt; <span class="hljs-literal">false</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|row|</span>
+    users &lt;&lt; row.to_hash.symbolize_keys.slice(<span class="hljs-symbol">:pid</span>, <span class="hljs-symbol">:login</span>, <span class="hljs-symbol">:role</span>)
+  <span class="hljs-keyword">end</span>
+  users.group_by {<span class="hljs-params">|u|</span> u[<span class="hljs-symbol">:pid</span>]}.map <span class="hljs-keyword">do</span> <span class="hljs-params">|project_id, users|</span>
+    GoodData.with_project(project_id) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+      project.import_users(users, <span class="hljs-symbol">domain:</span> domain, <span class="hljs-symbol">whitelists:</span> [<span class="hljs-string">"svarovsky@gooddata.com"</span>])
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>This reads the users, groups them according to a project and then adds
+them to the project. It reads all the users into memory. This should be
+OK for typical situations of thousands users. Note that we are not
+getting a project dynamically for each group of users. All the notes for
+whitelist apply as well.</p>
+<h2><a class="anchor" aria-hidden="true" id="adding-user-to-both-organization-and-project-from-csv"></a><a href="#adding-user-to-both-organization-and-project-from-csv" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Adding User to Both Organization and Project from CSV</h2>
+<p>You can add users from CSV file to a project and domain in one
+go. Best practice with automated projects is to add users to domain
+(organization) and then to add users from that domain to specific
+project(s). This allows you to bypass the invitation process and you can
+manipulate users without their consent which is usually what you want in
+those cases. Sometimes it could be useful to do this in one go. This is
+especially true if you have only one project and one organization.</p>
+<p>We assume that you have a file with details handy. The file can look for
+example like this</p>
+<pre><code class="hljs">login,first_name,last_name,password,role
+john@example.com,John,Smith,12345678,admin
+john.doe@example.com,John,Doe,87616393,admin
+</code></pre>
+<p>The headers we used are defaults. If you have different ones you will
+have to do some mangling (see the recipe Adding user to organization
+from CSV file above). Minimal information that you have to provide for
+the user creation to be successful is login.</p>
+<p>The SDK has a method import_users that takes care of all the details and
+does exactly what is described above. Adds users to domain and then
+project.</p>
+<ul>
+<li><p>Process of adding users is not additive but declarative. What you
+provide on the input is what SDK will strive to have in the project
+at the end. This has some constraints on data preparation but it is
+much more resilient approach.</p></li>
+<li><p>Connected to previous point sometimes you have users that you do not
+want to be touched by this process. ETL developers, admins etc that
+usually do not come from data. You can provide list of whitelist
+expressions as either string or regular expressions. What this means
+is the user that would be added or removed based on the data will be
+ignored by the process. In our example we want to omit user under
+which you are logged in.</p></li>
+<li><p>Be careful that you do not lock yourself (ETL administrator) out of
+the project. Be sure to add the user to the whitelist if they are
+not intrinsically in the data.</p></li>
+<li><p>Note that above data will not work. Currently there is a constraint
+that each user has to have unique login across all users in
+GoodData. It is likely that there already is a <code>john@example.com</code>
+somewhere so change the test data accordingly.</p></li>
+</ul>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+<span class="hljs-keyword">require</span> <span class="hljs-string">'active_support/all'</span>
+
+GoodData.with_connection(<span class="hljs-string">'user'</span>, <span class="hljs-string">'password'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(<span class="hljs-string">'project_pid'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    users = []
+    CSV.foreach(<span class="hljs-string">'data.csv'</span>, <span class="hljs-symbol">:headers</span> =&gt; <span class="hljs-literal">true</span>, <span class="hljs-symbol">:return_headers</span> =&gt; <span class="hljs-literal">false</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|row|</span>
+      users &lt;&lt; row.to_hash.symbolize_keys
+    <span class="hljs-keyword">end</span>
+    domain = client.domain(<span class="hljs-string">'domain-name'</span>) 
+    domain.create_users(users)
+    project.import_users(users, <span class="hljs-symbol">domain:</span> domain)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="updating-a-user-in-organization"></a><a href="#updating-a-user-in-organization" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Updating a User in Organization</h2>
+<p>Some of the users in your organization might have incorrect or
+outdated information and need update.</p>
+<p>Here we are updating an sso provider but you can update almost any
+property of a user.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+client = GoodData.connect
+domain = client.domain <span class="hljs-string">'organization_name'</span>
+u = domain.find_user_by_login(<span class="hljs-string">'john@gooddata.com'</span>)
+u.sso_provider = <span class="hljs-string">'a_provider'</span>
+domain.update_user(u)
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="creating-groups"></a><a href="#creating-groups" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating Groups</h2>
+<p>There is a concept of group in GoodData. Member of a group can be either
+another group or directly a user. Here we are going to create a group
+and assign it some users.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  client.with_project(<span class="hljs-string">'project'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|p|</span>
+    group_1 = p.add_user_group(<span class="hljs-symbol">name:</span> <span class="hljs-string">'east'</span>)
+    group_1.add_members(p.member(<span class="hljs-string">'john.doe@gooddata.com'</span>))
+    pp group_1.members.map(&amp;<span class="hljs-symbol">:uri</span>)
+    <span class="hljs-comment"># ['/gdc/account/profile/4e1e8cacc4989228e0ae531b30853248']</span>
+
+    group_1.member?(<span class="hljs-string">'/gdc/account/profile/4e1e8cacc4989228e0ae531b30853248'</span>)
+    <span class="hljs-comment"># =&gt; true</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="deleting-users-from-all-projects"></a><a href="#deleting-users-from-all-projects" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Deleting Users from All projects</h2>
+<p>This script should remove user from all projects. There are couple of
+things you need to keep in mind though.</p>
+<ul>
+<li><p>This deletes user only from projects where you have access to</p></li>
+<li><p>If you are not admin in particular project the user will not be
+deleted from that particular project</p></li>
+</ul>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+login = <span class="hljs-string">'john.doe@gooddata.com'</span>
+
+<span class="hljs-comment"># Connect to platform using credentials</span>
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  <span class="hljs-comment"># first select only projects where you are admin</span>
+  <span class="hljs-comment"># which means you can read users and disable them</span>
+  projects = client.projects.pselect(&amp;<span class="hljs-symbol">:am_i_admin?</span>)
+  projects.peach <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    project.member(login).disable
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="working_with_projects.html">← Working with Projects</a><a class="docs-next button" href="working_with_permissions.html">Setting Permissions →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#listing-project-s-users">Listing Project’s Users</a></li><li><a href="#checking-user-membership-in-project">Checking User Membership in Project</a></li><li><a href="#enabling-and-disabling-users">Enabling and Disabling Users</a></li><li><a href="#invite-users-from-csv">Invite Users from CSV</a></li><li><a href="#inviting-users-to-project">Inviting Users to Project</a></li><li><a href="#listing-organization-s-users">Listing Organization’s Users</a></li><li><a href="#adding-user-to-organization">Adding User to Organization</a></li><li><a href="#adding-multiple-users-to-organization-from-csv">Adding Multiple Users to Organization from CSV</a></li><li><a href="#adding-user-from-organization-to-project">Adding User from Organization to Project</a></li><li><a href="#adding-users-from-organization-to-multiple-projects">Adding Users from Organization to Multiple Projects</a></li><li><a href="#adding-user-to-both-organization-and-project-from-csv">Adding User to Both Organization and Project from CSV</a></li><li><a href="#updating-a-user-in-organization">Updating a User in Organization</a></li><li><a href="#creating-groups">Creating Groups</a></li><li><a href="#deleting-users-from-all-projects">Deleting Users from All projects</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/gooddata-ruby-doc/" class="nav-home"><img src="/gooddata-ruby-doc/img/gooddata-ruby.svg" alt="Ruby SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/gooddata-ruby-doc/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc2.html">Guides (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/gooddata-ruby-doc/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/gooddata-ruby-doc/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/gooddata-ruby-doc/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 GoodData</section></footer></div></body></html>

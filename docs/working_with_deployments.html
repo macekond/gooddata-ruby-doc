@@ -1,0 +1,511 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Deployment How-tos · Ruby SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Deployment How-tos · Ruby SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://gooddata.github.io/gooddata-ruby-doc/index.html"/><meta property="og:description" content="Deploying Process"/><meta property="og:image" content="https://gooddata.github.io/gooddata-ruby-doc/img/docusaurus.png"/><link rel="shortcut icon" href="/gooddata-ruby-doc/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/gooddata-ruby-doc/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/gooddata-ruby-doc/"><img class="logo" src="/gooddata-ruby-doc/img/gooddata-ruby.svg"/><h2 class="headerTitle">Ruby SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/gooddata-ruby-doc/docs/getting_started.html" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Advanced Guides</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Basics</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/getting_started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/jack_in.html">Interactive Ruby Console</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/create_a_program.html">Scripting</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/connecting_to_gooddata.html">Connecting to Gooddata Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/handling_credentials.html">Handling Credentials Securely</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/using_gooddata_platform.html">Using GoodData Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/logging.html">Logging and Testing</a></li></ul></div><div class="navGroup navGroupActive"><h3>Advanced Guides</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_projects.html">Working with Projects</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_users.html">Working with Users</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_permissions.html">Setting Permissions</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_models.html">Model Setup</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_your_data.html">Working with Your Data</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_reports.html">Working with Reports</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_dashboards.html">Using Dashboards</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/gooddata-ruby-doc/docs/working_with_deployments.html">Deployment How-tos</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_automation.html">Automation and Performance</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_lifecycle.html">Working with Lifecycle</a></li></ul></div><div class="navGroup navGroupActive"><h3>Blueprints</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/creating_project_from_blueprint.html">Creating Project from Blueprint</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/loading_data.html">Loading Data to Project</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/advanced_blueprint_examples.html">Advanced Blueprint Examples</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Deployment How-tos</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="deploying-process"></a><a href="#deploying-process" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Deploying Process</h2>
+<p>You can deploy a CloudConnect or Ruby SDK process to the GoodData platform.</p>
+<p>SDK allows you to deploy a process. Just point it to a directory or a
+zipped archive that you want to deploy. Below is an example of
+CloudConnect process deployment. When deploying CloudConnect processes
+you typically want to take the whole folder structure of a CloudConnect
+project and deploy it. So you will want to pass either path to the root
+folder of the structure or you can zip it first and pass just a path to
+the zip archive. The below example points to the root folder of a
+CloudConnect project.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    project.deploy_process(<span class="hljs-string">'./path/to_cloud_connect_directory'</span>,
+      <span class="hljs-symbol">name:</span> <span class="hljs-string">'Test ETL Process'</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span> 
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="redeploying-existing-process"></a><a href="#redeploying-existing-process" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Redeploying Existing Process</h2>
+<p>SDK provides means for redeploying a process (with a new updated
+content). All you have to do is to get a handle on the process. Here we
+are using a process id to identify the process that we want to redeploy.
+You can use any other way to identify the process to redeploy. Take note
+that the same deployment rules as in <code>project.deploy_process</code> apply.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    process = project.processes(<span class="hljs-string">'process_id'</span>)
+    process.deploy(<span class="hljs-string">'./path/to_cloud_connect_directory'</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span> 
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="scheduling-process"></a><a href="#scheduling-process" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Scheduling Process</h2>
+<p>You have a process deployed and you would like to add a schedule to it
+so the process is executed regularly</p>
+<p>You can easily add a time based schedule to any process. Scheduled
+process execution has couple advantages over the ad-hoc process
+executions. Scheduled executions are logged and logs are kept around for
+some time (~10 days). Also schedule keeps list of parameters so you
+create it once and you do not need to care about them anymore.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    process = project.deploy_process(<span class="hljs-string">'./path/to_cloud_connect_directory'</span>, <span class="hljs-symbol">name:</span> <span class="hljs-string">'Test ETL Process'</span>)
+    process.create_schedule(<span class="hljs-string">'0 15 * * *'</span>, <span class="hljs-string">'graph/my_graph.grf'</span>,
+      <span class="hljs-symbol">params:</span> {
+        <span class="hljs-symbol">param_1:</span> <span class="hljs-string">'a'</span>,
+        <span class="hljs-symbol">param_2:</span> <span class="hljs-string">'b'</span>
+      },
+      <span class="hljs-symbol">hidden_params:</span> {
+        <span class="hljs-symbol">hidden_param_1:</span> <span class="hljs-string">'a'</span>,
+        <span class="hljs-symbol">hidden_param_2:</span> <span class="hljs-string">'b'</span>
+      }
+    )
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="working-with-json"></a><a href="#working-with-json" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Working with JSON</h3>
+<p>In many examples in the Appstore, the parameters are specified in JSON.
+JSON is language agnostic that is very similar to Ruby format of
+representing data but it is not exactly the same. Since here we are
+working in Ruby we present a short example how to convert JSON to Ruby
+automatically.</p>
+<p>Let’s assume we have some JSON parameters that look like this</p>
+<pre><code class="hljs css json">{
+  <span class="hljs-attr">"param_1"</span> : {
+    <span class="hljs-attr">"deeper_key"</span> : <span class="hljs-string">"value_1"</span>
+  },
+  <span class="hljs-attr">"param_2"</span> : <span class="hljs-string">"value_2"</span>
+}
+</code></pre>
+<p>We first need to store this in a string and then use one of the ruby
+libraries to convert this to the equivalent on Ruby language. Typically
+there are problems with the quotes since in many language a string
+literal is defined with &quot; and thus the JSON need to be escaped. Another
+problem might be caused with the fact that JSON is typically on multiple
+lines (as in our example). We use one of the lesser known features of
+ruby called HEREDOC to help us. It is basically a way to define a string
+that is potentially on multiple lines without worrying about escaping.</p>
+<pre><code class="hljs css ruby">data = <span class="hljs-string">&lt;&lt;JSON_DATA
+{
+  "param_1" : {
+    "deeper_key" : "value_1"
+  },
+  "param_2" : "value_2"
+}
+JSON_DATA</span>
+
+
+<span class="hljs-comment"># Note that &lt;&lt;JSON_DATA and JSON_DATA marks the beginning and the end of the string. Once we have the JSON string defined we can use JSON libraries to convert it. Here we are using MultiJson which is part fo the Ruby SDK.</span>
+
+params = MultiJson.load(data)
+=&gt; {<span class="hljs-string">"param_1"</span>=&gt;{<span class="hljs-string">"deeper_key"</span>=&gt;<span class="hljs-string">"value_1"</span>}, <span class="hljs-string">"param_2"</span>=&gt;<span class="hljs-string">"value_2"</span>}
+</code></pre>
+<p>Then we can use it as in the example above</p>
+<h2><a class="anchor" aria-hidden="true" id="disabling-schedules-in-all-projects"></a><a href="#disabling-schedules-in-all-projects" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Disabling Schedules in All Projects</h2>
+<p>You can disable all schedules on all processes on all the
+projects you have access to and have sufficient privileges to do so.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+client = GoodData.connect
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  schedules = client.projects.pselect(&amp;<span class="hljs-symbol">:am_i_admin?</span>).pmapcat(&amp;<span class="hljs-symbol">:schedules</span>)
+  schedules.pmap <span class="hljs-keyword">do</span> <span class="hljs-params">|schedule|</span>
+    schedule.disable
+    schedule.save
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="executing-schedule"></a><a href="#executing-schedule" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Executing Schedule</h2>
+<p>If you have a process with a schedule, you would perhaps like to execute it out of
+schedule.</p>
+<p>Since schedule already have information about executable and parameters
+stored it is very easy. You just need to find the schedule and execute
+it.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  project = GoodData.use(<span class="hljs-string">'project_id'</span>)
+  project.processes.first.schedules.first.execute
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="executing-process"></a><a href="#executing-process" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Executing Process</h2>
+<p>You can execute a process without a schedule.</p>
+<p>SDK allows you to execute a process. This is not something that you
+should do regularly since you have to specify the parameters during
+execution and logs are not kept for individual executions but it might
+be occasionally useful.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    project = GoodData.use(<span class="hljs-string">'project_id'</span>)
+    process = project.processes.find { <span class="hljs-params">|p|</span> p.name == <span class="hljs-string">'Test ETL Process'</span> }
+    process.execute(<span class="hljs-string">'graph/my_graph.grf'</span>, <span class="hljs-symbol">params:</span> { <span class="hljs-symbol">param1:</span> <span class="hljs-string">'a'</span>, <span class="hljs-symbol">param2:</span> <span class="hljs-string">'b'</span> })
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span> 
+</code></pre>
+<p>There are also couple of other useful tricks. You might execute
+arbitrary process that is already deployed. You just need to get the
+process by its id.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    process = project.processes(<span class="hljs-string">'6a75759f-2a76-49c8-af18-ad3bc58fc65e'</span>)
+    process.execute(<span class="hljs-string">'graph/my_graph.grf'</span>, <span class="hljs-symbol">params:</span> { <span class="hljs-symbol">param1:</span> <span class="hljs-string">'a'</span>, <span class="hljs-symbol">param2:</span> <span class="hljs-string">'b'</span> })
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Or you can get a process by it’s name too.</p>
+<h1><a class="anchor" aria-hidden="true" id="encoding-utf-8"></a><a href="#encoding-utf-8" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>encoding: utf-8</h1>
+<pre><code class="hljs css ruby"><span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    project = GoodData.use(<span class="hljs-string">'project_id'</span>)
+    process = project.processes.find { <span class="hljs-params">|p|</span> p.name == <span class="hljs-string">'Test ETL Process'</span> }
+    process.execute(<span class="hljs-string">'graph/my_graph.grf'</span>, <span class="hljs-symbol">params:</span> { <span class="hljs-symbol">param1:</span> <span class="hljs-string">'a'</span>, <span class="hljs-symbol">param2:</span> <span class="hljs-string">'b'</span> })
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>If you do not know what the executable is you can look it up by using
+<code>process.executables</code>. We recommend using the same for all processes
+like <code>main.grf</code> (for CloudConnect) or <code>main.rb</code>.</p>
+<h2><a class="anchor" aria-hidden="true" id="run-after-scheduling"></a><a href="#run-after-scheduling" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Run-After Scheduling</h2>
+<p>You can schedule a process to run upon successful completion of
+another process (schedule). This is also known as run-after triggered
+schedule.</p>
+<p>If you use an existing schedule object instead of a cron expression in
+the create_schedule method, the scheduled process will be scheduled to
+execute upon successful completion of the passed schedule.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    process = project.deploy_process(<span class="hljs-string">'./path/to_parent_cloud_connect_directory'</span>, <span class="hljs-symbol">name:</span> <span class="hljs-string">'Parent Process'</span>)
+    parent_schedule = process.create_schedule(<span class="hljs-string">'0 15 * * *'</span>, <span class="hljs-string">'graph/parent_graph.grf'</span>, <span class="hljs-symbol">params:</span> { <span class="hljs-symbol">param1:</span> <span class="hljs-string">'a'</span>, <span class="hljs-symbol">param2:</span> <span class="hljs-string">'b'</span> })
+    <span class="hljs-comment"># The after_process will run after the parent_schedule successfully finishes</span>
+    process = project.deploy_process(<span class="hljs-string">'./path/to_after_cloud_connect_directory'</span>, <span class="hljs-symbol">name:</span> <span class="hljs-string">'After Process'</span>)
+    <span class="hljs-comment"># Note passing the parent_schedule instead of a cron expression</span>
+    process.create_schedule(parent_schedule, <span class="hljs-string">'graph/after_graph.grf'</span>, <span class="hljs-symbol">params:</span> { <span class="hljs-symbol">param1:</span> <span class="hljs-string">'a'</span>, <span class="hljs-symbol">param2:</span> <span class="hljs-string">'b'</span> })
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="changing-an-existing-schedule"></a><a href="#changing-an-existing-schedule" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Changing an existing schedule</h2>
+<p>You can retrieve a schedule in the same way as any other object, use
+it’s methods to change it and save it.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+schedule_id = <span class="hljs-string">'fill_in'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  project = client.projects(<span class="hljs-string">'project_id'</span>)
+  schedule = project.schedules(schedule_id)
+  <span class="hljs-comment"># you can change pretty much anything</span>
+
+  <span class="hljs-comment"># executable</span>
+  schedule.executable = <span class="hljs-string">'graph/new_graph.grf'</span>
+
+  <span class="hljs-comment"># params</span>
+  schedule.params
+  <span class="hljs-comment"># {</span>
+  <span class="hljs-comment">#   "PROCESS_ID"=&gt;"c42c1b82-7d6f-433a-b008-9cdb1d454e01",</span>
+  <span class="hljs-comment">#   "EXECUTABLE"=&gt;"new_main.rb",</span>
+  <span class="hljs-comment">#   :a=&gt;:b</span>
+  <span class="hljs-comment"># }</span>
+  schedule.set_param(<span class="hljs-symbol">:a</span>, <span class="hljs-symbol">:c</span>)
+  schedule.params
+  <span class="hljs-comment"># {</span>
+  <span class="hljs-comment">#   "PROCESS_ID"=&gt;"c42c1b82-7d6f-433a-b008-9cdb1d454e01",</span>
+  <span class="hljs-comment">#   "EXECUTABLE"=&gt;"new_main.rb",</span>
+  <span class="hljs-comment">#   :a=&gt;:c</span>
+  <span class="hljs-comment"># }</span>
+  schedule.update_params({
+    <span class="hljs-symbol">:a</span> =&gt; <span class="hljs-number">42</span>,
+    <span class="hljs-symbol">:b</span> =&gt; [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]
+  })
+  schedule.params
+  <span class="hljs-comment"># {</span>
+  <span class="hljs-comment">#   "PROCESS_ID"=&gt;"c42c1b82-7d6f-433a-b008-9cdb1d454e01",</span>
+  <span class="hljs-comment">#   "EXECUTABLE"=&gt;"new_main.rb",</span>
+  <span class="hljs-comment">#   :a =&gt; 42,</span>
+  <span class="hljs-comment">#   :b=&gt;[1, 2, 3]</span>
+  <span class="hljs-comment"># }</span>
+  
+  <span class="hljs-comment"># reschedule</span>
+  schedule.reschedule <span class="hljs-comment"># =&gt; 0</span>
+  schedule.reschedule = <span class="hljs-number">15</span>
+  
+  <span class="hljs-comment"># name</span>
+  schedule.name <span class="hljs-comment"># =&gt; "Some Name"</span>
+  schedule.name = <span class="hljs-string">"Better Name"</span>
+
+  <span class="hljs-comment"># enable/disable</span>
+  schedule.state <span class="hljs-comment"># =&gt; "ENABLED"</span>
+  schedule.disable
+  schedule.state <span class="hljs-comment"># =&gt; "DISABLED"</span>
+  schedule.enable
+  schedule.state <span class="hljs-comment"># =&gt; "ENABLED"</span>
+
+  <span class="hljs-comment"># cron expression</span>
+  schedule.cron <span class="hljs-comment"># =&gt; "1 1 1 * *"</span>
+  schedule.cron = <span class="hljs-string">"1 1 1 1 *"</span>
+
+  <span class="hljs-comment"># "run after" schedule</span>
+  after_schedule = project.schedules(<span class="hljs-string">'some_id'</span>)
+  schedule.after = after_schedule
+
+  <span class="hljs-comment"># Do not foreget to save it</span>
+  schedule.save
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="investigating-executions"></a><a href="#investigating-executions" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Investigating Executions</h2>
+<p>If you have a large amount of projects and would like to investigate their
+execution, the administration UI is not necessarily helpful as its
+overview UI can hide some failures, there is too much too go through by
+hand etc.</p>
+<p>Let’s have a look at couple of scenarios. First let’s investigate
+executions inside one project regardless of which schedule it was
+triggered by. Let’s assume first that we are just looking for any
+executions that failed for that particular project. We will print the
+date when it happened sorted in ascending order.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    results = project.schedules
+                     .pmapcat { <span class="hljs-params">|s|</span> s.executions.to_a }  <span class="hljs-comment"># take all their executions (execute in parallel since this goes to API)</span>
+                     .select(&amp;<span class="hljs-symbol">:error?</span>) <span class="hljs-comment"># select only those that failed</span>
+    pp results.map(&amp;<span class="hljs-symbol">:started</span>).sort.uniq
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Now imagine that you are looking for executions executed by a particular
+schedule.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    results = project.schedules
+                     .select { <span class="hljs-params">|s|</span> s.name == <span class="hljs-string">'user_filters_schedule'</span> } <span class="hljs-comment"># filter on those that have particular name</span>
+                     .pmapcat { <span class="hljs-params">|s|</span> s.executions.to_a } <span class="hljs-comment"># take all their executions (execute in parallel since this goes to API)</span>
+                     .select(&amp;<span class="hljs-symbol">:error?</span>) <span class="hljs-comment"># select only those that failed</span>
+    pp results.map(&amp;<span class="hljs-symbol">:started</span>).sort.uniq
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Lets' make it even more specific and let’s look for a specific term in
+the error message. Let’s say that &quot;unsynchronized&quot; is the word we are
+looking for.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    results = project.schedules
+                     .select { <span class="hljs-params">|s|</span> s.name == <span class="hljs-string">'user_filters_schedule'</span> } <span class="hljs-comment"># filter on those that have particular name</span>
+                     .pmapcat { <span class="hljs-params">|s|</span> s.executions.to_a } <span class="hljs-comment"># take all their executions (execute in parallel since this goes to API)</span>
+                     .select(&amp;<span class="hljs-symbol">:error?</span>) <span class="hljs-comment"># select only those that failed</span>
+                     .select { <span class="hljs-params">|e|</span> e.json[<span class="hljs-string">'execution'</span>][<span class="hljs-string">'error'</span>][<span class="hljs-string">'message'</span>] =~ <span class="hljs-regexp">/unsynchronized/</span> } <span class="hljs-comment"># select those that contain particular message in error message</span>
+    pp results.map(&amp;<span class="hljs-symbol">:started</span>).sort.uniq
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Sometimes the error does not manifest itself in the error message
+directly and you need to look into logs. Take note that in both last
+cases we are getting the log and the error message as a string so you
+have full power of ruby to process it. Here we are using regular
+expressions which by itself gives you significant power but you can go
+even deeper if you need.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    results = project.schedules
+                     .select { <span class="hljs-params">|s|</span> s.name == <span class="hljs-string">'user_filters_schedule'</span> } <span class="hljs-comment"># filter on those that have particular name</span>
+                     .pmapcat { <span class="hljs-params">|s|</span> s.executions.to_a } <span class="hljs-comment"># take all their executions (execute in parallel since this goes to API)</span>
+                     .select(&amp;<span class="hljs-symbol">:error?</span>) <span class="hljs-comment"># select only those that failed</span>
+                     .select { <span class="hljs-params">|e|</span> e.log =~ <span class="hljs-regexp">/unsynchronized/</span> } <span class="hljs-comment"># select those that contain particular message in log</span>
+    pp results.map(&amp;<span class="hljs-symbol">:started</span>).sort.uniq
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Last example we will show is just a small extension. Imagine you would
+like to perform the same analysis on all projects in your account. This
+is usually the case since these type of analysis executions become
+exponentially more useful with growing number of executions or projects
+you need to investigate.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+    results = client.projects <span class="hljs-comment"># take all projects</span>
+                    .pmapcat(&amp;<span class="hljs-symbol">:schedules</span>) <span class="hljs-comment"># take all their schedules (execute in parallel since this goes to API)</span>
+                    .select { <span class="hljs-params">|s|</span> s.name == <span class="hljs-string">'user_filters_schedule'</span> } <span class="hljs-comment"># filter on those that have particular name</span>
+                    .pmapcat { <span class="hljs-params">|s|</span> s.executions.to_a } <span class="hljs-comment"># take all their executions (execute in parallel since this goes to API)</span>
+                    .select(&amp;<span class="hljs-symbol">:error?</span>) <span class="hljs-comment"># select only those that failed</span>
+                    .select { <span class="hljs-params">|e|</span> e.log =~ <span class="hljs-regexp">/unsynchronized/</span> } <span class="hljs-comment"># select those that contain particular message in log</span>
+    pp results.map(&amp;<span class="hljs-symbol">:started</span>).sort.uniq
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="visualizing-executions"></a><a href="#visualizing-executions" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Visualizing executions</h2>
+<p>You successfully modularized your ETL into several orchestrated modules.
+The problem is that it is hard to visualize the order of execution from
+the Data Administration console.</p>
+<p>There are plethora of very useful libraries that you can use in
+conjunction with GoodData SDK. One of those is Graphviz that is a C
+library but it has bindings to almost every language including Ruby.
+Graphviz is a visualization library and one of the features allows
+visualization of Direct Acyclic Graphs which is exactly what an
+execution of several schedules basically is.</p>
+<p>As a prerequisite you must install both
+<a href="http://www.graphviz.org/">Graphviz</a> and <a href="https://github.com/glejeune/Ruby-Graphviz">Graphviz ruby
+bindings</a>. This is user
+dependent as installation is different for every platform. If you
+encounter any errors try googling them or shoot us a message on GitHub
+or support.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+<span class="hljs-keyword">require</span> <span class="hljs-string">'graphviz'</span>
+
+PROJECT_ID = <span class="hljs-string">'PROJECT_ID'</span> <span class="hljs-comment"># fill_in</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(PROJECT_ID) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    schedules = project.schedules
+
+    nodes = project.processes.pmapcat { <span class="hljs-params">|p|</span> p.schedules.map { <span class="hljs-params">|s|</span> [s, <span class="hljs-string">"<span class="hljs-subst">#{p.name}</span>-<span class="hljs-subst">#{s.name}</span>"</span>] } }
+    edges = schedules.reject(&amp;<span class="hljs-symbol">:time_based?</span>).pmap {<span class="hljs-params">|s|</span> [<span class="hljs-string">"<span class="hljs-subst">#{s.after.process.name}</span>-<span class="hljs-subst">#{s.after.name}</span>"</span>, <span class="hljs-string">"<span class="hljs-subst">#{s.process.name}</span>-<span class="hljs-subst">#{s.name}</span>"</span>]}
+
+
+    g = GraphViz.new(<span class="hljs-symbol">:G</span>, <span class="hljs-symbol">:type</span> =&gt; <span class="hljs-symbol">:digraph</span> , <span class="hljs-symbol">:rankdir</span> =&gt; <span class="hljs-string">'TB'</span>)
+    nodes.each { <span class="hljs-params">|s, n|</span>
+      node = g.add_nodes(n)
+      node[<span class="hljs-symbol">:shape</span>] = <span class="hljs-string">'box'</span>
+      node[<span class="hljs-symbol">:label</span>] = n + <span class="hljs-string">"\n<span class="hljs-subst">#{s.cron}</span>"</span>
+    }
+
+    edges.each { <span class="hljs-params">|a, b|</span> g.add_edges(a, b) }
+    g.output(<span class="hljs-symbol">:png</span> =&gt; <span class="hljs-string">"run_dag.png"</span>)
+
+    <span class="hljs-comment"># Now you can open it for example on mac by running this on terminal</span>
+    <span class="hljs-comment"># open -a Preview run_dag.png</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="registering-a-notification-email"></a><a href="#registering-a-notification-email" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Registering a notification email</h2>
+<p>Register a notification rule on a process. You can configure
+notification rules to send an email whenever the defined conditions are
+met.</p>
+<p>The basic events are: GoodData::Subscription::PROCESS_SUCCESS_EVENT,
+GoodData::Subscription::PROCESS_FAILED_EVENT,
+GoodData::Subscription::PROCESS_SCHEDULED_EVENT,
+GoodData::Subscription::PROCESS_STARTED_EVENT. If you need to define
+your own special event, visit <a href="https://developer.gooddata.com/article/creating-custom-notification-events">creating custom notification
+events</a></p>
+<p>You can also add special variables to provide more information in the
+email. These can be used in the subject or email body.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    process = project.deploy_process(<span class="hljs-string">'./path/to_cloud_connect_directory'</span>, <span class="hljs-symbol">name:</span> <span class="hljs-string">'Test ETL Process'</span>)
+
+    process.create_notification_rule(
+      <span class="hljs-symbol">email:</span> <span class="hljs-string">'email you need to get the info'</span>,
+      <span class="hljs-symbol">subject:</span> <span class="hljs-string">'Get info from project ${params.PROJECT}'</span>,
+      <span class="hljs-symbol">body:</span> <span class="hljs-string">'This is a log for process ${params.PROCESS_NAME} [${params.PROCESS_ID}]: ${params.LOG}'</span>,
+      <span class="hljs-symbol">events:</span> GoodData::Subscription::PROCESS_FAILED_EVENT
+    )
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>You can also list all notification rules of a process and re-configure
+or delete the existing notification rule</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    project.processes.each <span class="hljs-keyword">do</span> <span class="hljs-params">|process|</span>
+      process.notification_rules.each <span class="hljs-keyword">do</span> <span class="hljs-params">|rule|</span>
+        rule.subject = <span class="hljs-string">'Changed subject'</span>
+        rule.save
+        rule.delete
+      <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>When registering a notification rule, GoodData will automatically create
+a channel for each email target if it’s not exist. You can manually
+create a channel</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  client.user.create_channel
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>You can list all channels, re-configure or delete the existing channel</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  client.user.channels.each <span class="hljs-keyword">do</span> <span class="hljs-params">|channel|</span>
+    channel.to = <span class="hljs-string">'another email'</span>
+    channel.save
+    channel.delete
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span> 
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="automated-data-distribution-add"></a><a href="#automated-data-distribution-add" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Automated Data Distribution (ADD)</h2>
+<p>You might want to upload data from the Data Warehouse to a workspace.</p>
+<p>You must have the output stage associated with the workspace you need to upload data to. An ADD process is created after associating the workspace with the output stage.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    ads = client.create_datawarehouse(<span class="hljs-symbol">title:</span> <span class="hljs-string">'Test ADS'</span>, <span class="hljs-symbol">auth_token:</span> <span class="hljs-string">'ADS_CREATION_TOKEN'</span>)
+    output_stage = project.create_output_stage(ads)
+    puts output_stage.sql_diff
+    add_process = project.add.process
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="working_with_dashboards.html">← Using Dashboards</a><a class="docs-next button" href="working_with_automation.html">Automation and Performance →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#deploying-process">Deploying Process</a></li><li><a href="#redeploying-existing-process">Redeploying Existing Process</a></li><li><a href="#scheduling-process">Scheduling Process</a><ul class="toc-headings"><li><a href="#working-with-json">Working with JSON</a></li></ul></li><li><a href="#disabling-schedules-in-all-projects">Disabling Schedules in All Projects</a></li><li><a href="#executing-schedule">Executing Schedule</a></li><li><a href="#executing-process">Executing Process</a></li><li><a href="#run-after-scheduling">Run-After Scheduling</a></li><li><a href="#changing-an-existing-schedule">Changing an existing schedule</a></li><li><a href="#investigating-executions">Investigating Executions</a></li><li><a href="#visualizing-executions">Visualizing executions</a></li><li><a href="#registering-a-notification-email">Registering a notification email</a></li><li><a href="#automated-data-distribution-add">Automated Data Distribution (ADD)</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/gooddata-ruby-doc/" class="nav-home"><img src="/gooddata-ruby-doc/img/gooddata-ruby.svg" alt="Ruby SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/gooddata-ruby-doc/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc2.html">Guides (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/gooddata-ruby-doc/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/gooddata-ruby-doc/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/gooddata-ruby-doc/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 GoodData</section></footer></div></body></html>

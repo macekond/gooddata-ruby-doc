@@ -1,0 +1,244 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Working with Your Data · Ruby SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Working with Your Data · Ruby SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://gooddata.github.io/gooddata-ruby-doc/index.html"/><meta property="og:description" content="Before we start, you have to have an existing project with model and data loaded."/><meta property="og:image" content="https://gooddata.github.io/gooddata-ruby-doc/img/docusaurus.png"/><link rel="shortcut icon" href="/gooddata-ruby-doc/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/gooddata-ruby-doc/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/gooddata-ruby-doc/"><img class="logo" src="/gooddata-ruby-doc/img/gooddata-ruby.svg"/><h2 class="headerTitle">Ruby SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/gooddata-ruby-doc/docs/getting_started.html" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Advanced Guides</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Basics</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/getting_started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/jack_in.html">Interactive Ruby Console</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/create_a_program.html">Scripting</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/connecting_to_gooddata.html">Connecting to Gooddata Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/handling_credentials.html">Handling Credentials Securely</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/using_gooddata_platform.html">Using GoodData Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/logging.html">Logging and Testing</a></li></ul></div><div class="navGroup navGroupActive"><h3>Advanced Guides</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_projects.html">Working with Projects</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_users.html">Working with Users</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_permissions.html">Setting Permissions</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_models.html">Model Setup</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/gooddata-ruby-doc/docs/working_with_your_data.html">Working with Your Data</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_reports.html">Working with Reports</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_dashboards.html">Using Dashboards</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_deployments.html">Deployment How-tos</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_automation.html">Automation and Performance</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_lifecycle.html">Working with Lifecycle</a></li></ul></div><div class="navGroup navGroupActive"><h3>Blueprints</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/creating_project_from_blueprint.html">Creating Project from Blueprint</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/loading_data.html">Loading Data to Project</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/advanced_blueprint_examples.html">Advanced Blueprint Examples</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Working with Your Data</h1></header><article><div><span><p>Before we start, you have to have an existing project with model and data loaded.</p>
+<h2><a class="anchor" aria-hidden="true" id="creating-metrics-from-attributes"></a><a href="#creating-metrics-from-attributes" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating Metrics from Attributes</h2>
+<p>If you have several attributes in a project, you can create some
+basic metric out of them.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: UTF-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+<span class="hljs-comment"># Connect to GoodData platform</span>
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    attribute = project.attributes(<span class="hljs-string">'attr.devs.dev_id'</span>)
+    metric = attribute.create_metric(<span class="hljs-symbol">:title</span> =&gt; <span class="hljs-string">"Count of [<span class="hljs-subst">#{attribute.identifier}</span>]"</span>)
+    metric.save
+    metric.execute
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="creating-metrics-from-facts"></a><a href="#creating-metrics-from-facts" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating Metrics from Facts</h2>
+<p>If you have several facts in a project, you can create some basic
+metric out of them.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: UTF-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+<span class="hljs-comment"># Connect to GoodData platform</span>
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    fact = project.facts(<span class="hljs-string">'fact.commits.lines_changed'</span>)
+    metric = fact.create_metric(<span class="hljs-symbol">:title</span> =&gt; <span class="hljs-string">"Sum of [<span class="hljs-subst">#{fact.identifier}</span>]"</span>)
+    res = metric.execute
+    puts res
+
+    <span class="hljs-comment"># if you like the metric you can save it of course for later usage</span>
+    metric.save
+
+    <span class="hljs-comment"># Default aggregation is SUM but you can also specify a different one</span>
+    metric = fact.create_metric(<span class="hljs-symbol">:title</span> =&gt; <span class="hljs-string">"Min of [<span class="hljs-subst">#{fact.identifier}</span>]"</span>, <span class="hljs-symbol">type:</span> <span class="hljs-symbol">:min</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span> 
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="write-information-about-project-s-metrics-and-attributes-to-csv"></a><a href="#write-information-about-project-s-metrics-and-attributes-to-csv" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Write Information about project’s metrics and attributes to CSV</h2>
+<p>You can store information about all project metrics and attributes in a CSV file.</p>
+<h3><a class="anchor" aria-hidden="true" id="metrics"></a><a href="#metrics" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Metrics</h3>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: UTF-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+<span class="hljs-comment"># Connect to GoodData platform</span>
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    CSV.open(project.pid + <span class="hljs-string">"_metrics.csv"</span>, <span class="hljs-string">'wb'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|csv|</span>
+      data = project.metrics.pmap <span class="hljs-keyword">do</span> <span class="hljs-params">|metric|</span>
+        [metric.title, metric.pretty_expression]
+      <span class="hljs-keyword">end</span>
+      data.each <span class="hljs-keyword">do</span> <span class="hljs-params">|m|</span>
+        csv &lt;&lt; m
+      <span class="hljs-keyword">end</span>
+      puts <span class="hljs-string">'The CSV is ready!'</span>
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>It is a simple script that iterates over metrics (remember report
+specific metrics are not included in the list) and collects some fields.
+In our case it is title and pretty printed metric’s MAQL expression. If
+you would like to get more information, just add them to the list. In
+the end this list is formatted as a valid CSV so any reasonable CSV
+parser should be able to load it.</p>
+<h3><a class="anchor" aria-hidden="true" id="attributes"></a><a href="#attributes" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Attributes</h3>
+<p>You also might like to export attributes. The script itself is very
+similar.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: UTF-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+<span class="hljs-comment"># Connect to GoodData platform</span>
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    CSV.open(project.pid + <span class="hljs-string">"_attributes.csv"</span>, <span class="hljs-string">'wb'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|csv|</span>
+      data = project.attributes.pmap <span class="hljs-keyword">do</span> <span class="hljs-params">|attribute|</span>
+        [attribute.title, attribute.identifier]
+      <span class="hljs-keyword">end</span>
+      data.each <span class="hljs-keyword">do</span> <span class="hljs-params">|m|</span>
+        csv &lt;&lt; m
+      <span class="hljs-keyword">end</span>
+      puts <span class="hljs-string">'The CSV is ready!'</span>
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="folders"></a><a href="#folders" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Folders</h3>
+<p>Many times people want to also include the information about the folder
+the metric/attribute is in. While SDK does not provide direct support
+for it here is a little workaround to make it possible.</p>
+<p>Attributes:</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: UTF-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+<span class="hljs-comment"># Connect to GoodData platform</span>
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+
+    folder_cache = c.get(project.md[<span class="hljs-string">'query'</span>] + <span class="hljs-string">'/dimensions'</span>)[<span class="hljs-string">'query'</span>][<span class="hljs-string">'entries'</span>].reduce({}) <span class="hljs-keyword">do</span> <span class="hljs-params">|a, e|</span>
+      a[e[<span class="hljs-string">'link'</span>]] = project.objects(e[<span class="hljs-string">'link'</span>])
+      a
+    <span class="hljs-keyword">end</span>
+
+    CSV.open(project.pid + <span class="hljs-string">"_attributes.csv"</span>, <span class="hljs-string">'wb'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|csv|</span>
+      data = project.attributes.pmap <span class="hljs-keyword">do</span> <span class="hljs-params">|attribute|</span>
+        [attribute.title, attribute.identifier, attribute.content[<span class="hljs-string">'dimension'</span>] &amp;&amp; folder_cache[attribute.content[<span class="hljs-string">'dimension'</span>]].title]
+      <span class="hljs-keyword">end</span>
+      data.each <span class="hljs-keyword">do</span> <span class="hljs-params">|m|</span>
+        csv &lt;&lt; m
+      <span class="hljs-keyword">end</span>
+      puts <span class="hljs-string">'The CSV is ready!'</span>
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Metrics:</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: UTF-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+<span class="hljs-comment"># Connect to GoodData platform</span>
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+
+    folder_cache = c.get(project.md[<span class="hljs-string">'query'</span>] + <span class="hljs-string">'/folders?type=metric'</span>)[<span class="hljs-string">'query'</span>][<span class="hljs-string">'entries'</span>].reduce({}) <span class="hljs-keyword">do</span> <span class="hljs-params">|a, e|</span>
+      a[e[<span class="hljs-string">'link'</span>]] = project.objects(e[<span class="hljs-string">'link'</span>])
+      a
+    <span class="hljs-keyword">end</span>
+
+    CSV.open(project.pid + <span class="hljs-string">"_metrics.csv"</span>, <span class="hljs-string">'wb'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|csv|</span>
+      data = project.metrics.map <span class="hljs-keyword">do</span> <span class="hljs-params">|metric|</span>
+        folder = metric.content.key?(<span class="hljs-string">'folders'</span>) &amp;&amp; metric.content[<span class="hljs-string">'folders'</span>].is_a?(Enumerable) &amp;&amp; metric.content[<span class="hljs-string">'folders'</span>].first
+        [metric.title, metric.identifier, folder_cache[folder] &amp;&amp; folder_cache[folder].title]
+      <span class="hljs-keyword">end</span>
+      data.each <span class="hljs-keyword">do</span> <span class="hljs-params">|m|</span>
+        csv &lt;&lt; m
+      <span class="hljs-keyword">end</span>
+      puts <span class="hljs-string">'The CSV is ready!'</span>
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="changing-metric-s-number-formatting"></a><a href="#changing-metric-s-number-formatting" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Changing Metric’s Number Formatting</h2>
+<p>You can update formatting of all metrics in your project programmatically. The project below is currently formatted for dollar values but you would like to change all formats to Euro:</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    project.metrics.pmap <span class="hljs-keyword">do</span> <span class="hljs-params">|metric|</span>
+      metric.content[<span class="hljs-string">'format'</span>] = metric.content[<span class="hljs-string">'format'</span>].gsub(<span class="hljs-string">'$'</span>, <span class="hljs-string">'€'</span>)
+      metric.save
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span> 
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="creating-metrics"></a><a href="#creating-metrics" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating Metrics</h2>
+<p>You can create advanced MAQL metric.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: UTF-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+<span class="hljs-comment"># Connect to GoodData platform</span>
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    metric = project.add_measure <span class="hljs-string">'SELECT PERCENTILE(#"Amount",0.9)'</span>, 
+     <span class="hljs-symbol">title:</span> <span class="hljs-string">'Salary Amount [90th Pct]'</span>
+    metric.save
+    metric.execute
+    
+    metric = project.add_measure <span class="hljs-string">'SELECT PERCENTILE(![fact.salary.amount],0.9)'</span>, 
+     <span class="hljs-symbol">title:</span> <span class="hljs-string">'Salary Amount [90th Pct] V2'</span> 
+    metric.save
+    metric.execute
+    
+    metric = project.add_measure <span class="hljs-string">'SELECT PERCENTILE([/gdc/md/ptbedvc1841r4obgptywd2mzhbwjsfyr/obj/223],0.9)'</span>, 
+     <span class="hljs-symbol">title:</span> <span class="hljs-string">'Salary Amount [90th Pct] V3'</span> 
+    metric.save
+    metric.execute
+    
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Please note that the MAQL statement uses three ways how to reference the
+underlying objects (e.g. facts or metrics that are part of the MAQL
+statement)</p>
+<ul>
+<li><p><em>#&quot;Amount&quot;</em> for referencing the fact (or metric) via its name
+(title)</p></li>
+<li><p><em>![fact.salary.amount]</em> for referencing the fact (or metric) via
+its identifier</p></li>
+<li><p><em>[/gdc/md/ptbedvc1841r4obgptywd2mzhbwjsfyr/obj/223]</em> for
+referencing the fact (or metric) via its uri</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="creating-metric-with-filter"></a><a href="#creating-metric-with-filter" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating Metric with filter</h2>
+<p>In this case we will actually create the raw MAQL metric along with the
+filter values. The main problem is that you have to find out the URLs of
+all the objects and values. This is generally tricky but SDK can
+simplify this a bit.</p>
+<p>We will try to create a metric that looks like this in &quot;human readable&quot;
+MAQL.</p>
+<pre><code class="hljs">SELECT COUNT(City) WHERE Continent IN ('Europe', 'Africa')
+</code></pre>
+<p>This is actually not a MAQL that would be possible to post to the API.
+You must translate all the objects into their valid URLs. The MAQL then
+might look like this (obviously the URLs will look different in your
+particular case)</p>
+<pre><code class="hljs">SELECT COUNT([/gdc/md/e8pid3efwftbc3pc13nnnau4xymb0198/obj/23]) WHERE [/gdc/md/e8pid3efwftbc3pc13nnnau4xymb0198/obj/72] IN ([/gdc/md/e8pid3efwftbc3pc13nnnau4xymb0198/obj/72/elements?id=0], [/gdc/md/e8pid3efwftbc3pc13nnnau4xymb0198/obj/72/elements?id=1])
+</code></pre>
+<p>Let’s have a look how we might write a code that does this.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: UTF-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+<span class="hljs-comment"># Connect to GoodData platform</span>
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+
+    <span class="hljs-comment"># Let's find the city attribute - here we assume identifer atttribute.cities.city</span>
+    city_attribute = project.attributes(<span class="hljs-string">'atttribute.cities.city'</span>)
+
+    <span class="hljs-comment"># Let's find the continent label - here we assume identifer label.cities.continent.name</span>
+    continent_label = project.labels(<span class="hljs-string">'label.cities.continent.name'</span>)
+    filter_values = [<span class="hljs-string">'Europe'</span>, <span class="hljs-string">'Africa'</span>].map { <span class="hljs-params">|val|</span> <span class="hljs-string">"[<span class="hljs-subst">#{continent_label.find_value_uri(val)}</span>]"</span> }.join(<span class="hljs-string">', '</span>)
+
+    m = project.create_metric(<span class="hljs-string">"SELECT COUNT([<span class="hljs-subst">#{city_attribute.uri}</span>]) WHERE <span class="hljs-subst">#{continent_label.uri}</span> IN <span class="hljs-subst">#{filter_values}</span>"</span>, <span class="hljs-symbol">extended_notation:</span> <span class="hljs-literal">false</span>)
+    puts m.execute
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="working_with_models.html">← Model Setup</a><a class="docs-next button" href="working_with_reports.html">Working with Reports →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#creating-metrics-from-attributes">Creating Metrics from Attributes</a></li><li><a href="#creating-metrics-from-facts">Creating Metrics from Facts</a></li><li><a href="#write-information-about-project-s-metrics-and-attributes-to-csv">Write Information about project’s metrics and attributes to CSV</a><ul class="toc-headings"><li><a href="#metrics">Metrics</a></li><li><a href="#attributes">Attributes</a></li><li><a href="#folders">Folders</a></li></ul></li><li><a href="#changing-metric-s-number-formatting">Changing Metric’s Number Formatting</a></li><li><a href="#creating-metrics">Creating Metrics</a></li><li><a href="#creating-metric-with-filter">Creating Metric with filter</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/gooddata-ruby-doc/" class="nav-home"><img src="/gooddata-ruby-doc/img/gooddata-ruby.svg" alt="Ruby SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/gooddata-ruby-doc/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc2.html">Guides (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/gooddata-ruby-doc/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/gooddata-ruby-doc/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/gooddata-ruby-doc/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 GoodData</section></footer></div></body></html>

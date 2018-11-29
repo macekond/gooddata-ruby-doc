@@ -1,0 +1,220 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Model Setup · Ruby SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Model Setup · Ruby SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://gooddata.github.io/gooddata-ruby-doc/index.html"/><meta property="og:description" content="Changing Object’s Identifier"/><meta property="og:image" content="https://gooddata.github.io/gooddata-ruby-doc/img/docusaurus.png"/><link rel="shortcut icon" href="/gooddata-ruby-doc/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/gooddata-ruby-doc/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/gooddata-ruby-doc/"><img class="logo" src="/gooddata-ruby-doc/img/gooddata-ruby.svg"/><h2 class="headerTitle">Ruby SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/gooddata-ruby-doc/docs/getting_started.html" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Advanced Guides</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Basics</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/getting_started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/jack_in.html">Interactive Ruby Console</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/create_a_program.html">Scripting</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/connecting_to_gooddata.html">Connecting to Gooddata Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/handling_credentials.html">Handling Credentials Securely</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/using_gooddata_platform.html">Using GoodData Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/logging.html">Logging and Testing</a></li></ul></div><div class="navGroup navGroupActive"><h3>Advanced Guides</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_projects.html">Working with Projects</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_users.html">Working with Users</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_permissions.html">Setting Permissions</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/gooddata-ruby-doc/docs/working_with_models.html">Model Setup</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_your_data.html">Working with Your Data</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_reports.html">Working with Reports</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_dashboards.html">Using Dashboards</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_deployments.html">Deployment How-tos</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_automation.html">Automation and Performance</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_lifecycle.html">Working with Lifecycle</a></li></ul></div><div class="navGroup navGroupActive"><h3>Blueprints</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/creating_project_from_blueprint.html">Creating Project from Blueprint</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/loading_data.html">Loading Data to Project</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/advanced_blueprint_examples.html">Advanced Blueprint Examples</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Model Setup</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="changing-object-s-identifier"></a><a href="#changing-object-s-identifier" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Changing Object’s Identifier</h2>
+<p>You can change the identifier on any object (e.g. dashboards, reports,
+metrics, attributes, facts etc.). Many tools rely on specific LDM object
+identifier’s naming convention. So changing the identifier may be very
+handy for for enforcing the naming convention. For example when you move
+an attribute from one dataset to another, you may want to change its
+identifier.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_pid'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+
+    <span class="hljs-comment"># We find the attribute we want to change</span>
+    <span class="hljs-comment"># Lets list all attributes in the project</span>
+    <span class="hljs-comment"># and print its title and identifier</span>
+    puts project.attributes.map {<span class="hljs-params">|a|</span> [a.identifier, a.title]}
+
+    <span class="hljs-comment"># Let's pick one</span>
+    <span class="hljs-comment"># Here I just pick the first one</span>
+    attribute = project.attributes.first
+
+    <span class="hljs-comment"># but you can also pick one by identifier. For example</span>
+    <span class="hljs-comment"># attribute = project.attributes('attr.salesmem.country')</span>
+    <span class="hljs-comment"># We have a look at the current value.</span>
+    <span class="hljs-comment"># Let's say it is 'attr.users.region'</span>
+    puts attribute.identifier
+
+    <span class="hljs-comment"># We change the value</span>
+    attribute.identifier = <span class="hljs-string">'attr.salesmen.region'</span>
+    attribute.save
+
+    <span class="hljs-comment"># If we refresh the value from server</span>
+    <span class="hljs-comment"># we get a new value 'attr.salesmen.region'</span>
+    attribute.reload!
+    puts attribute.identifier
+
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="computing-dataset-s-number-of-records"></a><a href="#computing-dataset-s-number-of-records" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Computing Dataset’s Number of Records</h2>
+<p>This is not so easy to do on UI. You basically have to find the
+dataset’s connection point and then create a simple report with COUNT
+metric. The SDK makes this a very simple task.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_pid'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    blueprint = project.blueprint
+    blueprint.datasets.each <span class="hljs-keyword">do</span> <span class="hljs-params">|dataset|</span>
+      count = dataset.count(project)
+      puts <span class="hljs-string">"Number of record in a dataset <span class="hljs-subst">#{dataset.title}</span> is <span class="hljs-subst">#{count}</span>"</span>
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="enumerating-date-dimensions"></a><a href="#enumerating-date-dimensions" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Enumerating Date Dimensions</h2>
+<p>You can find out how many date dimensions you have in a project.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_pid'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    blueprint = project.blueprint
+    dds = blueprint.date_dimensions
+    puts <span class="hljs-string">"You have <span class="hljs-subst">#{dds.count}</span> date dimensions in your project"</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span> 
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="removing-data"></a><a href="#removing-data" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Removing Data</h2>
+<p>Sometimes you need to delete all data from a dataset.</p>
+<p>The SDK calls the MAQL SYNCHRONIZE command on the dataset</p>
+<pre><code class="hljs">SYNCHRONIZE {dataset.users};
+</code></pre>
+<p>for each dataset you would like to clear. You can achieve the same like
+this:</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_pid'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+
+    <span class="hljs-comment"># You can select the dataset in several ways</span>
+    dataset = project.datasets.find {<span class="hljs-params">|d|</span> d.title == <span class="hljs-string">'Users'</span>}
+    dataset = project.datasets(<span class="hljs-string">'dataset.users'</span>)
+    dataset = project.datasets(<span class="hljs-number">345</span>)
+    <span class="hljs-comment"># dataset.synchronize works as well</span>
+    dataset.delete_data
+
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="exploring-unknown-project"></a><a href="#exploring-unknown-project" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Exploring Unknown Project</h2>
+<p>You just got invited to this project and just can’t reach the project’s
+author. Can’t find any project’s documentation. The following code
+snippet may be helpful in such situation</p>
+<p>You want to start with a quick introspection. How many datasets, how
+much data is there how many processes etc. Doing this manually is fairly
+time consuming. You have to find the primary attributes of each dataset
+create a count metric and a lot of other stuff. This can be automated
+and it is so useful we actually created a command that does just this.</p>
+<pre><code class="hljs css ruby">GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_pid'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    project.info
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>This might be the hypothetical output. For each dataset you have there
+the size. Below is a breakdown of how many different types of objects
+there are inside the dataset:</p>
+<pre><code class="hljs">GOODSALES
+===============
+
+Datasets - 28
+
+stage_history
+=============
+Size - 29103.0 rows
+1 attributes, 4 facts, 8 references
+
+opp_snapshot
+============
+Size - 2130074.0 rows
+1 attributes, 9 facts, 21 references
+
+.
+.
+.
+.
+
+Opp_changes
+===========
+Size - 472.0 rows
+2 attributes, 6 facts, 10 references
+
+Opportunity Benchmark
+=====================
+Size - 487117.0 rows
+3 attributes, 2 facts, 2 references
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="substitute-date-dimension-for-another-one"></a><a href="#substitute-date-dimension-for-another-one" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Substitute Date Dimension for Another One</h2>
+<p>You can substitute an existing date dimension in your project for
+another date dimension. This is particularly handy when you are
+consolidating date dimensions (perhaps you want to have only one date
+dimension in your project) or replacing your standard date dimension
+with a fiscal date dimension.</p>
+<p>The code snippet below substitutes all occurences of a date dimension
+objects (attributes and labels) for another date dimension’s objects
+(that must obviously exist in the project). The substitution is
+performed in following objects:</p>
+<ul>
+<li><p>Metrics</p></li>
+<li><p>Report Definitions</p></li>
+<li><p>Reports</p></li>
+<li><p>Report Specific Metrics</p></li>
+<li><p>Dashboards</p></li>
+<li><p>Dashboard Saved Views</p></li>
+<li><p>Mandatory User Filters aka Data Permissions</p></li>
+</ul>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_pid'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+
+    opts = {
+      <span class="hljs-comment"># You can specify name of new and old date dimension...</span>
+      <span class="hljs-comment"># :old =&gt; 'Close',</span>
+      <span class="hljs-comment"># :new =&gt; 'Completed',</span>
+
+      <span class="hljs-comment"># Or explicitly specify mapping using identifiers...</span>
+      <span class="hljs-symbol">:mapping</span> =&gt; {
+        <span class="hljs-string">'closedate.date'</span> =&gt; <span class="hljs-string">'abortdate.date'</span>,
+        <span class="hljs-string">'closedate.day.in.euweek'</span> =&gt; <span class="hljs-string">'abortdate.day.in.week'</span>,
+        <span class="hljs-string">'closedate.month'</span> =&gt; <span class="hljs-string">'abortdate.month'</span>,
+        <span class="hljs-string">'closedate.month.in.year'</span> =&gt; <span class="hljs-string">'abortdate.month.in.year'</span>,
+        <span class="hljs-string">'closedate.euweek.in.year'</span> =&gt; <span class="hljs-string">'abortdate.week.in.year'</span>,
+        <span class="hljs-string">'closedate.euweek'</span> =&gt; <span class="hljs-string">'abortdate.week'</span>,
+        <span class="hljs-string">'closedate.quarter'</span> =&gt; <span class="hljs-string">'abortdate.quarter'</span>,
+        <span class="hljs-string">'closedate.day.in.month'</span> =&gt; <span class="hljs-string">'abortdate.day.in.month'</span>,
+        <span class="hljs-string">'closedate.week.in.quarter'</span> =&gt; <span class="hljs-string">'abortdate.week.in.quarter'</span>,
+        <span class="hljs-string">'closedate.quarter.in.year'</span> =&gt; <span class="hljs-string">'abortdate.quarter.in.year'</span>,
+        <span class="hljs-string">'closedate.week'</span> =&gt; <span class="hljs-string">'abortdate.week'</span>,
+        <span class="hljs-string">'closedate.day.in.year'</span> =&gt; <span class="hljs-string">'abortdate.day.in.year'</span>,
+        <span class="hljs-string">'closedate.day.in.week'</span> =&gt; <span class="hljs-string">'abortdate.day.in.week'</span>,
+        <span class="hljs-string">'closedate.week.in.year'</span> =&gt; <span class="hljs-string">'abortdate.week.in.year'</span>,
+        <span class="hljs-string">'closedate.euweek.in.quarter'</span> =&gt; <span class="hljs-string">'abortdate.week.in.quarter'</span>,
+        <span class="hljs-string">'closedate.day.in.quarter'</span> =&gt; <span class="hljs-string">'abortdate.day.in.quarter'</span>,
+        <span class="hljs-string">'closedate.year'</span> =&gt; <span class="hljs-string">'closedate.year'</span>,
+        <span class="hljs-string">'closedate.month.in.quarter'</span> =&gt; <span class="hljs-string">'abortdate.month.in.quarter'</span>
+      },
+
+      <span class="hljs-symbol">:dry_run</span> = <span class="hljs-literal">false</span> <span class="hljs-comment"># Optional. Default 'false'</span>
+    }
+
+    project.replace_date_dimension(opts)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>You need to specify complete mapping between the current and new date
+dimensions attributes. This is straightforward in case when both date
+dimensions have the same structure (see the commented out <em>:old</em> /
+<em>:new</em> syntax). Full mapping is necessary when the date dimensions have
+different structures. For example the <em>abortdate</em> date dimension in the
+code above doesn’t have any <em>EU week</em> attributes. The existing
+<em>closedate</em>'s <em>EU week</em> attributes are mapped to standard week
+attributes of the <em>abortdate</em> dimension.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="working_with_permissions.html">← Setting Permissions</a><a class="docs-next button" href="working_with_your_data.html">Working with Your Data →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#changing-object-s-identifier">Changing Object’s Identifier</a></li><li><a href="#computing-dataset-s-number-of-records">Computing Dataset’s Number of Records</a></li><li><a href="#enumerating-date-dimensions">Enumerating Date Dimensions</a></li><li><a href="#removing-data">Removing Data</a></li><li><a href="#exploring-unknown-project">Exploring Unknown Project</a></li><li><a href="#substitute-date-dimension-for-another-one">Substitute Date Dimension for Another One</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/gooddata-ruby-doc/" class="nav-home"><img src="/gooddata-ruby-doc/img/gooddata-ruby.svg" alt="Ruby SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/gooddata-ruby-doc/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc2.html">Guides (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/gooddata-ruby-doc/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/gooddata-ruby-doc/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/gooddata-ruby-doc/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 GoodData</section></footer></div></body></html>

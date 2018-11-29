@@ -1,0 +1,115 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Using Dashboards · Ruby SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Using Dashboards · Ruby SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://gooddata.github.io/gooddata-ruby-doc/index.html"/><meta property="og:description" content="You need to have an existing project with dashboard(s)."/><meta property="og:image" content="https://gooddata.github.io/gooddata-ruby-doc/img/docusaurus.png"/><link rel="shortcut icon" href="/gooddata-ruby-doc/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/gooddata-ruby-doc/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/gooddata-ruby-doc/"><img class="logo" src="/gooddata-ruby-doc/img/gooddata-ruby.svg"/><h2 class="headerTitle">Ruby SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/gooddata-ruby-doc/docs/getting_started.html" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Advanced Guides</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Basics</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/getting_started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/jack_in.html">Interactive Ruby Console</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/create_a_program.html">Scripting</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/connecting_to_gooddata.html">Connecting to Gooddata Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/handling_credentials.html">Handling Credentials Securely</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/using_gooddata_platform.html">Using GoodData Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/logging.html">Logging and Testing</a></li></ul></div><div class="navGroup navGroupActive"><h3>Advanced Guides</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_projects.html">Working with Projects</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_users.html">Working with Users</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_permissions.html">Setting Permissions</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_models.html">Model Setup</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_your_data.html">Working with Your Data</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_reports.html">Working with Reports</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/gooddata-ruby-doc/docs/working_with_dashboards.html">Using Dashboards</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_deployments.html">Deployment How-tos</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_automation.html">Automation and Performance</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_lifecycle.html">Working with Lifecycle</a></li></ul></div><div class="navGroup navGroupActive"><h3>Blueprints</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/creating_project_from_blueprint.html">Creating Project from Blueprint</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/loading_data.html">Loading Data to Project</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/advanced_blueprint_examples.html">Advanced Blueprint Examples</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Using Dashboards</h1></header><article><div><span><p>You need to have an existing project with dashboard(s).</p>
+<h2><a class="anchor" aria-hidden="true" id="listing-dashboards"></a><a href="#listing-dashboards" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Listing Dashboards</h2>
+<p>You can list dashboards programmatically.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: UTF-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    <span class="hljs-comment"># List all dashboards and their names</span>
+    pp project.dashboards.map(&amp;<span class="hljs-symbol">:title</span>)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="listing-dashboard-tabs"></a><a href="#listing-dashboard-tabs" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Listing Dashboard Tabs</h2>
+<p>You can list dashboards and their tabs programmatically.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: UTF-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    <span class="hljs-comment"># You can list tabs of a specific dashoard and print their titles</span>
+    pp project.dashboards(<span class="hljs-number">123</span>).tabs.map(&amp;<span class="hljs-symbol">:title</span>)
+
+    <span class="hljs-comment"># Sometimes it is very useful to get a sense on what tabs are where</span>
+    <span class="hljs-comment"># We will print dashboard title, tab title tuples</span>
+    pp project.dashboards.flat_map { <span class="hljs-params">|d|</span> d.tabs.map { <span class="hljs-params">|t|</span> [d.title, t.title] } }
+    <span class="hljs-comment"># ....</span>
+    <span class="hljs-comment">#  ["Sales Reports", "Damage"],</span>
+    <span class="hljs-comment">#  ["Sales Reports", "Storage"],</span>
+    <span class="hljs-comment">#  ["Sales Reports", "Assignment"]</span>
+    <span class="hljs-comment"># ....</span>
+
+    <span class="hljs-comment"># Another thing that might be useful is to compute how many tabs</span>
+    <span class="hljs-comment"># each of the dashboard has</span>
+    pp project.dashboards.map { <span class="hljs-params">|d|</span> [d.title, d.tabs.count] }
+    
+    <span class="hljs-comment"># [["Support Reports", 4],</span>
+    <span class="hljs-comment">#  ["Sales Reports", 10],</span>
+    <span class="hljs-comment">#  ["Insurance Dashboard", 1],</span>
+    <span class="hljs-comment">#  ["Inventory", 10],</span>
+    <span class="hljs-comment">#  ["Email Scheduling ", 1]]</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span> 
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="working-with-dashboard-tabs"></a><a href="#working-with-dashboard-tabs" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Working with Dashboard Tabs</h2>
+<p>You would like to work with dashboard tab a little. List how many
+reports are on the tab, if they are filtered etc.</p>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: UTF-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|c|</span>
+  GoodData.with_project(<span class="hljs-string">'project_id'</span>) <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+
+    t = project.dashboards(<span class="hljs-string">'dashboard_id'</span>).tabs.find { <span class="hljs-params">|t|</span> t.identifier == <span class="hljs-string">'tab_identifier'</span> }
+
+    <span class="hljs-comment"># How many items are there on the tab?</span>
+    t.items.count
+
+    <span class="hljs-comment"># The items count also several utility item types. Usually what you are interested in is</span>
+    <span class="hljs-comment"># Reports and filters</span>
+    <span class="hljs-comment"># How many reports are there on the tab?</span>
+    t.items.select { <span class="hljs-params">|i|</span> i.is_a? GoodData::ReportItem }.count
+    <span class="hljs-comment"># =&gt; 6</span>
+
+    <span class="hljs-comment"># Are there any filters on this tab?</span>
+    t.items.any? { <span class="hljs-params">|i|</span> i.is_a? GoodData::FilterItem }
+    <span class="hljs-comment"># =&gt; false</span>
+
+    <span class="hljs-comment"># It might be useful to see how many report are on each tab of each dashboard</span>
+    project.dashboards.pmapcat { <span class="hljs-params">|d|</span> d.tabs.map { <span class="hljs-params">|t|</span> [d.title, t.title, t.items.select { <span class="hljs-params">|i|</span> i.is_a? GoodData::ReportItem }.count] }}
+
+    <span class="hljs-comment"># In a similar vein. Which tabs do have any filters on tabs?</span>
+    project.dashboards
+      .pmapcat { <span class="hljs-params">|d|</span> d.tabs.map { <span class="hljs-params">|t|</span> [d.title, t.title, t.items.select { <span class="hljs-params">|i|</span> i.is_a? GoodData::FilterItem }.count] }}
+      .select { <span class="hljs-params">|_, _, i|</span> i &gt; <span class="hljs-number">0</span> }
+
+    <span class="hljs-comment"># On each item there are properties that you can access.</span>
+    <span class="hljs-comment"># On each type you can access the position and size</span>
+    item = tab.items.find { <span class="hljs-params">|i|</span> i.is_a? GoodData::ReportItem }
+    item.position_y
+    <span class="hljs-comment"># =&gt; 130</span>
+    item.size_y
+    <span class="hljs-comment"># =&gt; 50</span>
+
+    <span class="hljs-comment"># With this you can for example find the bottom most element on each page. From this you can</span>
+    <span class="hljs-comment"># find out if there are not any tabs that are too "long". Depends on the usage of the dashboard</span>
+    <span class="hljs-comment"># but if it is an operational dashboard if users need to scroll down it might decrease the</span>
+    <span class="hljs-comment"># usefulness of the particular dashboard.</span>
+    <span class="hljs-comment">#</span>
+    <span class="hljs-comment"># Let's say we would like to find tabs that are longer than 500 pixels</span>
+    tuple_with_lowest_item = project.dashboards.pmapcat { <span class="hljs-params">|d|</span> d.tabs.map <span class="hljs-keyword">do</span>
+      <span class="hljs-comment"># pick an item whose y position + vertical size is the largest (ie it is lowest on the page)</span>
+      <span class="hljs-params">|t|</span> [d.title, t.title, t.items.max { <span class="hljs-params">|a, b|</span> (a.position_y + a.size_y) &lt;=&gt; (b.position_y + b.size_y) }]} <span class="hljs-comment"># </span>
+    <span class="hljs-keyword">end</span>
+    tuple_with_lowest_item
+      .map {<span class="hljs-params">|d, t, m|</span> [d, t, m.position_y + m.size_y]} <span class="hljs-comment"># Convert it to actual size</span>
+      .select { <span class="hljs-params">|_, _, d|</span> d &gt; <span class="hljs-number">800</span> } <span class="hljs-comment"># Filter those that are larger than a particular threshold</span>
+
+    <span class="hljs-comment"># With GoodData::ReportItem you can access the underlying report and do whatever is doable with a report</span>
+    <span class="hljs-comment"># For example executing it. Remeber though that the report on the dashboard is executed with additional</span>
+    <span class="hljs-comment"># context like filters etc so the results are not going to be the same.</span>
+    puts tab.items.find { <span class="hljs-params">|i|</span> i.is_a? GoodData::ReportItem }.execute
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span> 
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="working_with_reports.html">← Working with Reports</a><a class="docs-next button" href="working_with_deployments.html">Deployment How-tos →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#listing-dashboards">Listing Dashboards</a></li><li><a href="#listing-dashboard-tabs">Listing Dashboard Tabs</a></li><li><a href="#working-with-dashboard-tabs">Working with Dashboard Tabs</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/gooddata-ruby-doc/" class="nav-home"><img src="/gooddata-ruby-doc/img/gooddata-ruby.svg" alt="Ruby SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/gooddata-ruby-doc/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc2.html">Guides (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/gooddata-ruby-doc/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/gooddata-ruby-doc/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/gooddata-ruby-doc/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 GoodData</section></footer></div></body></html>

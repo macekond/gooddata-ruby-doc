@@ -1,0 +1,138 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Automation and Performance · Ruby SDK</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Automation and Performance · Ruby SDK"/><meta property="og:type" content="website"/><meta property="og:url" content="https://gooddata.github.io/gooddata-ruby-doc/index.html"/><meta property="og:description" content="Performing Operations on Multiple Projects"/><meta property="og:image" content="https://gooddata.github.io/gooddata-ruby-doc/img/docusaurus.png"/><link rel="shortcut icon" href="/gooddata-ruby-doc/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/gooddata-ruby-doc/css/main.css"/></head><body class="sideNavVisible doc separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/gooddata-ruby-doc/"><img class="logo" src="/gooddata-ruby-doc/img/gooddata-ruby.svg"/><h2 class="headerTitle">Ruby SDK</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/gooddata-ruby-doc/docs/getting_started.html" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Advanced Guides</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Basics</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/getting_started.html">Getting started</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/jack_in.html">Interactive Ruby Console</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/create_a_program.html">Scripting</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/connecting_to_gooddata.html">Connecting to Gooddata Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/handling_credentials.html">Handling Credentials Securely</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/using_gooddata_platform.html">Using GoodData Platform</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/logging.html">Logging and Testing</a></li></ul></div><div class="navGroup navGroupActive"><h3>Advanced Guides</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_projects.html">Working with Projects</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_users.html">Working with Users</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_permissions.html">Setting Permissions</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_models.html">Model Setup</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_your_data.html">Working with Your Data</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_reports.html">Working with Reports</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_dashboards.html">Using Dashboards</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_deployments.html">Deployment How-tos</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/gooddata-ruby-doc/docs/working_with_automation.html">Automation and Performance</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/working_with_lifecycle.html">Working with Lifecycle</a></li></ul></div><div class="navGroup navGroupActive"><h3>Blueprints</h3><ul><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/creating_project_from_blueprint.html">Creating Project from Blueprint</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/loading_data.html">Loading Data to Project</a></li><li class="navListItem"><a class="navItem" href="/gooddata-ruby-doc/docs/advanced_blueprint_examples.html">Advanced Blueprint Examples</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Automation and Performance</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="performing-operations-on-multiple-projects"></a><a href="#performing-operations-on-multiple-projects" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Performing Operations on Multiple Projects</h2>
+<p>Let's iterate over projects and perform an operation on each of them.</p>
+<p>We will illustrate this on a simple example and compile a list of all
+reports from user’s projects that have been changed since last week by
+somebody from GoodData. If there is more than one revision in a report
+we’ll assume that the report is changing frequently and tag it with
+'to_be_checked' tag for QA to validate the report.</p>
+<p>This is a lot to do. Let’s try to break the tasks down to smaller
+pieces.</p>
+<h3><a class="anchor" aria-hidden="true" id="work-with-many-projects"></a><a href="#work-with-many-projects" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Work with many projects</h3>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+
+  projects = [
+      client.projects(<span class="hljs-string">'project_pid_a'</span>),
+      client.projects(<span class="hljs-string">'project_pid_b'</span>)
+  ]
+
+  results = projects.map <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    reports_to_validate = project.reports
+                                .select { <span class="hljs-params">|report|</span> report.updated &gt; <span class="hljs-number">2</span>.weeks.ago }
+                                .select { <span class="hljs-params">|report|</span> report.definitions.count &gt; <span class="hljs-number">1</span> }
+
+    GoodData::Report.find_by_tag(<span class="hljs-string">'to_be_checked'</span>, <span class="hljs-symbol">:project</span> =&gt; project).each <span class="hljs-keyword">do</span> <span class="hljs-params">|report|</span>
+      report.remove_tag(<span class="hljs-string">'to_be_checked'</span>)
+      report.save
+    <span class="hljs-keyword">end</span>
+
+    reports_to_validate.each <span class="hljs-keyword">do</span> <span class="hljs-params">|report|</span>
+      report.add_tag(<span class="hljs-string">'to_be_checked'</span>)
+      report.save
+    <span class="hljs-keyword">end</span>
+
+    {<span class="hljs-symbol">project:</span> project, <span class="hljs-symbol">reports_to_validate:</span> reports_to_validate.count}
+  <span class="hljs-keyword">end</span>
+
+  results.each <span class="hljs-keyword">do</span> <span class="hljs-params">|result|</span>
+    puts <span class="hljs-string">"<span class="hljs-subst">#{result[<span class="hljs-symbol">:project</span>].pid}</span>: there are <span class="hljs-subst">#{result[<span class="hljs-symbol">:reports_to_validate</span>]}</span> reports to check"</span>
+  <span class="hljs-keyword">end</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="select-specific-reports"></a><a href="#select-specific-reports" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Select specific reports</h3>
+<pre><code class="hljs css ruby">reports_to_tag = project.reports
+                   .select { <span class="hljs-params">|report|</span> report.updated &gt; <span class="hljs-number">2</span>.weeks.ago }
+                   .select { <span class="hljs-params">|report|</span> report.definitions.count &gt; <span class="hljs-number">1</span> }
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="remove-tag"></a><a href="#remove-tag" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Remove tag</h3>
+<p>We’ll first remove the 'to_be_checked' tag from all reports</p>
+<pre><code class="hljs css ruby">GoodData::Report.find_by_tag(<span class="hljs-string">'to_be_checked'</span>, <span class="hljs-symbol">:project</span> =&gt; project).each <span class="hljs-keyword">do</span> <span class="hljs-params">|report|</span>
+  report.remove_tag(<span class="hljs-string">'to_be_checked'</span>)
+  report.save
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="add-tag"></a><a href="#add-tag" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Add tag</h3>
+<p>Then we’ll add the 'to_be_checked' tag to all qualifying reports</p>
+<pre><code class="hljs css ruby">reports_to_tag.each <span class="hljs-keyword">do</span> <span class="hljs-params">|report|</span>
+  report.add_tag(<span class="hljs-string">'to_be_checked'</span>)
+  report.save
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="full-example-all-pieces-together"></a><a href="#full-example-all-pieces-together" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Full example - all pieces together</h3>
+<pre><code class="hljs css ruby"><span class="hljs-comment"># encoding: utf-8</span>
+
+<span class="hljs-keyword">require</span> <span class="hljs-string">'gooddata'</span>
+
+GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-params">|client|</span>
+
+  projects = [
+      client.projects(<span class="hljs-string">'project_pid_a'</span>),
+      client.projects(<span class="hljs-string">'project_pid_b'</span>)
+  ]
+
+  results = projects.map <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+    reports_to_validate = project.reports
+                                .select { <span class="hljs-params">|report|</span> report.updated &gt; <span class="hljs-number">2</span>.weeks.ago }
+                                .select { <span class="hljs-params">|report|</span> report.definitions.count &gt; <span class="hljs-number">1</span> }
+
+    GoodData::Report.find_by_tag(<span class="hljs-string">'to_be_checked'</span>, <span class="hljs-symbol">:project</span> =&gt; project).each <span class="hljs-keyword">do</span> <span class="hljs-params">|report|</span>
+      report.remove_tag(<span class="hljs-string">'to_be_checked'</span>)
+      report.save
+    <span class="hljs-keyword">end</span>
+
+    reports_to_validate.each <span class="hljs-keyword">do</span> <span class="hljs-params">|report|</span>
+      report.add_tag(<span class="hljs-string">'to_be_checked'</span>)
+      report.save
+    <span class="hljs-keyword">end</span>
+
+    {<span class="hljs-symbol">project:</span> project, <span class="hljs-symbol">reports_to_validate:</span> reports_to_validate.count}
+  <span class="hljs-keyword">end</span>
+
+  results.each <span class="hljs-keyword">do</span> <span class="hljs-params">|result|</span>
+    puts <span class="hljs-string">"<span class="hljs-subst">#{result[<span class="hljs-symbol">:project</span>].pid}</span>: there are <span class="hljs-subst">#{result[<span class="hljs-symbol">:reports_to_validate</span>]}</span> reports to check"</span>
+  <span class="hljs-keyword">end</span>
+
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Please note that the reports in projects are processed sequentially (one
+after another).</p>
+<h2><a class="anchor" aria-hidden="true" id="parallel-processing"></a><a href="#parallel-processing" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parallel Processing</h2>
+<p>You created the script, it works but it is slow. Let’s have at one trick
+how to possibly make it faster.</p>
+<p>Often if you look at the API the structure is orthogonal to your use
+case. For example you might need to invite user to many projects but the
+API has only an endpoint to invite a user to a single project. If you do
+something like</p>
+<pre><code class="hljs css ruby">projects.map <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+  project.invite_user(<span class="hljs-string">'john@example.com'</span>)
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>It will work but it will create as many requests as there are projects.
+The requests will be processed sequentially and this takes time. You can
+estimate this easily. Let’s say we have 1000 projects and invitation
+request takes 500ms (half a second). This means it will take 500 seconds
+therefore almost 10 minutes.</p>
+<p>The nice thing is that the requests for inviting user to each project
+are totally independent. You don’t need a project invitation to finish
+before you invite the user to another project. So you can invoke
+multiple invitations at the same time. The following code invokes
+multiple invitations in parallel</p>
+<pre><code class="hljs css ruby">projects.pmap <span class="hljs-keyword">do</span> <span class="hljs-params">|project|</span>
+  project.invite_user(<span class="hljs-string">'john@example.com'</span>)
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>We’ve just changed a single letter. We are using pmap which stands for
+parallel map. It behaves exactly the same as map with one difference.
+The block for each item of the array runs in a separate thread. You do
+not need to think about it, it just happens faster. We have currently 20
+threads reserved so it will run 20 times faster. In this case under 0.5
+minutes.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="working_with_deployments.html">← Deployment How-tos</a><a class="docs-next button" href="working_with_lifecycle.html">Working with Lifecycle →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#performing-operations-on-multiple-projects">Performing Operations on Multiple Projects</a><ul class="toc-headings"><li><a href="#work-with-many-projects">Work with many projects</a></li><li><a href="#select-specific-reports">Select specific reports</a></li><li><a href="#remove-tag">Remove tag</a></li><li><a href="#add-tag">Add tag</a></li><li><a href="#full-example-all-pieces-together">Full example - all pieces together</a></li></ul></li><li><a href="#parallel-processing">Parallel Processing</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/gooddata-ruby-doc/" class="nav-home"><img src="/gooddata-ruby-doc/img/gooddata-ruby.svg" alt="Ruby SDK" width="66" height="58"/></a><div><h5>Docs</h5><a href="/gooddata-ruby-doc/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc2.html">Guides (or other categories)</a><a href="/gooddata-ruby-doc/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/gooddata-ruby-doc/en/users.html">User Showcase</a><a href="http://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/gooddata-ruby-doc/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://code.facebook.com/projects/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/gooddata-ruby-doc/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2018 GoodData</section></footer></div></body></html>
