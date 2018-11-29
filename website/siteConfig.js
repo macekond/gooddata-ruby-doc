@@ -26,7 +26,7 @@ const siteConfig = {
   tagline: 'A convenient Ruby wrapper around the GoodData RESTful API',
   url: 'https://gooddata.github.io' /* your website url */,
   baseUrl: '/gooddata-ruby-doc/' /* base url for your project */,
-  projectName: 'GoodData Ruby SDK',
+  projectName: 'gooddata-ruby-doc',
   headerLinks: [
     {doc: "getting_started", label: "Docs"}
   ],
