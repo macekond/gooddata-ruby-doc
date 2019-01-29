@@ -379,6 +379,24 @@ GoodData.with_connection do |c|
 end
 ```
 
+Exporting raw reports results
+------
+
+You can export a report to the file in the raw form.
+This is useful for situations when the report is too big and the UI is unable to compute it.
+```ruby
+# encoding: utf-8
+
+require 'gooddata'
+
+GoodData.with_connection do |c|
+  GoodData.with_project('project_id') do |project|
+    project.reports('report_identifier').export_raw('raw_export.csv')
+  end
+end
+```
+
+
 Removing old versions from report
 ------
 
