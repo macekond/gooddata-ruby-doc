@@ -8,28 +8,16 @@ title: Getting started
 Supported Versions
 -------
 
-You want to know which Ruby to use with the SDK.
+The SDK is tested against the following Ruby versions:
 
-Here is a list of supported ruby versions. 
-
--   Ruby 1.9.3
-
--   Ruby 2.0
-
--   Ruby 2.1
-
--   Ruby 2.2
-
--   JRuby with Oracle Java 1.8.0.51
-
--   JRuby with OpenJDK 1.8.0.51
-
-Unfortunately JRuby with latest version of Java (1.8.0.60) is not
-supported because of issues with SSL. Using latest JRuby with Java
-higher than 1.8.0.51 is going to cause network communication issues
-(WebDav authentication). We will support latest Java as soon as soon as
-these issues are resolved.
-
+- 2.2
+- 2.3
+- 2.4
+- 2.5
+- jruby-1.7.19
+- jruby-9.1.5
+- jruby-9.1.7
+- jruby-9.1.14
 
 Installing GoodData Ruby SDK
 --------
