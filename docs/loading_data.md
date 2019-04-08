@@ -38,6 +38,19 @@ GoodData.with_connection do |client|
     [1, 'jirka', '24/12/2014']]
 
   project.upload(data, blueprint, 'dataset.commits')
+  
+  # If the column names in your data do not match the GoodData references, you can easily supply the desired mapping in the :column_mapping parameter
+  data = [
+    ['lines', 'committer', 'date'],
+    [1, 'tomas', '01/01/2001'],
+    [1, 'petr', '01/12/2001'],
+    [1, 'jirka', '24/12/2014']]  
+  column_mapping = {
+    "fact.commits.lines_changed": 'lines',
+    "label.commits.name": 'committer',
+    "committed_on": 'date'
+  } 
+ project.upload(data, blueprint, 'dataset.commits', column_mapping: column_mapping) 
 
   # Now the data are loaded in. You can easily compute some number
   project.facts.first.create_metric(type: :sum).execute # => 3
