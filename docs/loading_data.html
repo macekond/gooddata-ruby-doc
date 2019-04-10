@@ -33,6 +33,19 @@ GoodData.with_connection <span class="hljs-keyword">do</span> <span class="hljs-
     [<span class="hljs-number">1</span>, <span class="hljs-string">'jirka'</span>, <span class="hljs-string">'24/12/2014'</span>]]
 
   project.upload(data, blueprint, <span class="hljs-string">'dataset.commits'</span>)
+  
+  <span class="hljs-comment"># If the column names in your data do not match the GoodData references, you can easily supply the desired mapping in the :column_mapping parameter</span>
+  data = [
+    [<span class="hljs-string">'lines'</span>, <span class="hljs-string">'committer'</span>, <span class="hljs-string">'date'</span>],
+    [<span class="hljs-number">1</span>, <span class="hljs-string">'tomas'</span>, <span class="hljs-string">'01/01/2001'</span>],
+    [<span class="hljs-number">1</span>, <span class="hljs-string">'petr'</span>, <span class="hljs-string">'01/12/2001'</span>],
+    [<span class="hljs-number">1</span>, <span class="hljs-string">'jirka'</span>, <span class="hljs-string">'24/12/2014'</span>]]  
+  column_mapping = {
+    <span class="hljs-string">"fact.commits.lines_changed"</span>: <span class="hljs-string">'lines'</span>,
+    <span class="hljs-string">"label.commits.name"</span>: <span class="hljs-string">'committer'</span>,
+    <span class="hljs-string">"committed_on"</span>: <span class="hljs-string">'date'</span>
+  } 
+ project.upload(data, blueprint, <span class="hljs-string">'dataset.commits'</span>, <span class="hljs-symbol">column_mapping:</span> column_mapping) 
 
   <span class="hljs-comment"># Now the data are loaded in. You can easily compute some number</span>
   project.facts.first.create_metric(<span class="hljs-symbol">type:</span> <span class="hljs-symbol">:sum</span>).execute <span class="hljs-comment"># =&gt; 3</span>
