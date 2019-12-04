@@ -41,7 +41,7 @@ Additional Resources
 
 Understanding GoodData API might be essential for your further work with the SDK:
 
- * http://developer.gooddata.com/api
+ * https://help.gooddata.com/display/API/API+Reference
 
 This documentation lists and describes the individual resources you can used to manipulate objects on the GoodData Platform.
 
